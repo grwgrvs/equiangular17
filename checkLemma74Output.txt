@@ -1,0 +1,593 @@
+> time checkLemma74();
+[
+    <x - 11, 4>,
+    <x - 9, 10>,
+    <x - 7, 1>,
+    <x + 5, 32>,
+    <x^2 - 19*x + 76, 1>
+]
+Computing interlacing char polys...
+Time taken to compute interlacing char polys: 0.500 seconds
+
+number of interlacing polynomials: 99
+Matrix A corresponding to interlacing polynomials:
+[     1    -41    646  -4886  17753 -24801]
+[     1    -41    646  -4878  17593 -24137]
+[     1    -41    646  -4878  17593 -24105]
+[     1    -41    646  -4878  17593 -24073]
+[     1    -41    646  -4878  17609 -24249]
+[     1    -41    646  -4878  17609 -24217]
+[     1    -41    646  -4878  17609 -24185]
+[     1    -41    646  -4878  17625 -24329]
+[     1    -41    646  -4878  17625 -24297]
+[     1    -41    646  -4878  17641 -24409]
+[     1    -41    646  -4870  17433 -23409]
+[     1    -41    646  -4870  17433 -23377]
+[     1    -41    646  -4870  17433 -23345]
+[     1    -41    646  -4870  17449 -23553]
+[     1    -41    646  -4870  17449 -23521]
+[     1    -41    646  -4870  17449 -23489]
+[     1    -41    646  -4870  17449 -23457]
+[     1    -41    646  -4870  17465 -23665]
+[     1    -41    646  -4870  17465 -23633]
+[     1    -41    646  -4870  17465 -23601]
+[     1    -41    646  -4870  17465 -23569]
+[     1    -41    646  -4870  17481 -23777]
+[     1    -41    646  -4870  17481 -23745]
+[     1    -41    646  -4870  17481 -23713]
+[     1    -41    646  -4870  17481 -23681]
+[     1    -41    646  -4870  17497 -23857]
+[     1    -41    646  -4870  17497 -23825]
+[     1    -41    646  -4870  17497 -23793]
+[     1    -41    646  -4862  17273 -22617]
+[     1    -41    646  -4862  17289 -22761]
+[     1    -41    646  -4862  17289 -22729]
+[     1    -41    646  -4862  17305 -22905]
+[     1    -41    646  -4862  17305 -22873]
+[     1    -41    646  -4862  17305 -22841]
+[     1    -41    646  -4862  17321 -23049]
+[     1    -41    646  -4862  17321 -23017]
+[     1    -41    646  -4862  17321 -22985]
+[     1    -41    646  -4862  17321 -22953]
+[     1    -41    646  -4862  17337 -23193]
+[     1    -41    646  -4862  17337 -23161]
+[     1    -41    646  -4862  17337 -23129]
+[     1    -41    646  -4862  17337 -23097]
+[     1    -41    646  -4862  17337 -23065]
+[     1    -41    646  -4862  17353 -23305]
+[     1    -41    646  -4862  17353 -23273]
+[     1    -41    646  -4862  17353 -23241]
+[     1    -41    646  -4862  17353 -23209]
+[     1    -41    646  -4862  17353 -23177]
+[     1    -41    646  -4862  17369 -23385]
+[     1    -41    646  -4862  17369 -23353]
+[     1    -41    646  -4854  17145 -22113]
+[     1    -41    646  -4854  17161 -22257]
+[     1    -41    646  -4854  17161 -22225]
+[     1    -41    646  -4854  17177 -22401]
+[     1    -41    646  -4854  17177 -22369]
+[     1    -41    646  -4854  17177 -22337]
+[     1    -41    646  -4854  17193 -22545]
+[     1    -41    646  -4854  17193 -22513]
+[     1    -41    646  -4854  17193 -22481]
+[     1    -41    646  -4854  17193 -22449]
+[     1    -41    646  -4854  17209 -22689]
+[     1    -41    646  -4854  17209 -22657]
+[     1    -41    646  -4854  17209 -22625]
+[     1    -41    646  -4854  17209 -22593]
+[     1    -41    646  -4854  17209 -22561]
+[     1    -41    646  -4854  17225 -22833]
+[     1    -41    646  -4854  17225 -22801]
+[     1    -41    646  -4854  17225 -22769]
+[     1    -41    646  -4854  17225 -22737]
+[     1    -41    646  -4854  17241 -22913]
+[     1    -41    646  -4846  17017 -21609]
+[     1    -41    646  -4846  17033 -21753]
+[     1    -41    646  -4846  17033 -21721]
+[     1    -41    646  -4846  17049 -21897]
+[     1    -41    646  -4846  17049 -21865]
+[     1    -41    646  -4846  17049 -21833]
+[     1    -41    646  -4846  17065 -22041]
+[     1    -41    646  -4846  17065 -22009]
+[     1    -41    646  -4846  17065 -21977]
+[     1    -41    646  -4846  17065 -21945]
+[     1    -41    646  -4846  17081 -22185]
+[     1    -41    646  -4846  17081 -22153]
+[     1    -41    646  -4846  17081 -22121]
+[     1    -41    646  -4846  17097 -22329]
+[     1    -41    646  -4846  17097 -22297]
+[     1    -41    646  -4838  16889 -21105]
+[     1    -41    646  -4838  16905 -21249]
+[     1    -41    646  -4838  16905 -21217]
+[     1    -41    646  -4838  16921 -21393]
+[     1    -41    646  -4838  16921 -21361]
+[     1    -41    646  -4838  16921 -21329]
+[     1    -41    646  -4838  16937 -21537]
+[     1    -41    646  -4838  16937 -21505]
+[     1    -41    646  -4838  16953 -21681]
+[     1    -41    646  -4830  16761 -20601]
+[     1    -41    646  -4830  16777 -20745]
+[     1    -41    646  -4830  16777 -20713]
+[     1    -41    646  -4830  16793 -20889]
+[     1    -41    646  -4822  16633 -20097]
+
+Show that f =  [ 1, -41, 646, -4886, 17753, -24801 ]
+ is warranted
+
+Certificate of warranty c:
+c =  (     0      0      0 -31002 -10684  -1527)
+Ac >= 0:  true
+Ac =  (121343 72479 23615 121423 72559 23695 72639 23775 23855 471111 422247 
+    373383 520055 471191 422327 373463 520135 471271 422407 373543 520215 471351
+    422487 373623 471431 422567 373703 723151 772095 723231 821039 772175 723311
+    869983 821119 772255 723391 918927 870063 821199 772335 723471 919007 870143
+    821279 772415 723551 870223 821359 1073079 1122023 1073159 1170967 1122103 
+    1073239 1219911 1171047 1122183 1073319 1268855 1219991 1171127 1122263 
+    1073399 1317799 1268935 1220071 1171207 1269015 1423007 1471951 1423087 
+    1520895 1472031 1423167 1569839 1520975 1472111 1423247 1618783 1569919 
+    1521055 1667727 1618863 1772935 1821879 1773015 1870823 1821959 1773095 
+    1919767 1870903 1968711 2122863 2171807 2122943 2220751 2472791)
+<g,c> < 0:  true
+<g,c> =  -1163569
+--- get polys compatible with f ---
+1 / 99
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+2 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+3 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+4 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+5 / 99
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+6 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+7 / 99
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+8 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+9 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+10 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+11 / 99
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+12 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+13 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+14 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+15 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+16 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+17 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+18 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+19 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+20 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+21 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+22 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+23 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+24 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+25 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+26 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+27 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+28 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+29 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+30 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+31 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+32 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+33 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+34 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+35 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+36 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+37 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+38 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+39 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+40 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+41 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+42 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+43 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+44 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+45 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+46 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+47 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+48 / 99
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+49 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+50 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+51 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+52 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+53 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+54 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+55 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+56 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+57 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+58 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+59 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+60 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+61 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+62 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+63 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+64 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+65 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+66 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+67 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+68 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+69 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+70 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+71 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+72 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+73 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+74 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+75 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+76 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+77 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+78 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+79 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+80 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+81 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+82 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+83 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+84 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+85 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+86 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+87 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+88 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+89 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+90 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+91 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+92 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+93 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+94 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+95 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+96 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+97 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+98 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+99 / 99
+Seidel-incompatible! x^2 - 19*x + 76
+[
+    [ 1, -41, 646, -4886, 17753, -24801 ],
+    [ 1, -41, 646, -4878, 17609, -24249 ],
+    [ 1, -41, 646, -4878, 17609, -24185 ],
+    [ 1, -41, 646, -4870, 17433, -23409 ],
+    [ 1, -41, 646, -4862, 17353, -23177 ]
+]
+checking 1 3
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 1 5
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 2 5
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 1 4
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 4 5
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 2 4
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 1 2
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 2 3
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 3 4
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+checking 3 5
+compatible for x^2 - 19*x + 76
+inconclusive....
+checking compatibility by splitting into two groups...
+[ 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+checking compatibility by splitting into two groups...
+[ 4 ]
+checking compatibility by splitting into two groups...
+[ 4, 5, 6 ]
+checking compatibility the slow way...
+49
+Seidel-Compatible!
+is compatible!
+pairwise compatibility: check
+(      49    -2009    31654  -239102   864505 -1193561)
+( 3 19 34 -7  0)
+Vector space of degree 5, dimension 1 over AC
+Echelonized basis:
+(   1 -1/3 -4/3  1/3  1/3)
+--- list interlacing configurations ---
+<24>
+<27>
+ there are 2 interlacing configurations
+[
+    (24 12  6  0  7),
+    (27 11  2  1  8)
+]
+Squared angles
+[
+    (899/1372 0 12/49 1/12 1/39102*(sqrt57 + 323) 1/39102*(-sqrt57 + 323)),
+    (5371/8232 1/12 6/49 1/8 1/52136*(-39*sqrt57 + 437) 1/52136*(39*sqrt57 + 
+        437)),
+    (895/1372 0 10/49 1/12 1/19551*(22*sqrt57 + 589) 1/19551*(-22*sqrt57 + 
+        589)),
+    (109/168 1/12 0 5/24 1/3192*(11*sqrt57 + 95) 1/3192*(-11*sqrt57 + 95)),
+    (222/343 0 10/49 0 1/13034*(3*sqrt57 + 969) 1/13034*(-3*sqrt57 + 969))
+]
+Time: 1.900
+> 
