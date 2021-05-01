@@ -1,6 +1,5 @@
-> time checkLemma56();
-checking polynomial  [ 1, -70, 2079, -34000, 330975, -1919214, 6141825, -8371836
-]
+> checkLemma56();
+Checking polynomial  [ 1, -70, 2079, -34000, 330975, -1919214, 6141825, -8371836 ]
 [ 1, -70, 2079, -34000, 330975, -1919214, 6141825, -8371836 ]
 [
     [ 1, -38, 508, -2810, 5363 ],
@@ -17,7 +16,7 @@ checking polynomial  [ 1, -70, 2079, -34000, 330975, -1919214, 6141825, -8371836
     <x^2 - 23*x + 116, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.150 seconds
+Time taken to compute interlacing char polys: 0.230 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [    1   -38   508 -2818  5419]
@@ -73,11 +72,9 @@ Ac =  (80367 255639 205543 155447 105351 55255 5159 230527 180431 130335 80239
 <g,c> < 0:  true
 <g,c> =  -174113
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^2 - 23*x + 116
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33988, 330543, -1913382, 6106833, -8293104
-]
+Checking polynomial  [ 1, -70, 2079, -33988, 330543, -1913382, 6106833, -8293104 ]
 [ 1, -70, 2079, -33988, 330543, -1913382, 6106833, -8293104 ]
 [
     [ 1, -38, 508, -2802, 5339 ],
@@ -93,7 +90,7 @@ checking polynomial  [ 1, -70, 2079, -33988, 330543, -1913382, 6106833, -8293104
     <x^3 - 34*x^2 + 369*x - 1264, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.150 seconds
+Time taken to compute interlacing char polys: 0.270 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [    1   -38   508 -2802  5307]
@@ -157,11 +154,9 @@ Ac =  (49442 26594 3746 106538 83690 60842 37994 15146 163634 140786 117938
 <g,c> < 0:  true
 <g,c> =  -240022
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^3 - 34*x^2 + 369*x - 1264
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33976, 330111, -1907598, 6072705, -8218260
-]
+Checking polynomial  [ 1, -70, 2079, -33976, 330111, -1907598, 6072705, -8218260 ]
 [ 1, -70, 2079, -33976, 330111, -1907598, 6072705, -8218260 ]
 [
     [ 1, -56, 1273, -15008, 96523, -319816, 423835 ],
@@ -178,7 +173,7 @@ checking polynomial  [ 1, -70, 2079, -33976, 330111, -1907598, 6072705, -8218260
     <x^3 - 32*x^2 + 327*x - 1068, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 14.870 seconds
+Time taken to compute interlacing char polys: 30.570 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -56    1273  -15016   96739 -321600  428355]
@@ -300,12 +295,9 @@ Ac =  (23353218 9330370 13538370 3723522 27295850 13273002 17481002 15782634
 <g,c> < 0:  true
 <g,c> =  -24310134
 --- checking for compatibility of f0 and f1 ---
-compatible for x^2 - 20*x + 95
-Seidel-incompatible! x^3 - 32*x^2 + 327*x - 1068
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33964, 329663, -1901366, 6034401, -8130456
-]
+Checking polynomial  [ 1, -70, 2079, -33964, 329663, -1901366, 6034401, -8130456 ]
 [ 1, -70, 2079, -33964, 329663, -1901366, 6034401, -8130456 ]
 [
     [ 1, -56, 1273, -15000, 96371, -319088, 423571 ],
@@ -321,7 +313,7 @@ checking polynomial  [ 1, -70, 2079, -33964, 329663, -1901366, 6034401, -8130456
     <x^5 - 52*x^4 + 1062*x^3 - 10636*x^2 + 52193*x - 100376, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 14.950 seconds
+Time taken to compute interlacing char polys: 28.550 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -56    1273  -15000   96339 -318416  420307]
@@ -487,11 +479,9 @@ Ac =  (9263915 18026155 18027147 303435 304427 18418587 53667771 18419579
 <g,c> < 0:  true
 <g,c> =  -26832933
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10636*x^2 + 52193*x - 100376
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33960, 329503, -1899022, 6019425, -8095140
-]
+Checking polynomial  [ 1, -70, 2079, -33960, 329503, -1899022, 6019425, -8095140 ]
 [ 1, -70, 2079, -33960, 329503, -1899022, 6019425, -8095140 ]
 [
     [ 1, -56, 1273, -14992, 96139, -316952, 417243 ],
@@ -508,7 +498,7 @@ checking polynomial  [ 1, -70, 2079, -33960, 329503, -1899022, 6019425, -8095140
     <x^3 - 32*x^2 + 327*x - 1052, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 15.350 seconds
+Time taken to compute interlacing char polys: 23.600 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -56    1273  -15000   96371 -319120  423795]
@@ -691,12 +681,9 @@ Ac =  (369418 64445154 82046530 96940002 29021090 26313186 43914562 41206658
 <g,c> < 0:  true
 <g,c> =  -23510478
 --- checking for compatibility of f0 and f1 ---
-compatible for x^2 - 20*x + 95
-Seidel-incompatible! x^3 - 32*x^2 + 327*x - 1052
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33952, 329119, -1892366, 5969601, -7958412
-]
+Checking polynomial  [ 1, -70, 2079, -33952, 329119, -1892366, 5969601, -7958412 ]
 [ 1, -70, 2079, -33952, 329119, -1892366, 5969601, -7958412 ]
 [
     [ 1, -45, 778, -6434, 25317, -37761 ],
@@ -713,7 +700,7 @@ checking polynomial  [ 1, -70, 2079, -33952, 329119, -1892366, 5969601, -7958412
     <x^3 - 30*x^2 + 281*x - 812, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 1.340 seconds
+Time taken to compute interlacing char polys: 1.890 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -45    778  -6434  25301 -37521]
@@ -826,11 +813,9 @@ Ac =  (546191 58751 221279 383807 58895 221423 545047 382663 545191 220279
 <g,c> < 0:  true
 <g,c> =  -564001
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^3 - 30*x^2 + 281*x - 812
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33948, 328959, -1889974, 5953761, -7919208
-]
+Checking polynomial  [ 1, -70, 2079, -33948, 328959, -1889974, 5953761, -7919208 ]
 [ 1, -70, 2079, -33948, 328959, -1889974, 5953761, -7919208 ]
 [
     [ 1, -45, 778, -6426, 25189, -37289 ],
@@ -847,7 +832,7 @@ checking polynomial  [ 1, -70, 2079, -33948, 328959, -1889974, 5953761, -7919208
     <x^3 - 30*x^2 + 281*x - 808, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 1.340 seconds
+Time taken to compute interlacing char polys: 1.840 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -45    778  -6434  25349 -38049]
@@ -958,11 +943,9 @@ Ac =  (268596 996772 268100 511012 753924 268164 511076 25316 268228 25380
 <g,c> < 0:  true
 <g,c> =  -2166396
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^3 - 30*x^2 + 281*x - 808
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33948, 328991, -1890966, 5963969, -7954056
-]
+Checking polynomial  [ 1, -70, 2079, -33948, 328991, -1890966, 5963969, -7954056 ]
 [ 1, -70, 2079, -33948, 328991, -1890966, 5963969, -7954056 ]
 [
     [ 1, -43, 710, -5618, 21257, -30675 ],
@@ -980,7 +963,7 @@ checking polynomial  [ 1, -70, 2079, -33948, 328991, -1890966, 5963969, -7954056
     <x^2 - 20*x + 83, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.870 seconds
+Time taken to compute interlacing char polys: 1.180 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -43    710  -5618  21241 -30627]
@@ -1129,16 +1112,13 @@ Ac =  (1240080 833968 427856 427888 21776 1239816 833704 1239848 833736 427624
 <g,c> < 0:  true
 <g,c> =  -1779424
 --- checking for compatibility of f0 and f1 ---
-inconclusive....
-checking compatibility by splitting into two groups...
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
 [ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
-polys are not compatible
+Checking compatibility the slow way...
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33944, 328847, -1889118, 5954289, -7938084
-]
+Checking polynomial  [ 1, -70, 2079, -33944, 328847, -1889118, 5954289, -7938084 ]
 [ 1, -70, 2079, -33944, 328847, -1889118, 5954289, -7938084 ]
 [
     [ 1, -52, 1097, -12008, 71851, -222500, 277963 ],
@@ -1156,7 +1136,7 @@ checking polynomial  [ 1, -70, 2079, -33944, 328847, -1889118, 5954289, -7938084
     <x^3 - 30*x^2 + 285*x - 852, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 5.970 seconds
+Time taken to compute interlacing char polys: 8.000 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -52    1097  -12008   71835 -222212  276731]
@@ -1316,11 +1296,9 @@ Ac =  (5066693 12161157 14525669 338341 9797317 5068965 5060285 330333 7424797
 <g,c> < 0:  true
 <g,c> =  -12028051
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^3 - 30*x^2 + 285*x - 852
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33936, 328543, -1884782, 5926657, -7871292
-]
+Checking polynomial  [ 1, -70, 2079, -33936, 328543, -1884782, 5926657, -7871292 ]
 [ 1, -70, 2079, -33936, 328543, -1884782, 5926657, -7871292 ]
 [
     [ 1, -54, 1183, -13420, 82903, -263678, 336297 ],
@@ -1338,7 +1316,7 @@ checking polynomial  [ 1, -70, 2079, -33936, 328543, -1884782, 5926657, -7871292
     <x^3 - 26*x^2 + 213*x - 556, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 10.260 seconds
+Time taken to compute interlacing char polys: 14.220 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -54    1183  -13420   82903 -263678  336297]
@@ -1477,10 +1455,9 @@ Ac =  (654028 13533364 9578548 5623732 5113076 1158260 2622708 647604 15569564
 <g,c> < 0:  true
 <g,c> =  -2116964
 --- checking for compatibility of f0 and f1 ---
-Seidel-incompatible! x^3 - 26*x^2 + 213*x - 556
-polys are not compatible
+polys are not Seidel-compatible
 
-checking polynomial  [ 1, -70, 2079, -33920, 327839, -1873230, 5842881, -7644780
+Checking polynomial  [ 1, -70, 2079, -33920, 327839, -1873230, 5842881, -7644780
 ]
 [ 1, -70, 2079, -33920, 327839, -1873230, 5842881, -7644780 ]
 [
@@ -1500,7 +1477,7 @@ checking polynomial  [ 1, -70, 2079, -33920, 327839, -1873230, 5842881, -7644780
     <x + 5, 32>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 1.340 seconds
+Time taken to compute interlacing char polys: 1.810 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -45    778  -6402  24837 -36257]
@@ -1567,8 +1544,7 @@ Show that f 1  =  [ 1, -45, 778, -6386, 24501, -34529 ]
  is warranted
 
 Certificate of warranty c:
-c =  (-27025283304            0            0     -5833300      -470427       
--37635)
+c =  (-27025283304            0            0     -5833300      -470427       -37635)
 Ac >= 0:  true
 Ac =  (40092 341340 641236 942484 39412 941132 1242380 1543628 339308 640556 
     1542276 1843524 2144772 940452 1241700 338628 2143420 2444668 1240348 
@@ -1578,11 +1554,9 @@ Ac =  (40092 341340 641236 942484 39412 941132 1242380 1543628 339308 640556
 <g,c> < 0:  true
 <g,c> =  -1373700
 --- checking for compatibility of f0 and f1 ---
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
-polys are not compatible
-
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+polys are not Seidel-compatible
+ 
 Time: 127.340
 > 
