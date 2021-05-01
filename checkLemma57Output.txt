@@ -1,5 +1,5 @@
-> time checkLemma57();
-checking polynomial  [ 1, -70, 2079, -33968, 329791, -1902862, 6041889, -8143740
+> checkLemma57();
+Checking polynomial  [ 1, -70, 2079, -33968, 329791, -1902862, 6041889, -8143740
 ]
 [ 1, -70, 2079, -33968, 329791, -1902862, 6041889, -8143740 ]
 [ 1, -56, 1273, -15000, 96339, -318576, 421619 ]
@@ -18,7 +18,7 @@ checking polynomial  [ 1, -70, 2079, -33968, 329791, -1902862, 6041889, -8143740
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 15.230 seconds
+Time taken to compute interlacing char polys: 25.550 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -56    1273  -15000   96275 -317328  415699]
@@ -172,365 +172,449 @@ Ac =  (1173232 1911024 3327856 4065648 1882160 2619952 3357744 1174256 1912048
 <g,c> =  -20210760
 --- get polys compatible with f ---
 1 / 126
-compatible for x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 4, 5, 6, 7 ]
-[ 4 ]
-[ 4, 12, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6, 7 ]
-[ 4, 4 ]
-[ 4, 12, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 
+    52249*x - 100540
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 2 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 3 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 4 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 5 / 126
-compatible for x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 4, 5, 6, 7 ]
-[ 4 ]
-[ 12, 4, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6, 7 ]
-[ 4, 4 ]
-[ 4, 12, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 
+    52249*x - 100540
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 6 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 7 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 8 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 9 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 10 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 11 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 12 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 13 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 14 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 15 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 16 / 126
-compatible for x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 4, 5, 6, 7 ]
-[ 4 ]
-[ 12, 12, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6, 7 ]
-[ 4, 4 ]
-[ 12, 4, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 
+    52249*x - 100540
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 17 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 18 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 19 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 20 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 21 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 22 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 23 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 24 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 25 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 26 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 27 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 28 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 29 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 30 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 31 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 32 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 33 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 34 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 35 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 36 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 37 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 38 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 39 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 40 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 41 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 42 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 43 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 44 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 45 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 46 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 47 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 48 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 49 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 50 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 51 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 52 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 53 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 54 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 55 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 56 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 57 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 58 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 59 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 60 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 61 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 62 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 63 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 64 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 65 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 66 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 67 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 68 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 69 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 70 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 71 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 72 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 73 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 74 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 75 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 76 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 77 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 78 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 79 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 80 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 81 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 82 / 126
-compatible for x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 4, 5, 6, 7 ]
-[ 4 ]
-[ 12, 12, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6, 7 ]
-[ 4, 4 ]
-[ 12, 12, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 
+    52249*x - 100540
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 83 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 84 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 85 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 86 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 87 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 88 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 89 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 90 / 126
-compatible for x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 4, 5, 6, 7 ]
-[ 4 ]
-[ 12, 12, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6, 7 ]
-[ 4, 4 ]
-[ 12, 12, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 
+    52249*x - 100540
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 91 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 92 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 93 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 94 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 95 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 96 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 97 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 98 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 99 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 100 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 101 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 102 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 103 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 104 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 105 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 106 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 107 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 108 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 109 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 110 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 111 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 112 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 113 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 114 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 115 / 126
-compatible for x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 4, 5, 6, 7 ]
-[ 4 ]
-[ 4, 12, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6, 7 ]
-[ 4, 4 ]
-[ 12, 4, 12 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 
+    52249*x - 100540
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 116 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 117 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 118 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 119 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 120 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 121 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 122 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 123 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 124 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 125 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 126 / 126
-Seidel-incompatible! x^4 - 41*x^3 + 611*x^2 - 3919*x + 9140
+not Seidel-compatible
+
 [
     <x - 9, 11>,
     <x + 5, 31>,
@@ -574,7 +658,7 @@ Ac =  ( 596198  597622  600838 9504046  576350 6526294)
 <g,c> < 0:  true
 <g,c> =  -12310402
 
-checking polynomial  [ 1, -70, 2079, -33968, 329791, -1902830, 6041313, -8141148
+Checking polynomial  [ 1, -70, 2079, -33968, 329791, -1902830, 6041313, -8141148
 ]
 [ 1, -70, 2079, -33968, 329791, -1902830, 6041313, -8141148 ]
 [ 1, -56, 1273, -15000, 96339, -318544, 421459 ]
@@ -592,7 +676,7 @@ checking polynomial  [ 1, -70, 2079, -33968, 329791, -1902830, 6041313, -8141148
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 15.410 seconds
+Time taken to compute interlacing char polys: 32.390 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -56    1273  -15008   96539 -320104  425259]
@@ -737,249 +821,359 @@ Ac =  (2644041 432217 5348473 4851449 4988489 3633673 4491465 3136649 3994441
 <g,c> =  -20678343
 --- get polys compatible with f ---
 1 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 2 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 3 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 4 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 5 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 6 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 7 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 8 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 9 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 10 / 118
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 11 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 12 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 13 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 14 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 15 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 16 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 17 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 18 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 19 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 20 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 21 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 22 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 23 / 118
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 24 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 25 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 26 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 27 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 28 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 29 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 30 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 31 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 32 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 33 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 34 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 35 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 36 / 118
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 37 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 38 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 39 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 40 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 41 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 42 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 43 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 44 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 45 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 46 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 47 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 48 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 49 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 50 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 51 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 52 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 53 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 54 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 55 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 56 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 57 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 58 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 59 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 60 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 61 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 62 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 63 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 64 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 65 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 66 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 67 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 68 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 69 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 70 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 71 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 72 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 73 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 74 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 75 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 76 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 77 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 78 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 79 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 80 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 81 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 82 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 83 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 84 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 85 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 86 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 87 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 88 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 89 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 90 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 91 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 92 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 93 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 94 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 95 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 96 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 97 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 98 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 99 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 100 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 101 / 118
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 102 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 103 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 104 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 105 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 106 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 107 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 108 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 109 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 110 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 111 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 112 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 113 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 114 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 115 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 116 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 117 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 118 / 118
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
+not Seidel-compatible
+
 [
     <x - 9, 12>,
     <x + 5, 31>,
@@ -1001,14 +1195,13 @@ Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10640*x^2 + 52249*x - 100508
     <x^5 - 47*x^4 + 850*x^3 - 7318*x^2 + 29437*x - 42539, 1>
 ]
 Certificate of infeasibility c:
-c =  (1986879326641 0 0 183663110 8328599 0 -81386)
+c =  (1986879326641             0             0     183663110       8328599             0        -81386)
 Ac >= 0:  true
 Ac =  (   708808    713528    702288 358340776)
 <g,c> < 0:  true
 <g,c> =  -6796000
 
-checking polynomial  [ 1, -70, 2079, -33964, 329631, -1900534, 6027329, -8110872
-]
+Checking polynomial  [ 1, -70, 2079, -33964, 329631, -1900534, 6027329, -8110872 ]
 [ 1, -70, 2079, -33964, 329631, -1900534, 6027329, -8110872 ]
 [ 1, -47, 854, -7466, 31161, -49015 ]
 [
@@ -1029,7 +1222,7 @@ checking polynomial  [ 1, -70, 2079, -33964, 329631, -1900534, 6027329, -8110872
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.880 seconds
+Time taken to compute interlacing char polys: 1.130 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -47    854  -7474  31353 -50127]
@@ -1067,82 +1260,95 @@ Show that f =  [ 1, -47, 854, -7466, 31161, -49015 ]
 Certificate of warranty c:
 c =  (49638392174           0           0    10008058      946709       90162)
 Ac >= 0:  true
-Ac =  (783385 2946217 2225049 1503881 782713 61545 781529 60361 2945545 2224377 
-    1503209 782041 60873 780857 2944873 2223705 1502537 781369 780185 2944201 
-    2223033 1501865 2943529 2222361 2942857 2221689 2942185)
+Ac =  (783385 2946217 2225049 1503881 782713 61545 781529 60361 2945545 2224377 1503209 782041 60873 780857 
+    2944873 2223705 1502537 781369 780185 2944201 2223033 1501865 2943529 2222361 2942857 2221689 2942185)
 <g,c> < 0:  true
 <g,c> =  -1338311
 --- get polys compatible with f ---
 1 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 2 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 3 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 4 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 5 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 6 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 7 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 8 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 9 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 10 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 11 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 12 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 13 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 14 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 15 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 16 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 17 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 18 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 19 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 20 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 21 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 22 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 23 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 24 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 25 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 26 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 27 / 28
-Seidel-incompatible! x^2 - 25*x + 152
+not Seidel-compatible
+
 28 / 28
-compatible for x^2 - 25*x + 152
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 [
     <x - 11, 2>,
     <x - 9, 11>,
@@ -1200,8 +1406,7 @@ Ac =  ( 1518239    66319  5566095  2383327    65983 11930959 20612831)
 <g,c> < 0:  true
 <g,c> =  -1086897
 
-checking polynomial  [ 1, -70, 2079, -33956, 329327, -1896134, 5998545, -8039088
-]
+Checking polynomial  [ 1, -70, 2079, -33956, 329327, -1896134, 5998545, -8039088 ]
 [ 1, -70, 2079, -33956, 329327, -1896134, 5998545, -8039088 ]
 [ 1, -56, 1273, -14992, 96155, -317304, 419371 ]
 [
@@ -1218,7 +1423,7 @@ checking polynomial  [ 1, -70, 2079, -33956, 329327, -1896134, 5998545, -8039088
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 15.440 seconds
+Time taken to compute interlacing char polys: 20.390 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -56    1273  -14992   96123 -316664  416267]
@@ -1324,224 +1529,305 @@ Show that f =  [ 1, -56, 1273, -14992, 96155, -317304, 419371 ]
 Certificate of warranty c:
 c =  (      0       0       0 3772987 1029536  162478   21753)
 Ac >= 0:  true
-Ac =  (1590483 2982675 524915 1592419 2984611 526851 4033123 4035059 5102563 
-    2644803 4036995 3712307 5104499 2646739 4038931 1581171 2973363 5106435 
-    4040867 1583107 2975299 2977235 519475 6153011 6154947 5089379 7222451 
-    6156883 5091315 7224387 4766627 6158819 3701059 5093251 4027683 6160755 
-    3702995 5095187 2637427 4029619 1571859 5097123 4031555 1573795 4033491 
-    8274835 8276771 7211203 6145635 5080067 8278707 7213139 6147571 5082003 
-    7215075 4757315 6149507 5083939 6151443 3693683 5085875 2628115 5087811 
-    2630051 4022243 4024179 10396659 9331091 9333027 8267459 7201891 8269395 
-    7203827 6138259 7205763 6140195 5074627 6142131 5076563 5078499 2620739 
-    10387347 9323715 8258147 8260083 7194515 6128947 7196451 6130883 6132819 
-    8250771 7185203 7187139 6123507 7177827)
+Ac =  (1590483 2982675 524915 1592419 2984611 526851 4033123 4035059 5102563 2644803 4036995 3712307 5104499 
+    2646739 4038931 1581171 2973363 5106435 4040867 1583107 2975299 2977235 519475 6153011 6154947 5089379 
+    7222451 6156883 5091315 7224387 4766627 6158819 3701059 5093251 4027683 6160755 3702995 5095187 2637427 
+    4029619 1571859 5097123 4031555 1573795 4033491 8274835 8276771 7211203 6145635 5080067 8278707 7213139 
+    6147571 5082003 7215075 4757315 6149507 5083939 6151443 3693683 5085875 2628115 5087811 2630051 4022243 
+    4024179 10396659 9331091 9333027 8267459 7201891 8269395 7203827 6138259 7205763 6140195 5074627 6142131 
+    5076563 5078499 2620739 10387347 9323715 8258147 8260083 7194515 6128947 7196451 6130883 6132819 8250771 
+    7185203 7187139 6123507 7177827)
 <g,c> < 0:  true
 <g,c> =  -15651933
 --- get polys compatible with f ---
 1 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 2 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 3 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 4 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 5 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 6 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 7 / 96
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 8 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 9 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 10 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 11 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 12 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 13 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 14 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 15 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 16 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 17 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 18 / 96
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 19 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 20 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 21 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 22 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 23 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 24 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 25 / 96
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 26 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 27 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 28 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 29 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 30 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 31 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 32 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 33 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 34 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 35 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 36 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 37 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 38 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 39 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 40 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 41 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 42 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 43 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 44 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 45 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 46 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 47 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 48 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 49 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 50 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 51 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 52 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 53 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 54 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 55 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 56 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 57 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 58 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 59 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 60 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 61 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 62 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 63 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 64 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 65 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 66 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 67 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 68 / 96
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 69 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 70 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 71 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 72 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 73 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 74 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 75 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 76 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 77 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 78 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 79 / 96
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 80 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 81 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 82 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 83 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 84 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 85 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 86 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 87 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 88 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 89 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 90 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 91 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 92 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 93 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 94 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 95 / 96
-compatible for x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 96 / 96
-Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
+not Seidel-compatible
+
 [
     <x - 9, 11>,
     <x + 5, 31>,
@@ -1574,14 +1860,13 @@ Seidel-incompatible! x^5 - 52*x^4 + 1062*x^3 - 10628*x^2 + 52001*x - 99248
     <x^4 - 34*x^3 + 408*x^2 - 1990*x + 3119, 1>
 ]
 Certificate of infeasibility c:
-c =  (877829032285 0 0 0 -19643059 -4005362 -619899)
+c =  (877829032285            0            0            0    -19643059     -4005362      -619899)
 Ac >= 0:  true
 Ac =  (   414659    408723 159095427  58367907    395427 101105219)
 <g,c> < 0:  true
 <g,c> =  -21082845
 
-checking polynomial  [ 1, -70, 2079, -33952, 329151, -1893294, 5978529, -7986924
-]
+Checking polynomial  [ 1, -70, 2079, -33952, 329151, -1893294, 5978529, -7986924 ]
 [ 1, -70, 2079, -33952, 329151, -1893294, 5978529, -7986924 ]
 [ 1, -47, 850, -7342, 30061, -46531 ]
 [
@@ -1600,7 +1885,7 @@ checking polynomial  [ 1, -70, 2079, -33952, 329151, -1893294, 5978529, -7986924
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 1.820 seconds
+Time taken to compute interlacing char polys: 2.350 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -47    850  -7342  30061 -46563]
@@ -1683,728 +1968,728 @@ Show that f =  [ 1, -47, 850, -7342, 30061, -46531 ]
  is warranted
 
 Certificate of warranty c:
-c =  (-30845693350            0            0     -6031794      -513344       
--42779)
+c =  (-30845693350            0            0     -6031794      -513344       -42779)
 Ac >= 0:  true
-Ac =  (22791 706783 1391311 22383 706911 22511 706247 1390775 3444231 2075303 
-    706375 2759831 1390903 2075431 706503 1391031 706631 2074767 4128223 2759295
-    4812751 3443823 2074895 4128351 2759423 3443951 2075023 2759551 2075151 
-    6865671 5496743 4127815 6181271 4812343 3443415 5496871 4127943 2759015 
-    4812471 3443543 4128071 2759143 3443671 2759271 8234191 7549791 6180863 
-    6865391 5496463 4127535 6180991 4812063 5496591 4127663 4812191 4127791 
-    8233911 7549511 6180583 6865111 5496183 6180711 4811783 5496311 4811911 
-    8233631 7549231 6180303 6864831 6180431 8233351 7548951 6864551 8233071)
+Ac =  (22791 706783 1391311 22383 706911 22511 706247 1390775 3444231 2075303 706375 2759831 1390903 2075431 
+    706503 1391031 706631 2074767 4128223 2759295 4812751 3443823 2074895 4128351 2759423 3443951 2075023 2759551
+    2075151 6865671 5496743 4127815 6181271 4812343 3443415 5496871 4127943 2759015 4812471 3443543 4128071 
+    2759143 3443671 2759271 8234191 7549791 6180863 6865391 5496463 4127535 6180991 4812063 5496591 4127663 
+    4812191 4127791 8233911 7549511 6180583 6865111 5496183 6180711 4811783 5496311 4811911 8233631 7549231 
+    6180303 6864831 6180431 8233351 7548951 6864551 8233071)
 <g,c> < 0:  true
 <g,c> =  -3005129
 --- get polys compatible with f ---
 1 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 2 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6 ]
-[ 1 ]
-[ 2, 1, 1 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+Checking compatibility with respect to x^3 - 32*x^2 + 323*x - 996
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^2 - 23*x + 132
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^4 - 43*x^3 + 675*x^2 - 4549*x + 10956
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 3 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 4 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 5 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 6 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 7 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 8 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 9 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 10 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 11 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 12 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 13 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 14 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 15 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 16 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 17 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 18 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 19 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 20 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 21 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 22 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 23 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 24 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 25 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 26 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 27 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 28 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 29 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 30 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 31 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 32 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 33 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 34 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 35 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 36 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 37 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 38 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 39 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 40 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 41 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 42 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 43 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 44 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 45 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6 ]
-[ 1 ]
-[ 2, 1, 1 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+Checking compatibility with respect to x^3 - 32*x^2 + 323*x - 996
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^2 - 23*x + 132
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^4 - 43*x^3 + 675*x^2 - 4549*x + 10956
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 46 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 47 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 48 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 49 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 50 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 51 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 52 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-checking compatibility by splitting into two groups...
-[ 3, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3, 4 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3, 4, 5, 6 ]
-[ 1 ]
-[ 1, 2, 1 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+Checking compatibility with respect to x^3 - 32*x^2 + 323*x - 996
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^2 - 23*x + 132
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^4 - 43*x^3 + 675*x^2 - 4549*x + 10956
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 53 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 54 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 55 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 56 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 57 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 58 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 59 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 60 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 61 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 62 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 63 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 64 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 65 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 66 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 67 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 68 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 69 / 75
-compatible for x^2 - 20*x + 83
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 3 ]
-incompatible! x - 12
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 11
+...
+Checking compatibility with respect to x^3 - 31*x^2 + 303*x - 913
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 12
+...
+not Seidel-compatible
+
 70 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 71 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 72 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 73 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 74 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 75 / 75
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-incompatible! x^2 - 20*x + 83
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x^2 - 20*x + 83
+...
+Checking compatibility the slow way...
+not Seidel-compatible
+
 [
     <x - 9, 12>,
     <x + 5, 31>,
@@ -2430,8 +2715,7 @@ Ac =  ( 11459  10979 282611)
 <g,c> < 0:  true
 <g,c> =  -1497197
 
-checking polynomial  [ 1, -70, 2079, -33932, 328351, -1881398, 5900609, -7797240
-]
+Checking polynomial  [ 1, -70, 2079, -33932, 328351, -1881398, 5900609, -7797240 ]
 [ 1, -70, 2079, -33932, 328351, -1881398, 5900609, -7797240 ]
 [ 1, -54, 1183, -13412, 82687, -261926, 332321 ]
 [
@@ -2450,7 +2734,7 @@ checking polynomial  [ 1, -70, 2079, -33932, 328351, -1881398, 5900609, -7797240
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 10.390 seconds
+Time taken to compute interlacing char polys: 13.080 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [      1     -54    1183  -13412   82655 -261318  329633]
@@ -2592,308 +2876,416 @@ Show that f =  [ 1, -54, 1183, -13412, 82687, -261926, 332321 ]
 Certificate of warranty c:
 c =  (       0        0        0 15489527  4414523   731381   103163)
 Ac >= 0:  true
-Ac =  (19771462 259846 19476422 6567238 13169670 260486 29522774 10011158 
-    16613590 3704406 35830166 16318550 22920982 29523414 10011798 42137558 
-    29228374 35830806 16319190 22921622 3410006 10012438 42138198 29229014 
-    35831446 16319830 22922262 3410646 29229654 16320470 20057510 26364902 
-    13455718 26069862 32672294 13160678 19763110 26365542 13456358 38979686 
-    26070502 32672934 13161318 19763750 26366182 6854566 38980326 26071142 
-    32673574 13161958 19764390 38980966 26071782 32674214 13162598 253414 
-    38981606 26072422 13163238 38982246 23207030 16900278 22911990 29514422 
-    16605238 23207670 35821814 22912630 29515062 16605878 23208310 35822454 
-    22913270 29515702 10004086 16606518 35823094 22913910 29516342 10004726 
-    16607158 35823734 22914550 10005366 35824374 22915190 35825014 32663302 
-    26356550 32663942 26357190 20050438 32664582 19755398 26357830 20051078 
-    32665222 19756038 26358470 13449286 32665862 19756678 26359110 32666502 
-    19757318 6848134 32667142 29506070 29506710 23199958 29507350 23200598 
-    29507990 16598806 23201238 29508630 16599446 29509270 16600086 29509910 
-    26350118 20043366 26350758 20044006 26351398 26352038 13442854 23193526 
-    23194166 23194806 20036934)
+Ac =  (19771462 259846 19476422 6567238 13169670 260486 29522774 10011158 16613590 3704406 35830166 16318550 
+    22920982 29523414 10011798 42137558 29228374 35830806 16319190 22921622 3410006 10012438 42138198 29229014 
+    35831446 16319830 22922262 3410646 29229654 16320470 20057510 26364902 13455718 26069862 32672294 13160678 
+    19763110 26365542 13456358 38979686 26070502 32672934 13161318 19763750 26366182 6854566 38980326 26071142 
+    32673574 13161958 19764390 38980966 26071782 32674214 13162598 253414 38981606 26072422 13163238 38982246 
+    23207030 16900278 22911990 29514422 16605238 23207670 35821814 22912630 29515062 16605878 23208310 35822454 
+    22913270 29515702 10004086 16606518 35823094 22913910 29516342 10004726 16607158 35823734 22914550 10005366 
+    35824374 22915190 35825014 32663302 26356550 32663942 26357190 20050438 32664582 19755398 26357830 20051078 
+    32665222 19756038 26358470 13449286 32665862 19756678 26359110 32666502 19757318 6848134 32667142 29506070 
+    29506710 23199958 29507350 23200598 29507990 16598806 23201238 29508630 16599446 29509270 16600086 29509910 
+    26350118 20043366 26350758 20044006 26351398 26352038 13442854 23193526 23194166 23194806 20036934)
 <g,c> < 0:  true
 <g,c> =  -20905242
 --- get polys compatible with f ---
 1 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 2 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 3 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 4 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 5 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 6 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 7 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 8 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 9 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 10 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 11 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 12 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 13 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 14 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 15 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 16 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 17 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 18 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 19 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 20 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 21 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 22 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 23 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 24 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 25 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 26 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 27 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 28 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 29 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 30 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 31 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 32 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 33 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 34 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 35 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 36 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 37 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 38 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 39 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 40 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 41 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 42 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 43 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 44 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 45 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 46 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 47 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 48 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 49 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 50 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 51 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 52 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 53 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 54 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 55 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 56 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 57 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 58 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 59 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 60 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 61 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 62 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 63 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 64 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 65 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 66 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 67 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 68 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 69 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 70 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 71 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 72 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 73 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 74 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 75 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 76 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 77 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 78 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 79 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 80 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 81 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 82 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 83 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 84 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 85 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 86 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 87 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 88 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 89 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 90 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 91 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 92 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 93 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 94 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 95 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 96 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 97 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 98 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 99 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 100 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 101 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 102 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 103 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 104 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 105 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 106 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 107 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 108 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 109 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 110 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 111 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 112 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 113 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 114 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 115 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 116 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 117 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 118 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 119 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 120 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 121 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 122 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 123 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 124 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 125 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 126 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 127 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 128 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 129 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 130 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 131 / 132
-Seidel-incompatible! x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
+not Seidel-compatible
+
 132 / 132
-compatible for x^4 - 39*x^3 + 551*x^2 - 3321*x + 7160
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 [
     <x - 11, 2>,
     <x - 9, 10>,
@@ -2954,12 +3346,11 @@ is compatible!
 Certificate of infeasibility c:
 c =  (    0     0     0     0 39830 17496  3881)
 Ac >= 0:  true
-Ac =  (930131 503715 479363 6836099 5223619 2626107 1641075 8532075 10228051)
+Ac =  (  930131   503715   479363  6836099  5223619  2626107  1641075  8532075 10228051)
 <g,c> < 0:  true
 <g,c> =  -9169917
 
-checking polynomial  [ 1, -70, 2079, -33916, 327679, -1870902, 5828449, -7613320
-]
+Checking polynomial  [ 1, -70, 2079, -33916, 327679, -1870902, 5828449, -7613320 ]
 [ 1, -70, 2079, -33916, 327679, -1870902, 5828449, -7613320 ]
 [ 1, -41, 646, -4870, 17497, -23889 ]
 [
@@ -2980,7 +3371,7 @@ checking polynomial  [ 1, -70, 2079, -33916, 327679, -1870902, 5828449, -7613320
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.490 seconds
+Time taken to compute interlacing char polys: 0.630 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [     1    -41    646  -4870  17481 -23777]
@@ -3086,626 +3477,783 @@ Show that f =  [ 1, -41, 646, -4870, 17497, -23889 ]
 Certificate of warranty c:
 c =  (-4146865216           0           0    -1459666     -205965      -26866)
 Ac >= 0:  true
-Ac =  (26921 2319609 1459897 600185 1173449 313737 27289 1745545 885833 26121 
-    2318809 1459097 599385 2892073 2032361 1172649 312937 3465337 2605625 
-    1745913 886201 4038601 3178889 2319177 1459465 2892441 1171481 1744745 
-    885033 2318009 1458297 2891273 2031561 1171849 3464537 2604825 1745113 
-    4037801 3178089 2318377 1458665 4611065 3751353 2891641 5184329 4324617 
-    5757593 1170681 1743945 2317209 1457497 2890473 2030761 3463737 2604025 
-    1744313 4037001 3177289 2317577 4610265 3750553 2890841 5183529 4323817 
-    5756793 2316409 2889673 3462937 2603225 4036201 3176489 4609465 3749753 
-    2890041 5182729 4323017 5755993 2888873 3462137 4035401 3175689 4608665 
-    3748953 5181929 4322217 5755193 4034601 4607865 5181129 4321417 5754393 
-    4607065 5180329 5753593 5752793)
+Ac =  (26921 2319609 1459897 600185 1173449 313737 27289 1745545 885833 26121 2318809 1459097 599385 2892073 
+    2032361 1172649 312937 3465337 2605625 1745913 886201 4038601 3178889 2319177 1459465 2892441 1171481 1744745
+    885033 2318009 1458297 2891273 2031561 1171849 3464537 2604825 1745113 4037801 3178089 2318377 1458665 
+    4611065 3751353 2891641 5184329 4324617 5757593 1170681 1743945 2317209 1457497 2890473 2030761 3463737 
+    2604025 1744313 4037001 3177289 2317577 4610265 3750553 2890841 5183529 4323817 5756793 2316409 2889673 
+    3462937 2603225 4036201 3176489 4609465 3749753 2890041 5182729 4323017 5755993 2888873 3462137 4035401 
+    3175689 4608665 3748953 5181929 4322217 5755193 4034601 4607865 5181129 4321417 5754393 4607065 5180329 
+    5753593 5752793)
 <g,c> < 0:  true
 <g,c> =  -974199
 --- get polys compatible with f ---
 1 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 2 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 3 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 4 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 5 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4, 5 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+Checking compatibility with respect to x^2 - 18*x + 65
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^2 - 21*x + 104
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 520
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 6 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 7 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 8 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-incompatible! x - 13
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+not Seidel-compatible
+
 9 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 10 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 11 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 12 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 13 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 14 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 15 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 16 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 17 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 18 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 19 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 20 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-incompatible! x - 13
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+not Seidel-compatible
+
 21 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 22 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 23 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 24 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 25 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 26 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 27 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4, 5 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+Checking compatibility with respect to x^2 - 18*x + 65
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^2 - 21*x + 104
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 520
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 28 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 29 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 30 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 31 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 32 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 33 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 34 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 35 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-incompatible! x - 13
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+not Seidel-compatible
+
 36 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 37 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 38 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 39 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 40 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 41 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 42 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 43 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 44 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 45 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 46 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 47 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 48 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 49 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 50 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 51 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 52 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 53 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 54 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 55 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 56 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 57 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 58 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-checking compatibility by splitting into two groups...
-[ 4, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4, 5 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4, 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-is compatible!
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+Checking compatibility with respect to x^2 - 18*x + 65
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^2 - 21*x + 104
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 520
+...
+Checking compatibility the slow way...
+is Seidel-compatible!
+
 59 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 60 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 61 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 62 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 63 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 64 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 65 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 66 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 67 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 68 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 69 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 70 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 71 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 72 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 73 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 74 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 75 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 76 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 77 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 78 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-incompatible! x - 8
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+not Seidel-compatible
+
 79 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 80 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 81 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 82 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 83 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 84 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 85 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 86 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 87 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 88 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 89 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 90 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 91 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-checking compatibility by splitting into two groups...
-[ 5 ]
-checking compatibility by splitting into two groups...
-[ 5, 6 ]
-checking compatibility the slow way...
-49
-Seidel-Compatible!
-checking compatibility by splitting into two groups...
-[ 4 ]
-incompatible! x - 13
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+Checking compatibility with respect to x - 8
+...
+Checking compatibility with respect to x^2 - 13*x + 40
+...
+Checking compatibility the slow way...
+Checking compatibility with respect to x - 13
+...
+not Seidel-compatible
+
 92 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 93 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 94 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 95 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 96 / 96
-inconclusive....
-checking compatibility by splitting into two groups...
-[ 6 ]
-incompatible! x - 5
+Fast check is inconclusive....
+Checking compatibility by splitting into two groups...
+Checking compatibility with respect to x - 5
+...
+not Seidel-compatible
+
 [
     <x - 11, 3>,
     <x - 9, 9>,
@@ -3732,8 +4280,7 @@ Ac =  (  34110 4614174   32094)
 <g,c> < 0:  true
 <g,c> =  -627906
 
-checking polynomial  [ 1, -70, 2079, -33900, 326975, -1859286, 5743265, -7379064
-]
+Checking polynomial  [ 1, -70, 2079, -33900, 326975, -1859286, 5743265, -7379064 ]
 [ 1, -70, 2079, -33900, 326975, -1859286, 5743265, -7379064 ]
 [ 1, -32, 358, -1632, 2553 ]
 [
@@ -3752,7 +4299,7 @@ checking polynomial  [ 1, -70, 2079, -33900, 326975, -1859286, 5743265, -7379064
     <x + 5, 31>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.060 seconds
+Time taken to compute interlacing char polys: 0.080 seconds
 
 Matrix A corresponding to interlacing polynomials:
 [    1   -32   358 -1632  2553]
@@ -3794,78 +4341,107 @@ Show that f =  [ 1, -32, 358, -1632, 2553 ]
 Certificate of warranty c:
 c =  (13345166        0        0     9135      610)
 Ac >= 0:  true
-Ac =  (3936 13696 3816 13576 23336 33096 13456 23216 32976 42736 52496 32856 
-    42616 52376 62136 71896 52256 62016 71776 81536 91296 81416 91176 100936 
-    110696 110576 120336 130096 139736 149496 168896)
+Ac =  (3936 13696 3816 13576 23336 33096 13456 23216 32976 42736 52496 32856 42616 52376 62136 71896 52256 62016 
+    71776 81536 91296 81416 91176 100936 110696 110576 120336 130096 139736 149496 168896)
 <g,c> < 0:  true
 <g,c> =  -32096
 --- get polys compatible with f ---
 1 / 32
-compatible for x^2 - 17*x + 56
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 2 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 3 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 4 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 5 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 6 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 7 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 8 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 9 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 10 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 11 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 12 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 13 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 14 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 15 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 16 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 17 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 18 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 19 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 20 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 21 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 22 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 23 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 24 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 25 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 26 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 27 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 28 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 29 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 30 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 31 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 32 / 32
-Seidel-incompatible! x^2 - 17*x + 56
+not Seidel-compatible
+
 [
     <x - 11, 3>,
     <x - 9, 10>,
