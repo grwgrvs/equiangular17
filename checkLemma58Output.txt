@@ -1,4 +1,4 @@
-> time checkLemma58();
+> checkLemma58();
 [
     <x - 11, 2>,
     <x - 9, 13>,
@@ -6,7 +6,7 @@
     <x^2 - 21*x + 92, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.130 seconds
+Time taken to compute interlacing char polys: 0.190 seconds
 
 number of interlacing polynomials: 51
 Matrix A corresponding to interlacing polynomials:
@@ -70,239 +70,320 @@ Show that f1=  [ 1, -36, 454, -2356, 4241 ]
 Certificate of warranty c:
 c =  (-17507602         0         0     -9281     -1031)
 Ac >= 0:  true
-Ac =  (18971 2475 51947 35451 18955 2459 101419 84923 68427 51931 35435 18939 
-    2443 117899 101403 84907 68411 51915 35419 18923 2427 117883 101387 84891 
-    68395 51899 35403 18907 117867 101371 84875 68379 51883 35387 117851 101355 
-    84859 68363 51867 117835 101339 84843 68347 117819 101323 84827 117803 
-    101307 117787)
+Ac =  (18971 2475 51947 35451 18955 2459 101419 84923 68427 51931 35435 18939 2443 117899 101403 84907 68411 
+    51915 35419 18923 2427 117883 101387 84891 68395 51899 35403 18907 117867 101371 84875 68379 51883 35387 
+    117851 101355 84859 68363 51867 117835 101339 84843 68347 117819 101323 84827 117803 101307 117787)
 <g,c> < 0:  true
 <g,c> =  -226005
 --- get polys compatible with f1 ---
 1 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 2 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 3 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 4 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 5 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 6 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 7 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 8 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 9 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 10 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 11 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 12 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 13 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 14 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 15 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 16 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 17 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 18 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 19 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 20 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 21 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 22 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 23 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 24 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 25 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 26 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 27 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 28 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 29 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 30 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 31 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 32 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 33 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 34 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 35 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 36 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 37 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 38 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 39 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 40 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 41 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 42 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 43 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 44 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 45 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 46 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 47 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 48 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 49 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 50 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 51 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 --- get polys compatible with f2 ---
 1 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 2 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 3 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 4 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 5 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 6 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 7 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 8 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 9 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 10 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 11 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 12 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 13 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 14 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 15 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 16 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 17 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 18 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 19 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 20 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 21 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 22 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 23 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 24 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 25 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 26 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 27 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 28 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 29 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 30 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 31 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 32 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 33 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 34 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 35 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 36 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 37 / 51
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 38 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 39 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 40 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 41 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 42 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 43 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 44 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 45 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 46 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 47 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 48 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 49 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 50 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
 51 / 51
-Seidel-incompatible! x^2 - 21*x + 92
+not Seidel-compatible
+
+Polynomials compatible with f1 or f2:
 [
     [ 1, -36, 454, -2364, 4281 ],
     [ 1, -36, 454, -2356, 4241 ],
@@ -310,61 +391,9 @@ Seidel-incompatible! x^2 - 21*x + 92
     [ 1, -36, 454, -2340, 3969 ],
     [ 1, -36, 454, -2316, 3753 ]
 ]
-checking 1 3
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 1 5
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 2 5
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 1 4
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 4 5
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 2 4
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 1 2
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 2 3
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 3 4
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-checking 3 5
-compatible for x^2 - 21*x + 92
-Seidel-compatible!
-is compatible!
-pairwise compatibility: check
-(     49   -1764   22246 -115404  207001)
-(14 16 19  0  0)
-Vector space of degree 5, dimension 2 over AC
-Echelonized basis:
-(   1    0 -3/4   -1  3/4)
-(   0    1   -1 -1/3  1/3)
+Pairwise compatibility: check
+
 --- list interlacing configurations ---
-<2, 43>
-<6, 34>
-<6, 37>
-<6, 40>
-<10, 25>
-<10, 28>
-<14, 16>
 [
     ( 2 43  1  3  0),
     ( 6 34  7  2  0),
@@ -384,5 +413,6 @@ Squared angles:
 ]
 ++: -65/219*sqrt73
 +-: 11/3
+
 Time: 1.390
 > 
