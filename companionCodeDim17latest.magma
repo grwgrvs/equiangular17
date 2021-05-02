@@ -116,7 +116,6 @@ interlace:=function(ff,gg)
 	f:=P!ff;
 	g:=P!gg;
 	d:=GCD(f,g); //divide by GCD so that there are no common zeros
-	// print f, d;
 	f:=P!(f/d);
 	g:=P!(g/d);
 	roots:=Roots(g,RealField(1000));
@@ -222,7 +221,6 @@ end function;
 listPowerReduceOddPreComp:=function(l,f,k,ssc)
 	P<x>:=PolynomialRing(Integers(2^k));
 	ll:=[];
-	// ssc:=SeidelCharPolysMod(n,k);
 	for i in [1..#l] do
 		p:=P!Polynomial(Reverse(l[i]));
 		pp:=(P!f)*p;
@@ -643,6 +641,7 @@ checkLemma54:=procedure()
 			clist:=Reverse(Coefficients(ggf));
 			print "------- Infeasibility of", Factorisation(ff), "-------";
 			print "";
+			print "Computing interlacing char polys...";
 			tic := Cputime();
 			ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
 			llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
@@ -709,7 +708,7 @@ Lemma54PrintLongTimers:=procedure(pp)
 end procedure;
 
 
-getInterlacingCharacteristicPolynomials:=function(mp,qp,n)
+getInterlacingCharacteristicPolynomialsEvenn:=function(mp,qp,n)
 	P<x>:=PolynomialRing(Rationals());
 	d:=Degree(mp)-1;
 	aa:=Reverse(Coefficients(mp));
@@ -723,21 +722,7 @@ getInterlacingCharacteristicPolynomials:=function(mp,qp,n)
 	return listPowerReduce(llred2,qp);
 end function;
 
-getInterlacingCharacteristicPolynomials48:=function(mp,qp)
-	P<x>:=PolynomialRing(Rationals());
-	d:=Degree(mp)-1;
-	aa:=Reverse(Coefficients(mp));
-	q:=x^d+aa[2]*x^(d-1)+(aa[3]+48)*x^(d-2);
-	qq:=Evaluate(q,x-1);
-	bb:=Reverse(Coefficients(qq));
-	ll2:=getCoeffsType2(d,[1,bb[2],bb[3]]);
-	llshift2:=[P!(Evaluate(Polynomial(Reverse(l)),x+1)) : l in ll2];
-	lllist2:=[Reverse(Coefficients(l)) : l in llshift2];
-	llred2:=listInterlaceReduce(lllist2,mp);
-	return listPowerReduce(llred2,qp);
-end function;
-
-getInterlacingCharacteristicPolynomials2:=function(mp,qp,n,k)
+getInterlacingCharacteristicPolynomialsOddn:=function(mp,qp,n,k)
 	P<x>:=PolynomialRing(Rationals());
 	d:=Degree(mp)-1;
 	aa:=Reverse(Coefficients(mp));
@@ -751,9 +736,9 @@ getInterlacingCharacteristicPolynomials2:=function(mp,qp,n,k)
 	return listPowerReduceOdd(llred2,qp,n,k);
 end function;
 
-isCompSlow:=function(simpInds,q,froots,sqrts,n)
-	print "doing hard work!";
-	print n;
+//checks compatibility by definition (checking all \pm 1 vectors)
+isCompatibleSlow:=function(simpInds,q,froots,sqrts,n)
+	print "Checking compatibility the slow way...";
 	MinPolys:=[];
 	for c in CartesianPower({-1,1},#simpInds-1) do
 		chk:=Evaluate(q,froots[simpInds[1]])*sqrts[1]+&+[c[i]*Evaluate(q,froots[simpInds[i+1]])*sqrts[i+1] : i in [1..#simpInds-1]];
@@ -771,7 +756,7 @@ isCompSlow:=function(simpInds,q,froots,sqrts,n)
 	end for;
 	d1S:=Set([p : p in MinPolys | Degree(p) eq 1]);
 	if #d1S eq 0 then
-		// print "polys are not compatible";
+		// print "not Seidel-Compatible";
 		return false;
 	end if;
 	if n mod 2 eq 1 then
@@ -780,17 +765,19 @@ isCompSlow:=function(simpInds,q,froots,sqrts,n)
 				continue;
 			end if;
 			if (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 eq (Integers()!Coefficients(p)[1]) mod 2 then
-				print "Seidel-Compatible!";
+				// print "Seidel-Compatible!";
 				return true;
 			end if;
 		end for;
+		// print "not Seidel-Compatible";
 		return false;
 	end if;
 	return true;
 end function;
 
-isCompt:=function(fff,f1p,f2p,mpd,xi)
-	print "checking the slow way...";
+
+//checks compatibility using the observation from the end of Section 4
+isCompatibleSplit:=function(fff,f1p,f2p,mpd,xi)
 	P<x>:=PolynomialRing(Rationals());
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
@@ -799,7 +786,6 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 	af1:=Vector(AC,[Evaluate(f1p,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]);
 	af2:=Vector(AC,[Evaluate(f2p,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]);
-	// froots:=[AC!ffroots[i] : i in [1..#ffroots]];
 	q:=1;
 	simpInds:=[];
 	for i in [1..#froots] do
@@ -810,22 +796,19 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 		end if;
 	end for;
 	sqrts:=[SquareRoot(af2[simpInds[i]]*af1[simpInds[i]]) : i in [1..#simpInds]];
-	// sqrts+=[(z^2-af2[simpInds[i]]*af1[simpInds[i]]).roots(QQbar)[0][0] for i in range(len(simpInds))]
 	split:=Floor(#simpInds/2);
-	print simpInds;
+	// print simpInds;
 	if #simpInds eq 0 then
 		print "no simple eigenvalues???";  
 	end if; 
 	if #simpInds eq 1 then
 		if Degree(MinimalPolynomial(Evaluate(q,froots[simpInds[1]])*sqrts[1])) gt 1 then
-			// print "polys are not compatible";
-			// print MinimalPolynomial(Evaluate(q,froots[simpInds[1]])*sqrts[1]);
 			return false;
 		end if;  
 	end if; 
 	if #simpInds gt 1 then
 		if split eq 1 then
-			if not isCompSlow(simpInds,q,froots,sqrts,Degree(fff)) then
+			if not isCompatibleSlow(simpInds,q,froots,sqrts,Degree(fff)) then
 				return false;
 			end if;
 		end if;
@@ -834,7 +817,7 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 			firstHalfMinPolys:=[];
 			chk:=Evaluate(q,froots[simpInds[1]])*sqrts[1];
 			firstHalfMinPolys:=[MinimalPolynomial(chk)];
-			print [Degree(p) : p in firstHalfMinPolys];
+			// print [Degree(p) : p in firstHalfMinPolys];
 		    // #     second half
 			secondHalfMinPolys:=[];
 			for c in CartesianPower({-1,1},#simpInds-split-1) do
@@ -851,12 +834,12 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 					secondHalfMinPolys cat:=[MinimalPolynomial(chk)];
 				end if;
 			end for;
-			print [Degree(p) : p in secondHalfMinPolys];
+			// print [Degree(p) : p in secondHalfMinPolys];
 			if Set([Degree(p) : p in firstHalfMinPolys]) meet Set([Degree(p) : p in secondHalfMinPolys]) eq {} then
 				// print "polys are not compatible"; 
 				return false;
 			else
-				if not isCompSlow(simpInds,q,froots,sqrts,Degree(fff)) then
+				if not isCompatibleSlow(simpInds,q,froots,sqrts,Degree(fff)) then
 					return false;
 				end if;
 			end if;    
@@ -877,9 +860,8 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 				if flag then
 					firstHalfMinPolys cat:=[MinimalPolynomial(chk)];
 				end if;
-				// print firstHalfMinPolyDegs;
 			end for;
-			print [Degree(p) : p in firstHalfMinPolys];
+			// print [Degree(p) : p in firstHalfMinPolys];
 		    // #     second half
 			secondHalfMinPolys:=[];
 			for c in CartesianPower({-1,1},#simpInds-split-1) do
@@ -896,12 +878,11 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 					secondHalfMinPolys cat:=[MinimalPolynomial(chk)];
 				end if;
 			end for;
-			print [Degree(p) : p in secondHalfMinPolys];
+			// print [Degree(p) : p in secondHalfMinPolys];
 			if Set([Degree(p) : p in firstHalfMinPolys]) meet Set([Degree(p) : p in secondHalfMinPolys]) eq {} then
-				// print "polys are not compatible"; 
 				return false;
 			else
-				if not isCompSlow(simpInds,q,froots,sqrts,Degree(fff)) then
+				if not isCompatibleSlow(simpInds,q,froots,sqrts,Degree(fff)) then
 					return false;
 				end if;
 			end if;
@@ -910,27 +891,25 @@ isCompt:=function(fff,f1p,f2p,mpd,xi)
 	return true;
 end function;
 
-isComptAux:=function(fff,f1p,f2p,mpd,Facs)
+isCompatibleAux:=function(fff,f1p,f2p,mpd,Facs)
 	// SFs:=[];
+	print "Checking compatibility by splitting into two groups...";
 	for c in CartesianPower({0,1},#Facs) do
 		// print c;
 		xi:=&*[Facs[i]^c[i] : i in [1..#Facs]];
 		if xi eq 1 then
 			continue;
 		end if;
-		if not isCompt(fff,f1p,f2p,mpd,xi) then
-			print "incompatible!", xi;
-			// print xi;
-			// if isCompt(fff,f1p,f2p,mpd,&*[Facs[i] : i in [1..#Facs]]) then
-			// 	print "missing!";
-			// end if;
+		print "Checking compatibility with respect to", xi, "...";
+		if not isCompatibleSplit(fff,f1p,f2p,mpd,xi) then
+			// print "incompatible!", xi;
 			return false;
 		end if;
 	end for;
 	return true;
 end function;
 
-
+//check compatibility
 isCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
@@ -949,37 +928,35 @@ isCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
 			continue;
 		end if;
 		
-		if Degree(m) eq #proots then
-			if IsIrreducible(Evaluate(m,x^2)) then
-				if #GaloisGroup(Evaluate(m,x^2)) gt #GaloisGroup(m) and Degree(fff) mod 2 eq 1 then
-				// if d mod SquareFree(Integers()!Resultant(fg,p)) ne 0 then
-					q:=minpoly/xi;
-					if (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 eq 1 then
-						print "Seidel-incompatible!", xi;
-						return false;
-					end if;
+		if IsIrreducible(Evaluate(m,x^2)) then
+			if #GaloisGroup(Evaluate(m,x^2)) gt #GaloisGroup(m) and Degree(fff) mod 2 eq 1 and Degree(m) eq #proots then
+			// if d mod SquareFree(Integers()!Resultant(fg,p)) ne 0 then
+				q:=minpoly/xi;
+				if (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 eq 1 then
+					// print "Seidel-incompatible!", xi;
+					return false;
 				end if;
-			else
-				print "compatible for", xi;
-				if #Facs eq 1 then
-					if Degree(fff) mod 2 eq 0 then
-						print "Seidel-compatible!";
+			end if;
+		else
+			// print "compatible for", xi;
+			if #Facs eq 1 then
+				if Degree(fff) mod 2 eq 0 then
+					// print "Seidel-compatible!";
+					return true;
+				else
+					N<al>:=NumberField(m);
+					sqm:=MinimalPolynomial(SquareRoot(Evaluate(fg,proots[1][1])));
+					q:=minpoly/xi;
+					if Integers()!Coefficient(Evaluate(P!Eltseq(Roots(sqm,N)[1][1]),fg) mod xi,Degree(xi)-1) mod 2 eq (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 then
+						// print "Seidel-compatible!";
 						return true;
-					else
-						N<al>:=NumberField(m);
-						sqm:=MinimalPolynomial(SquareRoot(Evaluate(fg,proots[1][1])));
-						q:=minpoly/xi;
-						if Integers()!Coefficient(Evaluate(P!Eltseq(Roots(sqm,N)[1][1]),fg) mod xi,Degree(xi)-1) mod 2 eq (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 then
-							print "Seidel-compatible!";
-							return true;
-						end if;
 					end if;
 				end if;
 			end if;
 		end if;
 	end for;
-	print "inconclusive....";
-	return isComptAux(fff,f1p,f2p,mpd,Facs);
+	print "Fast check is inconclusive....";
+	return isCompatibleAux(fff,f1p,f2p,mpd,Facs);
 end function;
 
 
@@ -993,8 +970,9 @@ checkLemma56poly:=procedure(pl,pls,crts)
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
-	llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,48);
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,48);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
@@ -1064,10 +1042,10 @@ checkLemma56poly:=procedure(pl,pls,crts)
 	mpd:=Derivative(mp);
 	af1:=Vector(AC,[Evaluate(f1p,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]);
 	af2:=Vector(AC,[Evaluate(f2p,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]);
-	print "squared angles for f0:";
-	print af1;
-	print "squared angles for f1:";
-	print af2;
+	// print "squared angles for f0:";
+	// print af1;
+	// print "squared angles for f1:";
+	// print af2;
 	print "--- checking for compatibility of f0 and f1 ---";
 	fac:=Factorisation(fff);
 	minpoly:=1;
@@ -1081,7 +1059,7 @@ checkLemma56poly:=procedure(pl,pls,crts)
 	// for p in simpFacs do
 	// isCompat(fff,f1p,f2p,mpd);
 	if not isCompatible(fff,f1p,f2p,mpd,minpoly,simpFacs) then
-		print "polys are not compatible"; 
+		print "polys are not Seidel-compatible"; 
 	end if;
 	print "";
 end procedure;
@@ -1125,7 +1103,7 @@ checkLemma56:=procedure()
            [[0, 0, 0, 0, 28753, 11854, 2194], [0, 0, 0, 4052423, 1116206, 173878, 22882]],
            [[-5637966054, 0, 0, -1233304, -103494, -8625],[-27025283304, 0, 0, -5833300, -470427, -37635]]];
 	for i in [1..#inds] do
-		print "checking polynomial ", inds[i]; 
+		print "Checking polynomial ", inds[i]; 
 		checkLemma56poly(inds[i],pols[i],certs[i]);
 	end for;
 end procedure;
@@ -1154,14 +1132,18 @@ getCompatiblePolynomials:=function(intPolys,f1,fff,mp)
 		p:=intPolys[i];
 		f2p:=P!(Polynomial(Reverse(p)));
 		if isCompatible(fff,f1p,f2p,mpd,minpoly,simpFacs) then
-			print "is compatible!";
+			print "is Seidel-compatible!";
+			print "";
 			compats cat:=[p];
+		else
+			print "not Seidel-compatible";
+			print "";
 		end if;
 	end for;
 	return compats;
 end function;
 
-checkPairwaiseCompatibility:=function(compatibleSet,fff,mp)
+checkPairwiseCompatibility:=function(compatibleSet,fff,mp)
 	P<x>:=PolynomialRing(Rationals());
 	compats:=[];
 	mpd:=Derivative(mp);
@@ -1178,11 +1160,11 @@ checkPairwaiseCompatibility:=function(compatibleSet,fff,mp)
 		osb:=[i : i in sb];
 		f1p:=P!(Polynomial(Reverse(compatibleSet[osb[1]])));
 		f2p:=P!(Polynomial(Reverse(compatibleSet[osb[2]])));
-		print "checking", osb[1], osb[2];
+		// print "checking", osb[1], osb[2];
 		if isCompatible(fff,f1p,f2p,mpd,minpoly,simpFacs) then
-			print "is compatible!";
+			// print "is Seidel-compatible!";
 		else
-			print "not compatible!";
+			// print "not Seidel-compatible";
 			return false;
 		end if;
 	end for;
@@ -1199,8 +1181,9 @@ checkLemma57poly:=procedure(pl,pls,crts)
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
 	print Factorisation(qp);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
-	llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,48);
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,48);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
@@ -1301,12 +1284,11 @@ checkLemma57:=procedure()
            [[-4146865216, 0, 0, -1459666, -205965, -26866],[0, 0, 0, -312193, -119497, -23881]],
 		   [[13345166, 0, 0, 9135, 610],[-11430609, 0, 0, -7006, 0]]];
 	for i in [1..#inds] do
-		print "checking polynomial ", inds[i]; 
+		print "Checking polynomial ", inds[i]; 
 		checkLemma57poly(inds[i],pols[i],certs[i]);
 	end for;
 end procedure;
 
-// Section 1.5
 
 isAtLeastZeroInt:=function(l)
 	d:=Dimension(Parent(l));
@@ -1328,15 +1310,33 @@ end function;
 findSols:=function(ps,knl,d)
 	sols:=[];
 	B:=Basis(knl);
-
-	for c in CartesianProduct([{0..49} : i in [1..#B]]) do
+	Bsize:=#B;
+	init:=[0 : i in [1..Bsize]];
+	bag:={init};
+	lastbag:=bag;
+	for i in [1..49] do
+		newbag:={};
+		for j in [1..Bsize] do
+			for b in lastbag do
+				newb:=b;
+				newb[j]+:=1;
+				Include(~newbag,newb);
+			end for;
+		end for;
+		bag:=bag join newbag;
+		// print i;
+		// print newbag;
+		lastbag:=newbag;
+	end for;
+	// print bag;
+	for c in bag do
 		v:=ps;
-		for i in [1..#B] do
+		for i in [1..Bsize] do
 			v+:= (c[i]-v[i])*B[i];
 		end for;
 
 		if isAtLeastZeroInt(ChangeRing(v,Rationals())) then
-			print c;
+			// print c;
 			sols cat:= [v];
 		end if;
 	end for;
@@ -1351,11 +1351,12 @@ printInterlacingConfigs:=function(poly,warr,cert)
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
 	n:=Degree(fff);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
 	if n mod 2 eq 0 then
-		llSeidelred:=getInterlacingCharacteristicPolynomials2(mp,qp,n-1,7);
+		llSeidelred:=getInterlacingCharacteristicPolynomialsOddn(mp,qp,n-1,7);
 	else
-		llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,n-1);
+		llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,n-1);
 	end if;
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
@@ -1371,9 +1372,9 @@ printInterlacingConfigs:=function(poly,warr,cert)
 	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 
-	print froots;
+	// print froots;
 	fbas:=[PK!(PK!(mp)/(z-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 
 	fbasm:=Matrix(AC,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
@@ -1389,8 +1390,8 @@ printInterlacingConfigs:=function(poly,warr,cert)
 	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
 	print ""; 
 	print "Show that f = ", fWarranted, " is warranted"; 
-	print "Matrix A' corresponding to interlacing polynomials without f:"; 
-	print mfWarranted;
+	// print "Matrix A' corresponding to interlacing polynomials without f:";
+	// print mfWarranted;
 	print ""; 
 	// #Farkas certificate
 	fc:=Vector(Rationals(),cert);
@@ -1407,19 +1408,20 @@ printInterlacingConfigs:=function(poly,warr,cert)
 
 	print "--- get polys compatible with f ---";
 	compatPolys:=getCompatiblePolynomials(llSeidelred,fWarranted,fff,mp);
-
+	
+	print "Polynomials compatible with the warranted poly:";
 	print compatPolys;
-	if checkPairwaiseCompatibility(compatPolys,fff,mp) then
-		print "pairwise compatibility: check";
-	else
-		print "failed pairwise compatibility";
-	end if;
+	// if checkPairwiseCompatibility(compatPolys,fff,mp) then
+	// 	print "pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
 	numrows:=#compatPolys;
 	m:=Matrix(AC,numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
-	print bb;
+	// print bb;
 	pr,sp:=Solution(m,bb);
-	print pr;
-	print sp;
+	// print pr;
+	// print sp;
 	print "--- list interlacing configurations ---";
 	if Dimension(sp) eq 0 then
 		print pr;
@@ -1438,15 +1440,16 @@ checkLemma58:=procedure()
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
-	llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,48);
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,48);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
 	numrows:=#llSeidelred;
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 
-	print "number of interlacing polynomials:", numrows;
+	print "Number of interlacing polynomials:", numrows;
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
@@ -1454,9 +1457,9 @@ checkLemma58:=procedure()
 	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 
-	print froots;
+	// print froots;
 	fbas:=[PK!(PK!(mp)/(z-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 
 	fbasm:=Matrix(AC,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
@@ -1478,8 +1481,8 @@ checkLemma58:=procedure()
 	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
 	print ""; 
 	print "Show that f1= ", fWarranted1, " and f2 = ", fWarranted2, " are a warranted pair"; 
-	print "Matrix A' corresponding to interlacing polynomials without f1 and f2:"; 
-	print mfWarranted;
+	// print "Matrix A' corresponding to interlacing polynomials without f1 and f2:";
+	// print mfWarranted;
 	print ""; 
 	// #Farkas certificate
 	fc:=Vector(Rationals(),[-17507602, 0, 0, -9281, -1031]);
@@ -1505,18 +1508,20 @@ checkLemma58:=procedure()
 			compatPolys cat:= [p];
 		end if;
 	end for;
+	print "Polynomials compatible with f1 or f2:";
 	print compatPolys;
-	if checkPairwaiseCompatibility(compatPolys,fff,mp) then
-		print "pairwise compatibility: check";
-	else
-		print "failed pairwise compatibility";
-	end if;
+	// if checkPairwiseCompatibility(compatPolys,fff,mp) then
+	// 	print "Pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
+	// print "";
 	numrows:=#compatPolys;
 	m:=Matrix(AC,numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
-	print bb;
+	// print bb;
 	pr,sp:=Solution(m,bb);
-	print pr;
-	print sp;
+	// print pr;
+	// print sp;
 	print "--- list interlacing configurations ---";
 	print findSols(pr,sp,Degree(mp));
 	
@@ -1528,22 +1533,23 @@ checkLemma58:=procedure()
 	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 
-	print froots;
+	// print froots;
 	fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 
 	fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
 	mpd:=Derivative(mp);
 	comptPolys:=[P!Polynomial(Reverse(f)) : f in compatPolys];
 	afs:=[Vector(N,[Evaluate(f,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]) : f in comptPolys];
+	print "Squared angles:";
 	print afs;
 	
 	a1:=Roots(Polynomial([-afs[2][4]*afs[3][4],0,1]),N)[1][1];
 	a2:=Roots(Polynomial([-afs[2][5]*afs[3][5],0,1]),N)[1][1];
 	q:=(zz+5)*(zz-9);
-	print Evaluate(q,froots[4])*a1+Evaluate(q,froots[5])*a2;
-	print Evaluate(q,froots[4])*a1-Evaluate(q,froots[5])*a2;
+	print "++:", Evaluate(q,froots[4])*a1+Evaluate(q,froots[5])*a2;
+	print "+-:", Evaluate(q,froots[4])*a1-Evaluate(q,froots[5])*a2;
 end procedure;
 
 checkLemma63:=procedure()
@@ -1557,15 +1563,16 @@ checkLemma64:=procedure()
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
-	llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,48);
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,48);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
 	numrows:=#llSeidelred;
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 
-	print "number of interlacing polynomials:", numrows;
+	print "Number of interlacing polynomials:", numrows;
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
@@ -1573,9 +1580,9 @@ checkLemma64:=procedure()
 	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 
-	print froots;
+	// print froots;
 	fbas:=[PK!(PK!(mp)/(z-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 
 	fbasm:=Matrix(AC,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
@@ -1597,8 +1604,8 @@ checkLemma64:=procedure()
 	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
 	print ""; 
 	print "Show that f1= ", fWarranted1, " and f2 = ", fWarranted2, " are a warranted pair"; 
-	print "Matrix A' corresponding to interlacing polynomials without f1 and f2:"; 
-	print mfWarranted;
+	// print "Matrix A' corresponding to interlacing polynomials without f1 and f2:";
+	// print mfWarranted;
 	print ""; 
 	// #Farkas certificate
 	fc:=Vector(Rationals(),[-114666126726, 0, 0, -29336361, -3575825, -437857]);
@@ -1624,13 +1631,14 @@ checkLemma64:=procedure()
 			compatPolys cat:= [p];
 		end if;
 	end for;
+	print "Polynomials compatible with f1 or f2:";
 	print compatPolys;
 	numrows:=#compatPolys;
 	m:=Matrix(AC,numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
-	print bb;
+	// print bb;
 	pr,sp:=Solution(m,bb);
-	print pr;
-	print sp;
+	// print pr;
+	// print sp;
 	print "--- list interlacing configurations ---";
 	print findSols(pr,sp,Degree(mp));
 end procedure;
@@ -1639,12 +1647,17 @@ end procedure;
 checkLemma65:=procedure()
 	P<x>:=PolynomialRing(Rationals());
 	qp1, compat1, sls:=printInterlacingConfigs((x+5)^32*(x-7)^2*(x-8)*(x-9)^10*(x-11)^2*(x-13)^2,[ 1, -43, 718, -5802, 22609, -33803 ],[-1368582672, 0, 0, -369129, -41014, -4558]);
-	print " there are", #sls, "interlacing configurations";
+	print "There are", #sls, "interlacing configurations";
+	check:=true;
 	for c in sls do
 		if c[2]+c[4]+c[6]+c[7]+c[8] ne 33 then
-			print "exception!";
+			check:=false;
+			print "exception!", c;
 		end if;
 	end for;
+	if check then
+		print "Each interlacing configuration (m1,...,m8) has m2+m4+m6+m7+m8 = 33";
+	end if;
 end procedure;
 
 checkLemma71:=procedure()
@@ -1653,12 +1666,14 @@ checkLemma71:=procedure()
 	qp2, compat2, sls2:=printInterlacingConfigs((x+5)^31*(x-5)*(x-9)^9*(x-11)^5*(x^2-14*x+37),[ 1, -34, 438, -2652, 7513, -7906 ],[-632673042, 0, 0, -330026, -37186, -4649]);
 	comptPolys1:=[P!Polynomial(Reverse(f)) : f in compat1];
 	comptPolys2:=[P!Polynomial(Reverse(f)) : f in compat2];
+	print "Polynomial f1:";
 	print Factorisation(qp1*comptPolys1[1]);
+	print "Polynomial f2:";
 	print Factorisation(qp1*comptPolys1[2]);
 	for i in [1..#comptPolys2] do
-		print Factorisation(qp2*comptPolys2[i]);
 		if interlace(qp1*comptPolys1[1],qp2*comptPolys2[i]) and interlace(qp1*comptPolys1[2],qp2*comptPolys2[i]) then
-			print i;
+			print "index",i, "interlaces both f1 and f2:";
+			print Factorisation(qp2*comptPolys2[i]);
 		end if;
 	end for;
 end procedure;
@@ -1674,29 +1689,67 @@ checkLemma74:=procedure()
 	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 	// print(1)
-	print froots;
+	// print froots;
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 	// print(3)
 	fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
 	mpd:=Derivative(mp);
 	comptPolys:=[P!Polynomial(Reverse(f)) : f in compat1];
 	afs:=[Vector(N,[Evaluate(f,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]) : f in comptPolys];
+	print "Squared angles";
 	print afs;
-	K<b1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][6]*afs[1][5]]]:Abs);
-	b2:=SquareRoot(K!(afs[2][6]*afs[2][5]));
-	b3:=SquareRoot(K!(afs[3][6]*afs[3][5]));
-	b4:=SquareRoot(K!(afs[4][6]*afs[4][5]));
-	b5:=SquareRoot(K!(afs[5][6]*afs[5][5]));
-	bs:=[b1,-b2,-b3,-b4,-b5];
-	es:=[1,-1,-1,1,1];
+	K<bb1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][6]*afs[1][5]]]:Abs);
+	if RealEmbeddings(bb1)[1] gt 0 then
+		b1:=bb1;
+	else
+		b1:=-bb1;
+	end if;
+	bb2:=SquareRoot(K!(afs[2][6]*afs[2][5]));
+	if RealEmbeddings(bb2)[1] gt 0 then
+		b2:=bb2;
+	else
+		b2:=-bb2;
+	end if;
+	bb3:=SquareRoot(K!(afs[3][6]*afs[3][5]));
+	if RealEmbeddings(bb3)[1] gt 0 then
+		b3:=bb3;
+	else
+		b3:=-bb3;
+	end if;
+	bb4:=SquareRoot(K!(afs[4][6]*afs[4][5]));
+	if RealEmbeddings(bb4)[1] gt 0 then
+		b4:=bb4;
+	else
+		b4:=-bb4;
+	end if;
+	bb5:=SquareRoot(K!(afs[5][6]*afs[5][5]));
+	if RealEmbeddings(bb5)[1] gt 0 then
+		b5:=bb5;
+	else
+		b5:=-bb5;
+	end if;
+	bs:=[b1,b2,b3,b4,b5];
+	// es:=[1,-1,-1,1,1];
+	//print integer matrix
+	
+	//print "checking orthogonality"
+	print "Checking possibilities for delta...";
+	check:=true;
 	for sl in sls do
-		if &+[K!sl[i]*es[i]*bs[i] : i in [1..5]] eq 0 then
-			print sl;		
-		end if;
+		for e4 in CartesianPower({-1,1},4) do
+			delta:=[1] cat [e4[i] : i in [1..4]];
+			if &+[K!sl[i]*delta[i]*bs[i] : i in [1..5]] eq 0 then
+				check:=false;
+				print sl;		
+			end if;
+		end for;
 	end for;
+	if check then
+		print "No such delta exists";
+	end if;
 end procedure;
 
 
@@ -1707,15 +1760,16 @@ checkLemma82:=procedure()
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
-	llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,48);
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,48);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
 	numrows:=#llSeidelred;
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 
-	print "number of interlacing polynomials:", numrows;
+	print "Number of interlacing polynomials:", numrows;
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
@@ -1741,14 +1795,14 @@ checkLemma82:=procedure()
 	
 	fWarranted2:=[ 1, -34, 404, -1966, 3339 ];
 	fWarrantedInd2:=Index(llSeidelred1,fWarranted2);
-	print #llSeidelred, Index(llSeidelred,fWarranted2);
+	// print #llSeidelred, Index(llSeidelred,fWarranted2);
 	
 	fWarrantedRange:=Remove(fWarrantedRange1,fWarrantedInd2);
 	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
 	print ""; 
-	print "Show that f = ", fWarranted1, " and ", fWarranted2, " are warranted"; 
-	print "Matrix A' corresponding to interlacing polynomials without f:"; 
-	print mfWarranted;
+	print "Show that ", fWarranted1, " and ", fWarranted2, " are a warranted pair"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f:";
+	// print mfWarranted;
 	print ""; 
 	// #Farkas certificate
 	fc:=Vector(Rationals(),[-37937620, 0, 0, -29081, -5816]);
@@ -1767,11 +1821,11 @@ checkLemma82:=procedure()
 	compatPolys1:=getCompatiblePolynomials(llSeidelred,fWarranted1,fff,mp);
 
 	print compatPolys1;
-	if checkPairwaiseCompatibility(compatPolys1,fff,mp) then
-		print "pairwise compatibility: check";
-	else
-		print "failed pairwise compatibility";
-	end if;
+	// if checkPairwiseCompatibility(compatPolys1,fff,mp) then
+	// 	print "Pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
 	numrows:=#compatPolys1;
 	m:=Matrix(AC,numrows,Degree(mp),[compatPolys1[j] : j in [1..numrows]]);
 	print bb;
@@ -1781,140 +1835,171 @@ checkLemma82:=procedure()
 	
 	print "--- get polys compatible with f4 ---";
 	compatPolys2:=getCompatiblePolynomials(llSeidelred,fWarranted2,fff,mp);
-
+	
+	print "Polynomials compatible with f3 or f4:";
 	print compatPolys2;
-	if checkPairwaiseCompatibility(compatPolys2,fff,mp) then
-		print "pairwise compatibility: check";
-	else
-		print "failed pairwise compatibility";
-	end if;
+	// if checkPairwiseCompatibility(compatPolys2,fff,mp) then
+	// 	print "pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
 	numrows:=#compatPolys2;
 	m:=Matrix(AC,numrows,Degree(mp),[compatPolys2[j] : j in [1..numrows]]);
-	print bb;
+	// print bb;
 	pr,sp:=Solution(m,bb);
-	print pr;
-	print sp;
+	// print pr;
+	// print sp;
 	print "--- list interlacing configurations ---";
 	sls:=findSols(pr,sp,Degree(mp));
-	print " there are", #sls, "interlacing configurations";
+	print "There are", #sls, "interlacing configurations:";
 	print sls;
 	// calculate angles
 	N<sqrt73>:=NumberField(x^2-73);
 	PN<zz>:=PolynomialRing(N);
 	ggroots:=Roots(fff,N);
-// 	if len(ggroots) != mp.degree():
-// 		print(ggroots)
-// # 		print(gg)
 	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 	// print(1)
-	print froots;
+	// print froots;
 	fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 	// print(3)
 	fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
 	mpd:=Derivative(mp);
 	comptPolys:=[P!Polynomial(Reverse(f)) : f in compatPolys2];
 	afs:=[Vector(N,[N!(Evaluate(f,froots[i])/Evaluate(mpd,froots[i])) : i in [1..#ggroots]]) : f in comptPolys];
+	print "Squared angles:";
 	print afs;
 	
-	if RealEmbeddings(SquareRoot((afs[1][4]*afs[2][4])))[1] gt 0 then
-		a12a:=SquareRoot((afs[1][4]*afs[2][4]));
+	sqr:=SquareRoot((afs[1][4]*afs[2][4]));
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a12a:=sqr;
 	else
-		a12a:=-SquareRoot((afs[1][4]*afs[2][4]));
+		a12a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[2][5]))[1] gt 0 then
-		a12b:=SquareRoot(afs[1][5]*afs[2][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[2][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a12b:=sqr;
 	else
-		a12b:=-SquareRoot(afs[1][5]*afs[2][5]);
+		a12b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][4]*afs[3][4]))[1] gt 0 then
-		a13a:=SquareRoot(afs[1][4]*afs[3][4]);
+	sqr:=SquareRoot(afs[1][4]*afs[3][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a13a:=sqr;
 	else
-		a13a:=-SquareRoot(afs[1][4]*afs[3][4]);
+		a13a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[3][5]))[1] gt 0 then
-		a13b:=SquareRoot(afs[1][5]*afs[3][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[3][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a13b:=sqr;
 	else
-		a13b:=-SquareRoot(afs[1][5]*afs[3][5]);
+		a13b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[1][4]*afs[4][4]))[1] gt 0 then
-		a14a:=SquareRoot(afs[1][4]*afs[4][4]);
+	sqr:=SquareRoot(afs[1][4]*afs[4][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a14a:=sqr;
 	else
-		a14a:=-SquareRoot(afs[1][4]*afs[4][4]);
+		a14a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[4][5]))[1] gt 0 then
-		a14b:=SquareRoot(afs[1][5]*afs[4][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[4][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a14b:=sqr;
 	else
-		a14b:=-SquareRoot(afs[1][5]*afs[4][5]);
+		a14b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][4]*afs[3][4]))[1] gt 0 then
-		a23a:=SquareRoot(afs[2][4]*afs[3][4]);
+	sqr:=SquareRoot(afs[2][4]*afs[3][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a23a:=sqr;
 	else
-		a23a:=-SquareRoot(afs[2][4]*afs[3][4]);
+		a23a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][5]*afs[3][5]))[1] gt 0 then
-		a23b:=SquareRoot(afs[2][5]*afs[3][5]);
+	sqr:=SquareRoot(afs[2][5]*afs[3][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a23b:=sqr;
 	else
-		a23b:=-SquareRoot(afs[2][5]*afs[3][5]);
+		a23b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[2][4]*afs[4][4]))[1] gt 0 then
-		a24a:=SquareRoot(afs[2][4]*afs[4][4]);
+	sqr:=SquareRoot(afs[2][4]*afs[4][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a24a:=sqr;
 	else
-		a24a:=-SquareRoot(afs[2][4]*afs[4][4]);
+		a24a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][5]*afs[4][5]))[1] gt 0 then
-		a24b:=SquareRoot(afs[2][5]*afs[4][5]);
+	sqr:=SquareRoot(afs[2][5]*afs[4][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a24b:=sqr;
 	else
-		a24b:=-SquareRoot(afs[2][5]*afs[4][5]);
+		a24b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[3][4]*afs[4][4]))[1] gt 0 then
-		a34a:=SquareRoot(afs[3][4]*afs[4][4]);
+	sqr:=SquareRoot(afs[3][4]*afs[4][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a34a:=sqr;
 	else
-		a34a:=-SquareRoot(afs[3][4]*afs[4][4]);
+		a34a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[3][5]*afs[4][5]))[1] gt 0 then
-		a34b:=SquareRoot(afs[3][5]*afs[4][5]);
+	sqr:=SquareRoot(afs[3][5]*afs[4][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a34b:=sqr;
 	else
-		a34b:=-SquareRoot(afs[3][5]*afs[4][5]);
+		a34b:=-sqr;
 	end if;
 
 	q:=(zz+5)*(zz-9)*(zz-11);
 	
-	K<b1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][4]*afs[1][5]]]:Abs);
+	K<bb1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][4]*afs[1][5]]]:Abs);
 	// b1:=SquareRoot(afs[1][4]*afs[1][5]);
-	b2:=SquareRoot(K!(afs[2][4]*afs[2][5]));
-	b3:=SquareRoot(K!(afs[3][4]*afs[3][5]));
-	b4:=SquareRoot(K!(afs[4][4]*afs[4][5]));
-	bs:=[b1,-b2,-b3,-b4];
+	if RealEmbeddings(bb1)[1] gt 0 then
+		b1:=bb1;
+	else
+		b1:=-bb1;
+	end if;
+	bb2:=SquareRoot(K!(afs[2][4]*afs[2][5]));
+	if RealEmbeddings(bb2)[1] gt 0 then
+		b2:=bb2;
+	else
+		b2:=-bb2;
+	end if;
+	bb3:=SquareRoot(K!(afs[3][4]*afs[3][5]));
+	if RealEmbeddings(bb3)[1] gt 0 then
+		b3:=bb3;
+	else
+		b3:=-bb3;
+	end if;
+	bb4:=SquareRoot(K!(afs[4][4]*afs[4][5]));
+	if RealEmbeddings(bb4)[1] gt 0 then
+		b4:=bb4;
+	else
+		b4:=-bb4;
+	end if;
+	bs:=[b1,b2,b3,b4];
 	// es:=[1,1,1,1];
+	print "Checking possibilities for delta...";
 	for sl in sls do
 		for e3 in CartesianPower({-1,1},3) do
-		// print &+[K!sl[i]*es[i]*bs[i] : i in [1..6]];
-		es:=[1] cat [e3[i] : i in [1..3]];
-		if &+[K!sl[i]*es[i]*bs[i] : i in [1..4]] eq 0 then
-			print sl;
-			print es;
-			matarru:=[[afs[1][4], -a12a, -a13a, -a14a],
-					 [-a12a, afs[2][4], a23a, a24a],
-					 [-a13a, a23a, afs[3][4], a34a],
-					 [-a14a, a24a, a34a, afs[4][4]]
-					 ];
-					 uu:=Matrix(N,matarru);
- 			matarrv:=[
-					[afs[1][5], a12b, -a13b, a14b],
- 					 [a12b, afs[2][5], -a23b, a24b],
- 					[-a13b, -a23b, afs[3][5], -a34b],
- 					 [a14b, a24b, -a34b, afs[4][5]]
- 					 ];
- 					 vv:=Matrix(N,matarrv);
-			 print 3*(157-sqrt73)*uu/2+3*(157+sqrt73)*vv/2;
+			// print &+[K!sl[i]*es[i]*bs[i] : i in [1..6]];
+			es:=[1] cat [e3[i] : i in [1..3]];
+			if &+[K!sl[i]*es[i]*bs[i] : i in [1..4]] eq 0 then
+				print sl;
+				print es;
+				matarru:=[[afs[1][4], -a12a, -a13a, -a14a],
+						 [-a12a, afs[2][4], a23a, a24a],
+						 [-a13a, a23a, afs[3][4], a34a],
+						 [-a14a, a24a, a34a, afs[4][4]]
+						 ];
+						 uu:=Matrix(N,matarru);
+	 			matarrv:=[
+						[afs[1][5], a12b, -a13b, a14b],
+	 					 [a12b, afs[2][5], -a23b, a24b],
+	 					[-a13b, -a23b, afs[3][5], -a34b],
+	 					 [a14b, a24b, -a34b, afs[4][5]]
+	 					 ];
+	 					 vv:=Matrix(N,matarrv);
+						 print "Euler matrix (congruent to 3J mod 4):";
+				 print 3*(157-sqrt73)*uu/2+3*(157+sqrt73)*vv/2;
 			
-		end if;
-	end for;
+			end if;
+		end for;
 	end for;
 	
 end procedure;
@@ -1925,15 +2010,16 @@ checkLemma83:=procedure()
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
 	tic := Cputime();
-	llSeidelred:=getInterlacingCharacteristicPolynomials(mp,qp,48);
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(mp,qp,48);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
 	numrows:=#llSeidelred;
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 	
-	print "number of interlacing polynomials:", numrows;
+	print "Number of interlacing polynomials:", numrows;
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
@@ -1941,9 +2027,9 @@ checkLemma83:=procedure()
 	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 	// print(1)
-	print froots;
+	// print froots;
 	fbas:=[PK!(PK!(mp)/(z-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 	// print(3)
 	fbasm:=Matrix(AC,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
@@ -1959,8 +2045,8 @@ checkLemma83:=procedure()
 	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
 	print ""; 
 	print "Show that f = ", fWarranted, " is warranted"; 
-	print "Matrix A' corresponding to interlacing polynomials without f:"; 
-	print mfWarranted;
+	// print "Matrix A' corresponding to interlacing polynomials without f:";
+	// print mfWarranted;
 	print ""; 
 	// #Farkas certificate
 	fc:=Vector(Rationals(),[-12716952, 0, 0, -7781, -864]);
@@ -1977,22 +2063,23 @@ checkLemma83:=procedure()
 
 	print "--- get polys compatible with f ---";
 	compatPolys:=getCompatiblePolynomials(llSeidelred,fWarranted,fff,mp);
-
+	
+	print "Polynomials compatible with f:";
 	print compatPolys;
-	if checkPairwaiseCompatibility(compatPolys,fff,mp) then
-		print "pairwise compatibility: check";
-	else
-		print "failed pairwise compatibility";
-	end if;
+	// if checkPairwiseCompatibility(compatPolys,fff,mp) then
+	// 	print "Pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
 	numrows:=#compatPolys;
 	m:=Matrix(AC,numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
-	print bb;
+	// print bb;
 	pr,sp:=Solution(m,bb);
-	print pr;
-	print sp;
+	// print pr;
+	// print sp;
 	print "--- list interlacing configurations ---";
 	sls:=findSols(pr,sp,Degree(mp));
-	print " there are", #sls, "interlacing configurations";
+	print "There are", #sls, "interlacing configurations:";
 	print sls;
 	// calculate angles
 	N<sqrt33>:=NumberField(x^2-33);
@@ -2002,211 +2089,298 @@ checkLemma83:=procedure()
 	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 
-	print froots;
+	// print froots;
 	fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 
 	fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
 	mpd:=Derivative(mp);
 	comptPolys:=[P!Polynomial(Reverse(f)) : f in compatPolys];
 	afs:=[Vector(N,[Evaluate(f,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]) : f in comptPolys];
+	print "Squared angles:";
 	print afs;
 	
-	if RealEmbeddings(SquareRoot((afs[1][4]*afs[2][4])))[1] gt 0 then
-		a12a:=SquareRoot((afs[1][4]*afs[2][4]));
+	sqr:=SquareRoot((afs[1][4]*afs[2][4]));
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a12a:=sqr;
 	else
-		a12a:=-SquareRoot((afs[1][4]*afs[2][4]));
+		a12a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[2][5]))[1] gt 0 then
-		a12b:=SquareRoot(afs[1][5]*afs[2][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[2][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a12b:=sqr;
 	else
-		a12b:=-SquareRoot(afs[1][5]*afs[2][5]);
+		a12b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][4]*afs[3][4]))[1] gt 0 then
-		a13a:=SquareRoot(afs[1][4]*afs[3][4]);
+	sqr:=SquareRoot(afs[1][4]*afs[3][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a13a:=sqr;
 	else
-		a13a:=-SquareRoot(afs[1][4]*afs[3][4]);
+		a13a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[3][5]))[1] gt 0 then
-		a13b:=SquareRoot(afs[1][5]*afs[3][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[3][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a13b:=sqr;
 	else
-		a13b:=-SquareRoot(afs[1][5]*afs[3][5]);
+		a13b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[1][4]*afs[4][4]))[1] gt 0 then
-		a14a:=SquareRoot(afs[1][4]*afs[4][4]);
+	sqr:=SquareRoot(afs[1][4]*afs[4][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a14a:=sqr;
 	else
-		a14a:=-SquareRoot(afs[1][4]*afs[4][4]);
+		a14a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[4][5]))[1] gt 0 then
-		a14b:=SquareRoot(afs[1][5]*afs[4][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[4][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a14b:=sqr;
 	else
-		a14b:=-SquareRoot(afs[1][5]*afs[4][5]);
+		a14b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][4]*afs[3][4]))[1] gt 0 then
-		a23a:=SquareRoot(afs[2][4]*afs[3][4]);
+	sqr:=SquareRoot(afs[2][4]*afs[3][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a23a:=sqr;
 	else
-		a23a:=-SquareRoot(afs[2][4]*afs[3][4]);
+		a23a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][5]*afs[3][5]))[1] gt 0 then
-		a23b:=SquareRoot(afs[2][5]*afs[3][5]);
+	sqr:=SquareRoot(afs[2][5]*afs[3][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a23b:=sqr;
 	else
-		a23b:=-SquareRoot(afs[2][5]*afs[3][5]);
+		a23b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[2][4]*afs[4][4]))[1] gt 0 then
-		a24a:=SquareRoot(afs[2][4]*afs[4][4]);
+	sqr:=SquareRoot(afs[2][4]*afs[4][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a24a:=sqr;
 	else
-		a24a:=-SquareRoot(afs[2][4]*afs[4][4]);
+		a24a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][5]*afs[4][5]))[1] gt 0 then
-		a24b:=SquareRoot(afs[2][5]*afs[4][5]);
+	sqr:=SquareRoot(afs[2][5]*afs[4][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a24b:=sqr;
 	else
-		a24b:=-SquareRoot(afs[2][5]*afs[4][5]);
+		a24b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[3][4]*afs[4][4]))[1] gt 0 then
-		a34a:=SquareRoot(afs[3][4]*afs[4][4]);
+	sqr:=SquareRoot(afs[3][4]*afs[4][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a34a:=sqr;
 	else
-		a34a:=-SquareRoot(afs[3][4]*afs[4][4]);
+		a34a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[3][5]*afs[4][5]))[1] gt 0 then
-		a34b:=SquareRoot(afs[3][5]*afs[4][5]);
+	sqr:=SquareRoot(afs[3][5]*afs[4][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a34b:=sqr;
 	else
-		a34b:=-SquareRoot(afs[3][5]*afs[4][5]);
+		a34b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[1][4]*afs[5][4]))[1] gt 0 then
-		a15a:=SquareRoot(afs[1][4]*afs[5][4]);
+	sqr:=SquareRoot(afs[1][4]*afs[5][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a15a:=sqr;
 	else
-		a15a:=-SquareRoot(afs[1][4]*afs[5][4]);
+		a15a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[5][5]))[1] gt 0 then
-		a15b:=SquareRoot(afs[1][5]*afs[5][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[5][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a15b:=sqr;
 	else
-		a15b:=-SquareRoot(afs[1][5]*afs[5][5]);
+		a15b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][4]*afs[5][4]))[1] gt 0 then
-		a25a:=SquareRoot(afs[2][4]*afs[5][4]);
+	sqr:=SquareRoot(afs[2][4]*afs[5][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a25a:=sqr;
 	else
-		a25a:=-SquareRoot(afs[2][4]*afs[5][4]);
+		a25a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][5]*afs[5][5]))[1] gt 0 then
-		a25b:=SquareRoot(afs[2][5]*afs[5][5]);
+	sqr:=SquareRoot(afs[2][5]*afs[5][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a25b:=sqr;
 	else
-		a25b:=-SquareRoot(afs[2][5]*afs[5][5]);
+		a25b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[3][4]*afs[5][4]))[1] gt 0 then
-		a35a:=SquareRoot(afs[3][4]*afs[5][4]);
+	sqr:=SquareRoot(afs[3][4]*afs[5][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a35a:=sqr;
 	else
-		a35a:=-SquareRoot(afs[3][4]*afs[5][4]);
+		a35a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[3][5]*afs[5][5]))[1] gt 0 then
-		a35b:=SquareRoot(afs[3][5]*afs[5][5]);
+	sqr:=SquareRoot(afs[3][5]*afs[5][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a35b:=sqr;
 	else
-		a35b:=-SquareRoot(afs[3][5]*afs[5][5]);
+		a35b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[4][4]*afs[5][4]))[1] gt 0 then
-		a45a:=SquareRoot(afs[4][4]*afs[5][4]);
+	sqr:=SquareRoot(afs[4][4]*afs[5][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a45a:=sqr;
 	else
-		a45a:=-SquareRoot(afs[4][4]*afs[5][4]);
+		a45a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[4][5]*afs[5][5]))[1] gt 0 then
-		a45b:=SquareRoot(afs[4][5]*afs[5][5]);
+	sqr:=SquareRoot(afs[4][5]*afs[5][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a45b:=sqr;
 	else
-		a45b:=-SquareRoot(afs[4][5]*afs[5][5]);
+		a45b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[1][4]*afs[6][4]))[1] gt 0 then
-		a16a:=SquareRoot(afs[1][4]*afs[6][4]);
+	sqr:=SquareRoot(afs[1][4]*afs[6][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a16a:=sqr;
 	else
-		a16a:=-SquareRoot(afs[1][4]*afs[6][4]);
+		a16a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[1][5]*afs[6][5]))[1] gt 0 then
-		a16b:=SquareRoot(afs[1][5]*afs[6][5]);
+	sqr:=SquareRoot(afs[1][5]*afs[6][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a16b:=sqr;
 	else
-		a16b:=-SquareRoot(afs[1][5]*afs[6][5]);
+		a16b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][4]*afs[6][4]))[1] gt 0 then
-		a26a:=SquareRoot(afs[2][4]*afs[6][4]);
+	sqr:=SquareRoot(afs[2][4]*afs[6][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a26a:=sqr;
 	else
-		a26a:=-SquareRoot(afs[2][4]*afs[6][4]);
+		a26a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[2][5]*afs[6][5]))[1] gt 0 then
-		a26b:=SquareRoot(afs[2][5]*afs[6][5]);
+	sqr:=SquareRoot(afs[2][5]*afs[6][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a26b:=sqr;
 	else
-		a26b:=-SquareRoot(afs[2][5]*afs[6][5]);
+		a26b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[3][4]*afs[6][4]))[1] gt 0 then
-		a36a:=SquareRoot(afs[3][4]*afs[6][4]);
+	sqr:=SquareRoot(afs[3][4]*afs[6][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a36a:=sqr;
 	else
-		a36a:=-SquareRoot(afs[3][4]*afs[6][4]);
+		a36a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[3][5]*afs[6][5]))[1] gt 0 then
-		a36b:=SquareRoot(afs[3][5]*afs[6][5]);
+	sqr:=SquareRoot(afs[3][5]*afs[6][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a36b:=sqr;
 	else
-		a36b:=-SquareRoot(afs[3][5]*afs[6][5]);
+		a36b:=-sqr;
 	end if;
-	
-	if RealEmbeddings(SquareRoot(afs[4][4]*afs[6][4]))[1] gt 0 then
-		a46a:=SquareRoot(afs[4][4]*afs[6][4]);
+	sqr:=SquareRoot(afs[4][4]*afs[6][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a46a:=sqr;
 	else
-		a46a:=-SquareRoot(afs[4][4]*afs[6][4]);
+		a46a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[4][5]*afs[6][5]))[1] gt 0 then
-		a46b:=SquareRoot(afs[4][5]*afs[6][5]);
+	sqr:=SquareRoot(afs[4][5]*afs[6][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a46b:=sqr;
 	else
-		a46b:=-SquareRoot(afs[4][5]*afs[6][5]);
+		a46b:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[5][4]*afs[6][4]))[1] gt 0 then
-		a56a:=SquareRoot(afs[5][4]*afs[6][4]);
+	sqr:=SquareRoot(afs[5][4]*afs[6][4]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a56a:=sqr;
 	else
-		a56a:=-SquareRoot(afs[5][4]*afs[6][4]);
+		a56a:=-sqr;
 	end if;
-	if RealEmbeddings(SquareRoot(afs[5][5]*afs[6][5]))[1] gt 0 then
-		a56b:=SquareRoot(afs[5][5]*afs[6][5]);
+	sqr:=SquareRoot(afs[5][5]*afs[6][5]);
+	if RealEmbeddings(sqr)[1] gt 0 then
+		a56b:=sqr;
 	else
-		a56b:=-SquareRoot(afs[5][5]*afs[6][5]);
+		a56b:=-sqr;
 	end if;
-	
 	
 	q:=(zz+5)*(zz-9)*(zz-13);
 	
-	K<b1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][4]*afs[1][5]]]:Abs);
+	K<bb1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][4]*afs[1][5]]]:Abs);
 	// b1:=SquareRoot(afs[1][4]*afs[1][5]);
-	b2:=SquareRoot(K!(afs[2][4]*afs[2][5]));
-	b3:=SquareRoot(K!(afs[3][4]*afs[3][5]));
-	b4:=SquareRoot(K!(afs[4][4]*afs[4][5]));
-	b5:=SquareRoot(K!(afs[5][4]*afs[5][5]));
-	b6:=SquareRoot(K!(afs[6][4]*afs[6][5]));
-	bs:=[b1,-b2,-b3,-b4,-b5,-b6];
-	es:=[1,1,-1,-1,1,-1];
+	// b2:=SquareRoot(K!(afs[2][4]*afs[2][5]));
+	// b3:=SquareRoot(K!(afs[3][4]*afs[3][5]));
+	// b4:=SquareRoot(K!(afs[4][4]*afs[4][5]));
+	// b5:=SquareRoot(K!(afs[5][4]*afs[5][5]));
+	// b6:=SquareRoot(K!(afs[6][4]*afs[6][5]));
+	if RealEmbeddings(bb1)[1] gt 0 then
+		b1:=bb1;
+	else
+		b1:=-bb1;
+	end if;
+	bb2:=SquareRoot(K!(afs[2][4]*afs[2][5]));
+	if RealEmbeddings(bb2)[1] gt 0 then
+		b2:=bb2;
+	else
+		b2:=-bb2;
+	end if;
+	bb3:=SquareRoot(K!(afs[3][4]*afs[3][5]));
+	if RealEmbeddings(bb3)[1] gt 0 then
+		b3:=bb3;
+	else
+		b3:=-bb3;
+	end if;
+	bb4:=SquareRoot(K!(afs[4][4]*afs[4][5]));
+	if RealEmbeddings(bb4)[1] gt 0 then
+		b4:=bb4;
+	else
+		b4:=-bb4;
+	end if;
+	bb5:=SquareRoot(K!(afs[5][4]*afs[5][5]));
+	if RealEmbeddings(bb5)[1] gt 0 then
+		b5:=bb5;
+	else
+		b5:=-bb5;
+	end if;
+	bb6:=SquareRoot(K!(afs[6][4]*afs[6][5]));
+	if RealEmbeddings(bb6)[1] gt 0 then
+		b6:=bb6;
+	else
+		b6:=-bb6;
+	end if;
+	bs:=[b1,b2,b3,b4,b5,b6];
+	// es:=[1,1,-1,-1,1,-1];
+	Eps:=DiagonalMatrix([1,-1,1,1,-1,1]);
+	print "Checking possibilities for delta...";
 	for sl in sls do
-		if &+[K!sl[i]*es[i]*bs[i] : i in [1..6]] eq 0 then
-			print sl;
-			matarru:=[[afs[1][4], -a12a, a13a, a14a, -a15a, a16a],
-					 [-a12a, afs[2][4], -a23a, -a24a, a25a, a26a],
-					 [a13a, -a23a, afs[3][4], a34a, -a35a, a36a],
-					 [a14a, -a24a, a34a, afs[4][4], -a45a, a46a],
-					 [-a15a, a25a, -a35a, -a45a, afs[5][4], a56a],
-					 [a16a, a26a, a36a, a46a, a56a, afs[6][4]]
-					 ];
-					 uu:=Matrix(N,matarru);
- 			matarrv:=[[afs[1][5], -a12b, -a13b, -a14b, -a15b, -a16b],
- 					 [-a12b, afs[2][5], a23b, a24b, a25b, -a26b],
- 					 [-a13b, a23b, afs[3][5], a34b, a35b, a36b],
- 					 [-a14b, a24b, a34b, afs[4][5], a45b, a46b],
- 					 [-a15b, a25b, a35b, a45b, afs[5][5], -a56b],
- 					 [-a16b, -a26b, a36b, a46b, -a56b, afs[6][5]]
- 					 ];
- 					 vv:=Matrix(N,matarrv);
-			 print 3*(67+19*sqrt33)*uu/2+3*(67-19*sqrt33)*vv/2;
+		for e5 in CartesianPower({-1,1},5) do
+			delta:=[1] cat [e5[i] : i in [1..5]];
+			if &+[K!sl[i]*delta[i]*bs[i] : i in [1..6]] eq 0 then
+				// matarru:=[[afs[1][4], -a12a, a13a, a14a, -a15a, a16a],
+				// 		 [-a12a, afs[2][4], -a23a, -a24a, a25a, a26a],
+				// 		 [a13a, -a23a, afs[3][4], a34a, -a35a, a36a],
+				// 		 [a14a, -a24a, a34a, afs[4][4], -a45a, a46a],
+				// 		 [-a15a, a25a, -a35a, -a45a, afs[5][4], a56a],
+				// 		 [a16a, a26a, a36a, a46a, a56a, afs[6][4]]
+				// 		 ];
+				// 		 uu:=Matrix(N,matarru);
+				// 	 			matarrv:=[[afs[1][5], -a12b, -a13b, -a14b, -a15b, -a16b],
+				// 	 					 [-a12b, afs[2][5], a23b, a24b, a25b, -a26b],
+				// 	 					 [-a13b, a23b, afs[3][5], a34b, a35b, a36b],
+				// 	 					 [-a14b, a24b, a34b, afs[4][5], a45b, a46b],
+				// 	 					 [-a15b, a25b, a35b, a45b, afs[5][5], -a56b],
+				// 	 					 [-a16b, -a26b, a36b, a46b, -a56b, afs[6][5]]
+				// 	 					 ];
+				matarru:=[[afs[1][4], a12a, a13a, a14a, a15a, a16a],
+						 [a12a, afs[2][4], a23a, a24a, a25a, a26a],
+						 [a13a, a23a, afs[3][4], a34a, a35a, a36a],
+						 [a14a, a24a, a34a, afs[4][4], a45a, a46a],
+						 [a15a, a25a, a35a, a45a, afs[5][4], a56a],
+						 [a16a, a26a, a36a, a46a, a56a, afs[6][4]]
+						 ];
+						 uu:=Matrix(N,matarru);
+	 			matarrv:=[[afs[1][5], a12b, a13b,a14b, a15b, a16b],
+	 					 [a12b, afs[2][5], a23b, a24b, a25b, a26b],
+	 					 [a13b, a23b, afs[3][5], a34b, a35b, a36b],
+	 					 [a14b, a24b, a34b, afs[4][5], a45b, a46b],
+	 					 [a15b, a25b, a35b, a45b, afs[5][5], a56b],
+	 					 [a16b, a26b, a36b, a46b, a56b, afs[6][5]]
+	 					 ];
+						 deltaDiag:=DiagonalMatrix(delta);
+	 					 vv:=deltaDiag*Matrix(N,matarrv)*deltaDiag;
+				 // print 
+				 mmm:=Eps*(3*(67+19*sqrt33)*uu/2+3*(67-19*sqrt33)*vv/2)*Eps;
+				 if mmm in MatrixAlgebra(Rationals(),6) then
+	 				print sl;
+	 				print e5;
+	 				// print [K!sl[i]*delta[i]*bs[i] : i in [1..6]];
+					print "Euler matrix (congruent to J mod 4):";
+					print mmm;
+				 end if;
 			
-		end if;
+			end if;
+		end for;
 	end for;
 	
+	print "Factorisation of f6:";
 	fff6:=comptPolys[6]*qp;
 	print Factorisation(fff6);
 	mp6:=P!(fff6/GCD(fff6,Derivative(fff6)));
@@ -2216,22 +2390,23 @@ checkLemma83:=procedure()
 	mults6:=Vector(AC,[ggroots6[i][2] : i in [1..#ggroots6]]);
 	froots6:=[ggroots6[i][1] : i in [1..#ggroots6]];
 
-	print froots6;
+	// print froots6;
 	fbas6:=[PK!(PK!(mp6)/(z-r)) : r in froots6];
-	print fbas6;
+	// print fbas6;
 	fbaslist6:=[Reverse(Coefficients(l)) : l in fbas6];
 
 	fbasm6:=Matrix(AC,Degree(mp6),Degree(mp6),[fbaslist6[j] : j in [1..Degree(mp6)]]);
 
 	bb6:=mults6*fbasm6;
+	print "Computing interlacing char polys of f6...";
 	tic := Cputime();
-	llSeidelred6:=getInterlacingCharacteristicPolynomials2(mp6,qp6,47,7);
+	llSeidelred6:=getInterlacingCharacteristicPolynomialsOddn(mp6,qp6,47,7);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
 	numrows6:=#llSeidelred6;
 	m6:=Matrix(Rationals(),numrows6,Degree(mp6),[llSeidelred6[j] : j in [1..numrows6]]);
-	print "number of interlacing polynomials:", numrows6;
+	print "Number of interlacing polynomials:", numrows6;
 	
 	comptPolys2:=[P!(comptPolys[i]*qp/GCD(comptPolys[i]*qp,Derivative(comptPolys[i]*qp))) : i in [1..6]];
 	llSeidelred6int:=[];
@@ -2243,7 +2418,7 @@ checkLemma83:=procedure()
 	numrows6int:=#llSeidelred6int;
 	m6int:=Matrix(Rationals(),numrows6int,Degree(mp6),[llSeidelred6int[j] : j in [1..numrows6int]]);
 	
-	print "number of interlacing polynomials that interlace f1, f3, or f4:", numrows6int;
+	print "Number of interlacing polynomials that interlace f1, f3, or f4:", numrows6int;
 	print m6int;
 
 	
@@ -2260,9 +2435,9 @@ checkLemma83:=procedure()
 	print fWarrantedRange;
 	mfWarranted:=Submatrix(m6int,fWarrantedRange,[1..Degree(mp6)]);
 	print ""; 
-	print "Show that f1= ", fWarranted1, " and f2 = ", fWarranted2, " are a warranted pair"; 
-	print "Matrix A' corresponding to interlacing polynomials without f1 and f2:"; 
-	print mfWarranted;
+	print "Show that f_{6,2}= ", fWarranted1, " and f_{6,3} = ", fWarranted2, " are a warranted pair"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f1 and f2:";
+	// print mfWarranted;
 	print ""; 
 	// #Farkas certificate
 	fc:=Vector(Rationals(),[5716582502, 0, 0, 1614215, 145454, 13175]);
@@ -2279,7 +2454,8 @@ checkLemma83:=procedure()
 	
 	print "--- get polys compatible with f_{6,2} ---";
 	compatPolys62:=getCompatiblePolynomials(llSeidelred6int,fWarranted1,fff6,mp6);
-
+	
+	print "Polynomials compatible with f_{6,2}:";
 	print compatPolys62;
 	numrows62:=#compatPolys62;
 	m:=Matrix(AC,numrows62,Degree(mp6),[compatPolys62[j] : j in [1..numrows62]]);
@@ -2299,7 +2475,8 @@ checkLemma83:=procedure()
 	
 	print "--- get polys compatible with f_{6,3} ---";
 	compatPolys63:=getCompatiblePolynomials(llSeidelred6int,fWarranted2,fff6,mp6);
-
+	
+	print "Polynomials compatible with f_{6,3}:";
 	print compatPolys63;
 	numrows63:=#compatPolys63;
 	m:=Matrix(AC,numrows63,Degree(mp6),[compatPolys63[j] : j in [1..numrows63]]);
