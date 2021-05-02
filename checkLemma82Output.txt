@@ -1,4 +1,4 @@
-> time checkLemma82();
+> checkLemma82();
 [
     <x - 11, 3>,
     <x - 9, 12>,
@@ -6,7 +6,7 @@
     <x^2 - 19*x + 72, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.100 seconds
+Time taken to compute interlacing char polys: 0.150 seconds
 
 Number of interlacing polynomials: 53
 [
@@ -85,320 +85,368 @@ Show that  [ 1, -34, 404, -1966, 3323 ]
 Certificate of warranty c:
 c =  (-37937620         0         0    -29081     -5816)
 Ac >= 0:  true
-Ac =  (95170 2114 467386 374330 281274 188218 95162 2106 839602 746546 653490 
-    560434 467378 374322 281266 1211818 1118762 1025706 932650 839594 746538 
-    653482 560426 1397922 1304866 1211810 1118754 1025698 932642 839586 1584026 
-    1490970 1397914 1304858 1211802 1118746 1770130 1677074 1584018 1490962 
-    1397906 1956234 1863178 1770122 1677066 2142338 2049282 1956226 2328442 
-    2235386 2514546)
+Ac =  (95170 2114 467386 374330 281274 188218 95162 2106 839602 746546 653490 560434 467378 374322 281266 1211818
+    1118762 1025706 932650 839594 746538 653482 560426 1397922 1304866 1211810 1118754 1025698 932642 839586 
+    1584026 1490970 1397914 1304858 1211802 1118746 1770130 1677074 1584018 1490962 1397906 1956234 1863178 
+    1770122 1677066 2142338 2049282 1956226 2328442 2235386 2514546)
 <g,c> < 0:  true
 <g,c> =  -175710
 --- get polys compatible with f3 ---
 1 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 2 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 3 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 4 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 5 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 6 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 7 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 8 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 9 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 10 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 11 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 12 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 13 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 14 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 15 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 16 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 17 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 18 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 19 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 20 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 21 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 22 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 23 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 24 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 25 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 26 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 27 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 28 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 29 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 30 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 31 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 32 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 33 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 34 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 35 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 36 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 37 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 38 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 39 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 40 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 41 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 42 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 43 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 44 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 45 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 46 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 47 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 48 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 49 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 50 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 51 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 52 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 53 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 [
     [ 1, -34, 404, -1966, 3323 ],
     [ 1, -34, 404, -1958, 3267 ],
     [ 1, -34, 404, -1918, 2795 ]
 ]
-checking 1 3
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 2 3
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 1 2
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-pairwise compatibility: check
 (    49  -1666  19796 -96206 161451)
 (91/2    1  5/2)
 Vector space of degree 3, dimension 0 over AC
 --- get polys compatible with f4 ---
 1 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 2 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 3 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 4 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 5 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 6 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 7 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 8 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 9 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 10 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 11 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 12 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 13 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 14 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 15 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 16 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 17 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 18 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 19 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 20 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 21 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 22 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 23 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 24 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 25 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 26 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 27 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 28 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 29 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 30 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 31 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 32 / 53
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
+is Seidel-compatible!
+
 33 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 34 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 35 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 36 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 37 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 38 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 39 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 40 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 41 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 42 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 43 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 44 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 45 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 46 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 47 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 48 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 49 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 50 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 51 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 52 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
 53 / 53
-Seidel-incompatible! x^2 - 19*x + 72
+not Seidel-compatible
+
+Polynomials compatible with f3 or f4:
 [
     [ 1, -34, 404, -1966, 3291 ],
     [ 1, -34, 404, -1966, 3339 ],
     [ 1, -34, 404, -1942, 3075 ],
     [ 1, -34, 404, -1934, 3003 ]
 ]
-checking 1 3
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 1 4
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 2 4
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 2 3
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 1 2
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-checking 3 4
-compatible for x^2 - 19*x + 72
-Seidel-compatible!
-is compatible!
-pairwise compatibility: check
-(    49  -1666  19796 -96206 161451)
-(47/3   28 16/3    0)
-Vector space of degree 4, dimension 1 over AC
-Echelonized basis:
-( 1  0 -4  3)
 --- list interlacing configurations ---
-<16>
-<17>
- there are 2 interlacing configurations
+There are 2 interlacing configurations:
 [
-    (16 28  4  1),
-    (17 28  0  4)
+    (17 28  0  4),
+    (16 28  4  1)
 ]
 Squared angles:
 [
     (439/672 4/21 1/8 1/14016*(23*sqrt73 + 219) 1/14016*(-23*sqrt73 + 219)),
     (1759/2688 2/7 1/32 1/56064*(-65*sqrt73 + 803) 1/56064*(65*sqrt73 + 803)),
-    (1735/2688 4/21 1/32 1/56064*(71*sqrt73 + 3723) 1/56064*(-71*sqrt73 + 
-        3723)),
-    (9/14 4/21 0 1/876*(sqrt73 + 73) 1/876*(-sqrt73 + 73))
+    (1735/2688 4/21 1/32 1/56064*(71*sqrt73 + 3723) 1/56064*(-71*sqrt73 + 3723)),
+    (            9/14             4/21                    0  1/876*(sqrt73 + 73) 1/876*(-sqrt73 + 73))
 ]
+Checking possibilities for delta...
 (16 28  4  1)
 [ 1, -1, 1, -1 ]
+Euler matrix (congruent to 3J mod 4):
 [  7  -1 -13  -9]
 [ -1   7  -5  15]
 [-13  -5  31   3]
 [ -9  15   3  39]
+
 Time: 1.470
 > 
