@@ -1,4 +1,4 @@
-> checkLemma71();
+> time checkLemma71();
 [
     <x - 11, 6>,
     <x - 9, 10>,
@@ -6,7 +6,7 @@
     <x + 5, 32>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.010 seconds
+Time taken to compute interlacing char polys: 0.000 seconds
 
 number of interlacing polynomials: 5
 Matrix A corresponding to interlacing polynomials:
@@ -27,38 +27,18 @@ Ac =  ( 125  661 1197 1733)
 <g,c> =  -8883
 --- get polys compatible with f ---
 1 / 5
-Fast check is inconclusive....
-Checking compatibility by splitting into two groups...
-Checking compatibility with respect to x - 4
-...
 is Seidel-compatible!
 
 2 / 5
-Fast check is inconclusive....
-Checking compatibility by splitting into two groups...
-Checking compatibility with respect to x - 4
-...
 not Seidel-compatible
 
 3 / 5
-Fast check is inconclusive....
-Checking compatibility by splitting into two groups...
-Checking compatibility with respect to x - 4
-...
 not Seidel-compatible
 
 4 / 5
-Fast check is inconclusive....
-Checking compatibility by splitting into two groups...
-Checking compatibility with respect to x - 4
-...
 is Seidel-compatible!
 
 5 / 5
-Fast check is inconclusive....
-Checking compatibility by splitting into two groups...
-Checking compatibility with respect to x - 4
-...
 not Seidel-compatible
 
 Polynomials compatible with the warranted poly:
@@ -76,7 +56,7 @@ Polynomials compatible with the warranted poly:
     <x^2 - 14*x + 37, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 97.880 seconds
+Time taken to compute interlacing char polys: 52.020 seconds
 
 number of interlacing polynomials: 28
 Matrix A corresponding to interlacing polynomials:
@@ -115,8 +95,7 @@ Show that f =  [ 1, -34, 438, -2652, 7513, -7906 ]
 Certificate of warranty c:
 c =  (-632673042          0          0    -330026     -37186      -4649)
 Ac >= 0:  true
-Ac =  (7118 7090 230022 81254 453050 304282 155514 6746 155198 452926 304158 155390 452706 303938 155170 6402 
-    304130 229334 80566 378294 229526 154826 6058 303786 154702 5934 5714)
+Ac =  (7118 7090 230022 81254 453050 304282 155514 6746 155198 452926 304158 155390 452706 303938 155170 6402 304130 229334 80566 378294 229526 154826 6058 303786 154702 5934 5714)
 <g,c> < 0:  true
 <g,c> =  -561696
 --- get polys compatible with f ---
@@ -457,6 +436,5 @@ index 7 interlaces both f1 and f2:
     <x + 5, 30>,
     <x^3 - 20*x^2 + 113*x - 142, 1>
 ]
-
-Time: 65.390
+Time: 52.880
 > 
