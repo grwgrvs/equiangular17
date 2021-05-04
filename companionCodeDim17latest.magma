@@ -924,9 +924,9 @@ isCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
 		proots:=Roots(xi,AC);
 		m:=MinimalPolynomial(Evaluate(fg,proots[1][1]));
 
-		if Degree(xi) eq 1 then
-			continue;
-		end if;
+		// if Degree(xi) eq 1 then
+		// 	continue;
+		// end if;
 		
 		if IsIrreducible(Evaluate(m,x^2)) then
 			if #GaloisGroup(Evaluate(m,x^2)) gt #GaloisGroup(m) and Degree(fff) mod 2 eq 1 and Degree(m) eq #proots then
@@ -944,7 +944,11 @@ isCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
 					// print "Seidel-compatible!";
 					return true;
 				else
-					N<al>:=NumberField(m);
+					if Degree(m) eq 1 then
+						N:=Rationals();
+					else
+						N<al>:=NumberField(m);
+					end if;
 					sqm:=MinimalPolynomial(SquareRoot(Evaluate(fg,proots[1][1])));
 					q:=minpoly/xi;
 					if Integers()!Coefficient(Evaluate(P!Eltseq(Roots(sqm,N)[1][1]),fg) mod xi,Degree(xi)-1) mod 2 eq (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 then
@@ -1364,7 +1368,8 @@ printInterlacingConfigs:=function(poly,warr,cert)
 	numrows:=#llSeidelred;
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 
-	print "number of interlacing polynomials:", numrows;
+	print "Number of interlacing polynomials:", numrows;
+	print "";
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
@@ -1770,6 +1775,7 @@ checkLemma82:=procedure()
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 
 	print "Number of interlacing polynomials:", numrows;
+	print "";
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
@@ -1777,9 +1783,9 @@ checkLemma82:=procedure()
 	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
 	froots:=[ggroots[i][1] : i in [1..#ggroots]];
 
-	print froots;
+	// print froots;
 	fbas:=[PK!(PK!(mp)/(z-r)) : r in froots];
-	print fbas;
+	// print fbas;
 	fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
 
 	fbasm:=Matrix(AC,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
@@ -2020,6 +2026,7 @@ checkLemma83:=procedure()
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
 	
 	print "Number of interlacing polynomials:", numrows;
+	print "";
 	AC:=AlgebraicClosure();
 	PK<z>:=PolynomialRing(AC);
 	ggroots:=Roots(fff,AC);
