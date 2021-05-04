@@ -8,7 +8,7 @@
     <x + 5, 32>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 1.280 seconds
+Time taken to compute interlacing char polys: 1.270 seconds
 
 Number of interlacing polynomials: 56
 Matrix A corresponding to interlacing polynomials:
@@ -1026,14 +1026,14 @@ Polynomials compatible with f1 or f2:
     [ 1, -45, 778, -6458, 25701, -39081 ],
     [ 1, -45, 778, -6450, 25477, -37809 ],
     [ 1, -45, 778, -6442, 25333, -37161 ],
+    [ 1, -45, 778, -6442, 25397, -37673 ],
     [ 1, -45, 778, -6434, 25221, -36801 ],
     [ 1, -45, 778, -6426, 25141, -36729 ],
-    [ 1, -45, 778, -6418, 24949, -35649 ],
-    [ 1, -45, 778, -6442, 25397, -37673 ]
+    [ 1, -45, 778, -6418, 24949, -35649 ]
 ]
 --- list interlacing configurations ---
 [
-    ( 0 42  0  0  0  1  6  0)
+    ( 0 42  0  0  0  0  1  6)
 ]
-Time: 10.790
+Time: 10.670
 > 
