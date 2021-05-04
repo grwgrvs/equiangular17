@@ -1,4 +1,4 @@
-> checkLemma83();
+> time checkLemma83();
 [
     <x - 13, 2>,
     <x - 9, 13>,
@@ -6,7 +6,7 @@
     <x^2 - 17*x + 64, 1>
 ]
 Computing interlacing char polys...
-Time taken to compute interlacing char polys: 0.110 seconds
+Time taken to compute interlacing char polys: 0.060 seconds
 
 Number of interlacing polynomials: 26
 Matrix A corresponding to interlacing polynomials:
@@ -43,8 +43,9 @@ Show that f =  [ 1, -34, 408, -2022, 3503 ]
 Certificate of warranty c:
 c =  (-12716952         0         0     -7781      -864)
 Ac >= 0:  true
-Ac =  (17286 3462 44894 31070 17246 3422 72502 58678 44854 31030 100110 86286 72462 58638 44814 100070 86246 
-    72422 58598 100030 86206 72382 99990 86166 99950)
+Ac =  (17286 3462 44894 31070 17246 3422 72502 58678 44854 31030 100110 86286 
+    72462 58638 44814 100070 86246 72422 58598 100030 86206 72382 99990 86166 
+    99950)
 <g,c> < 0:  true
 <g,c> =  -121426
 --- get polys compatible with f ---
@@ -198,7 +199,7 @@ Factorisation of f6:
     <x^2 - 14*x + 29, 1>
 ]
 Computing interlacing char polys of f6...
-Time taken to compute interlacing char polys: 189.330 seconds
+Time taken to compute interlacing char polys: 120.530 seconds
 
 Number of interlacing polynomials: 73
 Number of interlacing polynomials that interlace f1, f3, or f4: 25
@@ -774,5 +775,5 @@ Ac =  (10758 10254  8966  8462)
 <g,c> < 0:  true
 <g,c> =  -386912
 
-Time: 131.460
+Time: 122.130
 > 
