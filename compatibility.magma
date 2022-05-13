@@ -126,7 +126,7 @@ input:	fff			- polynomial
 output: true if f1p and f2p are Seidel-compatible with respect to fff, false otherwise
 */
 isSeidelCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
-	//Although Seidel compatibility is only defined for distinct polynomials, for convenience, in this code we consider polynomials to be compatible with themselves.
+	//For convenience, code we consider polynomials to be compatible with themselves.
 	if f1p eq f2p then
 		print "Seidel-compatible, (self-compatibility)";
 		return true;
