@@ -1,0 +1,401 @@
+//checks compatibility by definition (checking all \pm 1 vectors)
+/* 
+isXiSeidelCompatible(fff,f1p,f2p,mpd,xi):
+
+input:	simpInds	- indicies of simple roots of fff
+		q			- polynomial
+		froots		- roots of fff
+		sqrts		- products of angles
+		n			- integer
+
+output: true if there exists a \pm 1-vector such that equation (1) holds and if q satisfies divisibility condition, false otherwise
+*/
+isXiSeidelCompatible:=function(fff,f1p,f2p,mpd,xi)
+	P<x>:=PolynomialRing(Rationals());
+	AC:=AlgebraicClosure();
+	PK<z>:=PolynomialRing(AC);
+	ggroots:=Roots(fff,AC);
+	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
+	froots:=[ggroots[i][1] : i in [1..#ggroots]];
+	af1:=Vector(AC,[Evaluate(f1p,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]);
+	af2:=Vector(AC,[Evaluate(f2p,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]);
+	q:=1;
+	simpInds:=[];
+	for i in [1..#froots] do
+		if Evaluate(xi,froots[i]) eq 0 then
+			simpInds cat:=[i];
+		else
+			q*:=(z-froots[i]);
+		end if;
+	end for;
+	sqrts:=[SquareRoot(af2[simpInds[i]]*af1[simpInds[i]]) : i in [1..#simpInds]];
+	// Computing some minimal polynomials with the hope of simplifying computation of other minimal polynomials
+	// A quirk of working in the algebraic closure.
+	for i in [1..#simpInds] do 
+		tmp:=MinimalPolynomial(Evaluate(q,froots[simpInds[i]])*sqrts[i]);
+	end for;
+	n:=Degree(fff);
+	MinPolys:=[];
+	cartP:={[1] cat [c[i] : i in [1..#simpInds-1]] : c in CartesianPower({-1,1},#simpInds-1)};
+	for c in cartP do
+		// print c;
+		chk:=&+[c[i]*Evaluate(q,froots[simpInds[i]])*sqrts[i] : i in [1..#simpInds]];
+		flag2:=true;
+		if #MinPolys gt 0 then
+			for p in MinPolys do
+				if Evaluate(p,chk) eq 0 then
+					flag2:=false;
+				end if;
+			end for;
+		end if;
+		if flag2 then
+			MinPolys cat:=[MinimalPolynomial(chk)];
+		end if;
+	end for;
+	d1S:=Set([p : p in MinPolys | Degree(p) eq 1]);
+	if #d1S eq 0 then
+		print "not compatible";
+		return false;
+	end if;
+	if n mod 2 eq 1 then
+		for p in d1S do
+			if not Coefficients(p)[1] in Integers() then
+				continue;
+			end if;
+			if (Integers()!( Coefficients(MinimalPolynomial(Evaluate(q,1) - Evaluate(q,0)))[1] ) ) mod 2 eq (Integers()!Coefficients(p)[1]) mod 2 then
+				print "Seidel-compatible!";
+				return true;
+			end if;
+		end for;
+		print "compatible, but not Seidel-Compatible";
+		return false;
+	end if;
+	if n mod 2 eq 0 then
+		for p in d1S do
+			if Coefficients(p)[1] in Integers() then
+				print "Seidel-compatible!";
+				return true;
+			end if;
+		end for;
+		print "compatible, but not Seidel-Compatible";
+		return false;
+	end if;
+	print "Seidel-compatible! (true by default)";
+	return true;
+end function;
+
+
+/* 
+isCompatibleAux(fff,f1p,f2p,mpd,Facs):
+
+input:	fff			- polynomial
+		f1p			- polynomial
+		f2p			- polynomial
+		mpd			- polynomial (derivative of minpoly)
+		Facs		- list of polynomials (simple factors of fff)
+
+output: true if f1p and f2p are Seidel-compatible with respect to fff, false otherwise
+*/
+isSeidelCompatibleAux:=function(fff,f1p,f2p,mpd,Facs)
+	//checking all factors of Sim(fff)
+	for c in CartesianPower({0,1},#Facs) do
+		// print c;
+		xi:=&*[Facs[i]^c[i] : i in [1..#Facs]];
+		if xi eq 1 then
+			continue;
+		end if;
+		print "Checking compatibility with respect to", xi, "...";
+		if not isXiSeidelCompatible(fff,f1p,f2p,mpd,xi) then
+			// print "incompatible!", xi;
+			return false;
+		end if;
+	end for;
+	return true;
+end function;
+
+/* 
+isSeidelCompatible(fff,f1p,f2p,mpd,minpoly,Facs):
+
+input:	fff			- polynomial
+		f1p			- polynomial
+		f2p			- polynomial
+		mpd			- polynomial (derivative of minpoly)
+		minpoly		- polynomial (min poly of Seidel matrix with char poly fff)
+		Facs		- list of polynomials (simple factors of fff)
+
+output: true if f1p and f2p are Seidel-compatible with respect to fff, false otherwise
+*/
+isSeidelCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
+	//Although Seidel compatibility is only defined for distinct polynomials, for convenience, in this code we consider polynomials to be compatible with themselves.
+	if f1p eq f2p then
+		print "Seidel-compatible, (self-compatibility)";
+		return true;
+	end if;
+	AC:=AlgebraicClosure();
+	PK<z>:=PolynomialRing(AC);
+	P<x>:=PolynomialRing(Rationals());
+	ggroots:=Roots(fff,AC);
+
+	mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
+	froots:=[ggroots[i][1] : i in [1..#ggroots]];
+	fg:=f1p*f2p;
+	for xi in Facs do
+		proots:=Roots(xi,AC);
+		m:=MinimalPolynomial(Evaluate(fg,proots[1][1]));
+		
+		if IsIrreducible(Evaluate(m,x^2)) then
+			if #GaloisGroup(Evaluate(m,x^2)) gt #GaloisGroup(m) and Degree(fff) mod 2 eq 1 and Degree(m) eq #proots then
+			// if d mod SquareFree(Integers()!Resultant(fg,p)) ne 0 then
+				q:=minpoly/xi;
+				if (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 eq 1 then
+					// print "fff", Factorisation(fff);
+					// print "f1p", f1p;
+					// print "f2p", f2p;
+					// print "rho", m;
+					// print "rho(x^2)", Factorisation(Evaluate(m,x^2));
+					// print "|G|", #GaloisGroup(m);
+					// print GaloisGroup(m);
+					// print "|H|", #GaloisGroup(Evaluate(m,x^2));
+					// print GaloisGroup(Evaluate(m,x^2));
+					// print "q", q;
+					// print "q(1)+q(0)",  (Integers()!( Evaluate(q,1) + Evaluate(q,0) ) );
+					// print "Seidel-incompatible!", xi;
+					return false;
+				end if;
+			end if;
+		else
+			m2:=MinimalPolynomial(proots[1][1]);
+			if #Facs eq 1 then
+				if Degree(fff) mod 2 eq 0 then
+					print "Seidel-compatible!";
+					return true;
+				else
+					if Degree(m2) eq 1 then
+						N:=Rationals();
+					else
+						N<al>:=NumberField(m2);
+					end if;
+					sqm:=MinimalPolynomial(SquareRoot(Evaluate(fg,proots[1][1])));
+					hPi:=Evaluate(P!Eltseq(Roots(sqm,N)[1][1]),fg) mod xi;
+					q:=minpoly/xi;
+					// print "fff", Factorisation(fff);
+					// print "f1p", f1p;
+					// print "f2p", f2p;
+					// print "rho", m;
+					// print "rho(x^2)", Factorisation(Evaluate(m,x^2));
+					// print "h", hPi;
+					// print "q", q;
+					// print "pi", hPi;
+					// print Evaluate(P!Eltseq(Roots(h,N)[1][1]),fg);
+					// print P!Eltseq(Roots(h,N)[1][1]);
+					// print "omega", Integers()!Coefficient(hPi,Degree(xi)-1);
+					// print "q(1)+q(0)",  (Integers()!( Evaluate(q,1) + Evaluate(q,0) ) );
+					if Integers()!Coefficient(hPi,Degree(xi)-1) mod 2 eq (Integers()!( Evaluate(q,1) - Evaluate(q,0) ) ) mod 2 then
+						print "Seidel-compatible!";
+						return true;
+					end if;
+				end if;
+			end if;
+		end if;
+	end for;
+	print "Fast check is inconclusive....";
+	return isSeidelCompatibleAux(fff,f1p,f2p,mpd,Facs);
+end function;
+
+/* 
+getSeidelCompatibilePolynomials(intPolys,f1,fff):
+
+input:	intPolys 	- list of polynomials
+		f1			- polynomial
+		fff			- polynomial
+
+output: list of polynomials in intPolys that are Seidel-compatible with f1 with respect to fff
+*/
+getSeidelCompatiblePolynomials:=function(intPolys,f1,fff)
+	P<x>:=PolynomialRing(Rationals());
+	compats:=[];
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	mpd:=Derivative(mp);
+	f1p:=P!(Polynomial(Reverse(f1)));
+	fac:=Factorisation(fff);
+	minpoly:=1;
+	simpFacs:=[];
+	for fc in fac do
+		minpoly *:=fc[1];
+		if fc[2] eq 1 then
+			simpFacs cat:=[fc[1]];
+		end if;
+	end for;
+	for i in [1..#intPolys] do
+		print i, "/", #intPolys;
+		p:=intPolys[i];
+		f2p:=P!(Polynomial(Reverse(p)));
+		if isSeidelCompatible(fff,f1p,f2p,mpd,minpoly,simpFacs) then
+			print "is Seidel-compatible!";
+			print "";
+			compats cat:=[p];
+		else
+			print "not Seidel-compatible";
+			print "";
+		end if;
+	end for;
+	return compats;
+end function;
+
+/* 
+checkPairwiseSeidelCompatibility(compatibleSet,fff):
+
+input:	compatibleSet 	- list of polynomials
+		fff				- polynomial
+
+output: true if the polynomials in compatibleSet are pairwise Seidel-compatible with respect to fff, false otherwise
+*/
+checkPairwiseSeidelCompatibility:=function(compatibleSet,fff)
+	P<x>:=PolynomialRing(Rationals());
+	compats:=[];
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	mpd:=Derivative(mp);
+	fac:=Factorisation(fff);
+	minpoly:=1;
+	simpFacs:=[];
+	for fc in fac do
+		minpoly *:=fc[1];
+		if fc[2] eq 1 then
+			simpFacs cat:=[fc[1]];
+		end if;
+	end for;
+	for sb in Subsets({1..#compatibleSet},2) do
+		osb:=[i : i in sb];
+		f1p:=P!(Polynomial(Reverse(compatibleSet[osb[1]])));
+		f2p:=P!(Polynomial(Reverse(compatibleSet[osb[2]])));
+		if not isSeidelCompatible(fff,f1p,f2p,mpd,minpoly,simpFacs) then
+			return false;
+		end if;
+	end for;
+	return true;
+end function;
+
+
+/*
+findSols(ps,knl,n):
+
+input:	ps	- vector
+		knl - vector space
+		n	- integer
+
+output: list of nonnegative vectors in ps+knl
+*/
+findSols:=function(ps,knl,n)
+	sols:=[];
+	B:=Basis(knl);
+	Bsize:=#B;
+	init:=[0 : i in [1..Bsize]];
+	bag:={init};
+	lastbag:=bag;
+	//generate all nonnegative vectors of length Bsize with entries at most n
+	for i in [1..n] do
+		newbag:={};
+		for j in [1..Bsize] do
+			for b in lastbag do
+				newb:=b;
+				newb[j]+:=1;
+				Include(~newbag,newb);
+			end for;
+		end for;
+		bag:=bag join newbag;
+		lastbag:=newbag;
+	end for;
+	//check for each vector found above
+	for c in bag do
+		v:=ps;
+		for i in [1..Bsize] do
+			v+:= (c[i]-v[i])*B[i];
+		end for;
+		if isAtLeastZeroInt(ChangeRing(v,Rationals())) then
+			sols cat:= [v];
+		end if;
+	end for;
+	return sols;
+end function;
+
+/*
+printInterlacingConfigs(fff,warr,cert):
+
+input:	fff		- polynomial
+		warr	- polynomial (warranted polynomial)
+		cert	- vector (certificate of warranty)
+
+output: qp			- polynomial
+		compatPolys - list of polynomials compatible with warr
+		sls			- interlacing configurations for fff
+*/
+printInterlacingConfigsForWarranted:=function(fff,warr,cert)
+	P<x>:=PolynomialRing(Rationals());
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	n:=Degree(fff);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	if n mod 2 eq 0 then
+		llSeidelred:=getInterlacingCharacteristicPolynomialsOddn(fff,7);
+	else
+		llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	end if;
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+
+	print "Number of interlacing polynomials:", numrows;
+	print "";
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	// #submatrix of m without f1
+	fWarranted:=warr;
+	fWarrantedInd:=Index(llSeidelred,fWarranted);
+	fWarrantedRange:=Remove([1..numrows],fWarrantedInd);
+	
+	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+	print ""; 
+	print "Show that f = ", fWarranted, " is warranted"; 
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),cert);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+
+	print "--- get polys Seidel-compatible with f ---";
+	compatPolys:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted,fff);
+	
+	print "Polynomials Seidel-compatible with the warranted poly:";
+	for i in [1..#compatPolys] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys[i]))*qp);
+	end for;
+	numrows:=#compatPolys;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
+	pr,sp:=Solution(m,Vector(Rationals(),bb));
+	print "--- list interlacing configurations ---";
+	if Dimension(sp) eq 0 then
+		print pr;
+		sls:=[];
+	else
+		sls:=findSols(pr,sp,n);
+		print " there are", #sls, "interlacing configurations";
+		print sls;
+	end if;
+	return qp, compatPolys, sls;
+end function;
+
+

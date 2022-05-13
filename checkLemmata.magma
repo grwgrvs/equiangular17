@@ -1,0 +1,1398 @@
+/* 
+generateLemma36Polys(ssc497):
+
+Generates the list of 194 candidate characteristic polynomials for a Seidel matrix corresponding to 
+49 equiangular lines in dimension 17
+
+input: 	ssc497 	- the set of 2048 congruence classes for characteristic polynomials of Seidel matrices of order 49 modulo 128
+				Generate ssc497 by running
+				ssc497:=SeidelCharPolysMod(49,7);
+				alternatively, ssc497 has been precomputed and is available in the file SeidelCharPolys497.magma
+
+output:	list of coefficient lists for candidate characteristic polynomials for a Seidel matrix corresponding to 
+49 equiangular lines in dimension 17
+*/
+generateLemma36Polys:=function(ssc497)
+	P<x>:=PolynomialRing(Rationals());
+	ll2:=getCoeffsWeaklyType2(13,[1,-137,8640]);
+	llshift2:=[Evaluate(P!Polynomial(Reverse(l)), x+1) : l in ll2];
+	lllist2:=[Reverse(Coefficients(l)) : l in llshift2];
+	return listPowerReduceOddPreComp(lllist2,(x+5)^32*(x-9)^4,7,ssc497);
+end function;
+
+/* 
+checkLemma53(all194polys):
+
+input: 	all194polys 	- the list of 194 candidate characteristic polynomials for a Seidel matrix corresponding to 
+						49 equiangular lines in dimension 17 
+						Generate all194polys by running
+						all194polys:=Lemma36Polys(ssc497);
+						after ssc497 has been loaded into the magma terminal.
+						alternatively, all194polys has been precomputed and is available in the file 194polys.magma
+
+For each of the 2 polynomials of Lemma 5.3, it is checked that there are 0 interlacing char polys
+*/
+checkLemma53:=procedure(all194polys)
+	P<x>:=PolynomialRing(Rationals());
+	cand49red:=all194polys;
+	inds:=[13,86];
+	cand49:=[cand49red[inds[i]] : i in [1..2]];
+		bag:=[];
+		for i in [1..#cand49] do
+			ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
+			gcd:=GCD(ff,Derivative(ff));
+			ms:=P!(ff/gcd);
+			g:=P!(Derivative(ff)/gcd);
+			deg:=Degree(ms);
+			f:=ms+48*x^(deg-2);
+			coeffs:=Reverse(Coefficients(f));
+			gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
+			ggf:=Evaluate(gf,x-1);
+			clist:=Reverse(Coefficients(ggf));
+			print "------- Infeasibility of", Factorisation(ff), "-------";
+			print "";
+			print "Computing interlacing char polys...";
+			tic := Cputime();
+			ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
+			llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
+			ll2:=[Reverse(Coefficients(l)) : l in llpol];
+			bag cat:= [listInterlaceReduce(ll2,ms)];
+			tt:=Cputime(tic);
+			print "Time taken to compute interlacing char polys:", tt,"seconds";
+			print "";
+			print "Number of interlacing char polys:", #bag[i];
+			print "";
+		end for;
+end procedure;
+
+
+/* 
+checkLemma54(all194polys):
+
+input: 	all194polys 	- the list of 194 candidate characteristic polynomials for a Seidel matrix corresponding to 
+						49 equiangular lines in dimension 17 
+						Generate all194polys by running
+						all194polys:=Lemma36Polys(ssc497);
+						after ssc497 has been loaded into the magma terminal.
+						alternatively, all194polys has been precomputed and is available in the file 194polys.magma
+
+For each of the 164 polynomials of Lemma 5.4, the conditions of the corresponding certificate of infeasibiliy is 
+checked and the details are printed to the terminal.
+
+Warning: this procedure takes over 6 hours to run on a standard desktop computer.
+*/
+checkLemma54:=procedure(all194polys)
+	P<x>:=PolynomialRing(Rationals());
+	print "--- Candidates for char polys corresponding to 49 lines ---";
+	print "";
+	cand49red:=all194polys;
+	print "Candidates for char poly:";
+	for i in [1..#cand49red] do
+		ff:=P!Polynomial(Reverse(cand49red[i]))*(x+5)^32*(x-9)^4;
+		print i, Factorisation(ff);
+	end for;
+	print "";
+	inds:=[i : i in [2..3]] cat [i : i in [5..5]] cat [i : i in [7..8]] cat [i : i in [11..12]] cat [i : i in [14..14]] 
+	cat [i : i in [16..21]] cat [i : i in [23..23]] cat [i : i in [26..29]] cat [i : i in [31..34]] cat [i : i in [36..41]] 
+	cat [i : i in [43..51]] cat [i : i in [53..57]] cat [i : i in [59..60]] cat [i : i in [62..70]] cat [i : i in [72..72]] 
+	cat [i : i in [74..84]] cat [i : i in [87..88]] cat [i : i in [90..101]] cat [i : i in [103..121]] 
+	cat [i : i in [123..126]] cat [i : i in [128..129]] cat [i : i in [131..141]] cat [i : i in [143..156]] 
+	cat [i : i in [158..166]] cat [i : i in [168..185]] cat [i : i in [187..193]];
+	cand49:=[cand49red[inds[i]] : i in [1..164]];
+	CertificatesOfInfeasibility:=[
+		[-5488432, 0, 0, -2469, -274],
+		[-63703708, 0, 0, -31134, -4447],
+		[0, 0, 0, 0, -24516, -11277, -2933], 
+		[64094624850, 0, 0, 13282715, 1315121, 131512],
+		[0, 0, 0, 0, -32892, -14918, -3771],
+		[0, 0, 0, 2179953, 598246, 95219, 12792],
+		[0, 0, 0, 0, -46941, -21298, -5385],
+		[0, 0, 0, 2020374, 527071, 75373, 8375],
+		[0, 0, 0, 0, -186488, -84667, -21412], 
+		[0, 0, 0, 2213481, 577512, 82588, 9177],
+		[0, 0, 0, 262395, 85409, 13919],
+		[0, 0, 0, 0, -50486, -22673, -5606],
+		[0, 0, 0, 0, -166968, -76347, -19567],
+		[0, 0, 0, -761, -407],
+		[0, 0, 0, 0, 0, 48433, 27206, 8450], 
+		[43568416850, 0, 0, 8939852, 867947, 86794],
+		[418335562857, 0, 0, 50603993, 5042602, 533922, 59325],
+		[0, 0, 0, 2951038, 757444, 105637, 11738],
+		[2170237224, 0, 0, 518291, 54779, 5899],
+		[0, 0, 0, -102473516, -26628634, -4344437, -608687, -79085],
+		[0, 0, 0, 3027878, 841889, 137248, 19051], 
+		[0, 0, 0, 3424439, 942309, 150950, 20564],
+		[-350855974043, 0, 0, -36070743, -2365294, -118265, 0],
+		[0, 0, 0, 19725270, 5270911, 802935, 104149],
+		[0, 0, 0, 27926, 10159, 2010],
+		[0, 0, 0, 2358490, 648675, 103793, 14105],
+		[0, 0, 0, 0, -11689, -5069, -1158], 
+		[-4870391404, 0, 0, -1228192, -147036, -17299],
+		[0, 0, 0, 0, 0, 0, 0, -2769, -2722],
+		[0, 0, 0, 0, 0, 49785, 28128, 8819],
+		[0, 0, 0, 2693660, 663478, 83879, 7626],
+		[0, 0, 0, 2151377, 521244, 62701, 4824], 
+		[0, 0, 0, 0, 0, 2730500, 1336652, 374346, 80967],
+		[0, 0, 0, -3968275, -1342119, -230256],
+		[0, 0, 0, 0, -21822, -9463, -2157],
+		[0, 0, 0, 0, -1569046, -573439, -115384, -17518],
+		[4598007557155, 0, 0, 531045255, 47338744, 4256617, 386966],
+		[0, 0, 0, 0, -3978492, -1477259, -314027, -53170], 
+		[20419347700, 0, 0, 4029188, 354569, 32233],
+		[0, 0, 0, 0, 0, 5733949, 2909745, 855377, 195699],
+		[0, 0, 0, 0, 0, 14228263, 7055510, 2012098, 444987],
+		[0, 0, 0, 5766425, 1554289, 240786, 31992],
+		[400497673181, 0, 0, 46699387, 3348961, 186053, 0],
+		[695180798312, 0, 0, 89011625, 8091966, 735633, 66876], 
+		[0, 0, -83458849775, -11996698757, -1188052506, -118190915, -11828260, -1191996],
+		[0, 0, 0, 0, -21332, -9279, -2128],
+		[0, 0, 0, 0, 0, -48253, -17954, 0],
+		[0, 0, -61036254227, -8328939996, -759497210, -69872634, -6493326, -610484],
+		[0, 0, 0, -3673067283, -954462930, -155719105, -21817365, -2834629],
+		[0, 0, 0, 3242353, 857188, 128112, 16317], 
+		[0, 0, 0, -136206225, -35394372, -5774558, -809058, -105118],
+		[0, 0, 0, 0, 8891029, 3501307, 607418],
+		[0, 0, 0, 0, 0, 5173067, 2563924, 730730, 161530],
+		[-43386189, 0, 0, -21122, -1920],
+		[0, 0, 0, -103422864, -26769889, -4290940, -589184, -74958],
+		[0, 0, 0, -100965325, -26236718, -4280496, -599729, -77921], 
+		[-1299165141433, 0, 0, -149992114, -13410925, -1221759, -113651],
+		[0, 0, 11091944806, 1414982133, 88436388, 0, -1403751, -356509],
+		[-2370518793825, 0, 0, -304205617, -28068180, -2673161, -267316],
+		[0, 0, 0, 0, -1329832, -537956, -127678, -24303],
+		[0, 0, -77300917310, -10532936094, -956541670, -87328370, -8017435, -740071],
+		[0, 0, 0, -3659439217, -950921617, -155141345, -21736416, -2824112], 
+		[0, 0, 0, 1667190, 446418, 67961, 8668],
+		[0, 0, -27280263472, -3518058798, -293088094, -25041704, -2203669, -200334],
+		[0, 0, 0, 0, 0, 0, -1064222, 0, 285444, 160397],
+		[0, 0, 0, 0, 0, 2337512, 1158887, 330521, 73173],
+		[0, 0, 0, 0, -1531587, -589537, -129964, -22695], 
+		[0, 0, 0, 0, -35406, -15155, -3334],
+		[0, 0, 0, -71612334, -18804223, -3075477, -431366, -56080],
+		[0, 0, 0, 0, 0, -12974, 0, 4359],
+		[0, 0, 0, 0, 0, 4677012, 2215622, 593361, 122148],
+		[0, 0, 0, -379426866, -98595447, -16085678, -2253718, -292816],
+		[0, 0, 0, 0, -1001181, -347490, -65629, -9371], 
+		[-18918837294, 0, 0, -5728490, -787474, -108085],
+		[0, 0, 0, -15349003083, -3936212014, -661763942, -97017114, -13355954, -1781204],
+		[0, 0, 0, 0, 0, -60315, -31871, -8411],
+		[0, 0, 0, 3059218, 768048, 97759, 8888],
+		[0, 0, 0, -314129288, -78844475, -12081240, -1578458, -190430],
+		[0, 0, 0, -64158067, -16846854, -2755344, -386464, -50242], 
+		[0, 0, 0, 0, -1704397, -620000, -127433, -20664],
+		[0, 0, 0, 0, 0, 2880320, 1487377, 443235, 102448],
+		[0, 0, 0, 0, 0, 262016, 152699, 49290],
+		[0, 0, 0, -106796999, -28043138, -4586523, -643306, -83633],
+		[0, 0, 0, 0, -6215064, -2516920, -598732, -114475],
+		[0, 0, 0, 0, 0, 955948, 429395, 105520, 19167], 
+		[48031592256, 0, 0, 11040701, 1115611, 115408],
+		[0, 0, 0, 0, 0, 0, -2143032, -1241360, -401833, -97740],
+		[0, 0, 0, 0, 0, 0, -14047613, -8488569, -2909072, -758148],
+		[0, 0, 0, 0, -1552628, -531841, -97912, -13407],
+		[0, 0, 0, 0, 0, 0, -2618443, -1505910, -482407, -115715],
+		[1617153799881, 0, 0, 197697391, 16639510, 1426243, 125110], 
+		[7063410652, 0, 0, 1589426, 144494, 13135],
+		[0, 0, 0, -114103753, -29961502, -4900266, -687311, -89354],
+		[0, 0, 0, 0, 31817, 13173, 2468],
+		[0, 0, 0, 0, -10677039, -3964370, -842610, -142646],
+		[0, 0, 0, 22638, 7941, 1375],
+		[0, 0, 0, 0, 0, 6344046, 3245585, 956303, 218771], 
+		[0, 0, 0, -495338005, -121177788, -17614437, -2088461, -208847],
+		[0, 0, 0, -393778194, -103398759, -16911081, -2371948, -308363],
+		[0, 0, 0, 0, 0, 0, 12429, 8163, 2762],
+		[0,0,0,0,0,0,0,0,1119,1234],
+		[-3885730122, 0, 0, -718522, -32660, -1], 
+		[-992098071642, 0, 0, -118216298, -9445854, -744219, -57247],
+		[565131071791, 0, 0, 85703268, 9084766, 985095, 109456],
+		[0, 0, 0, -138176827, -36282640, -5934101, -832316, -108205],
+		[0, 0, 0, 0, -1213093, -449831, -95266, -15983],
+		[0, 0, 0, 89931451, 24948054, 4341823, 647628, 89588],
+		[0, 0, -19060138333, -2884207282, -300173384, -30699551, -3100964, -310097], 
+		[0, 0, 0, 0, 0, 9599576, 4809061, 1377672, 305452],
+		[0, 0, -27750045610, -4064194735, -408278612, -41428056, -4245277, -439167],
+		[0, 0, 0, 1087426, 314758, 52603, 7448],
+		[0, 0, 0, 0, 0, 0, -1337775, -752950, -233517, -53538],
+		[-2169430180, 0, 0, -198141, 4, 0, 0],
+		[289768164194, 0, 0, 45345884, 5038432, 559825, 62203], 
+		[0, 0, 0, -70323109, -18465693, -3020109, -423600, -55070],
+		[0, 0, 0, -89288753, -23286483, -3710063, -501572, -62051],
+		[0, 0, 0, 0, 0, -15046, -7958, -2003],
+		[0, 0, -55007201398, -7858513065, -756481319, -73298937, -7158493, -705767],
+		[0, 0, 0, 0, -7607112, -2990049, -680855, -123814],
+		[0, 0, 0, 0, 0, 0, -2570051, -1576448, -546592, -143665], 
+		[64738987904, 0, 0, 7963177, 461283, 0, -6621],
+		[0, 0, -312204467074, -43839706334, -4468167233, -463940452, -49178872, -5332649, -592516],
+		[0, 0, 0, -62996931, -16541959, -2705478, -379470, -49333],
+		[0, 0, -34501373844, -4771922844, -433811167, -39437379, -3585216, -325929],
+		[0, 0, 0, -1169094984, -287376982, -42813875, -5458939, -645630],
+		[0, 0, 12829413037, 1887211369, 175111560, 14517041, 907320, 0], 
+		[0, 0, 0, 0, 0, 0, 0, -37148, -30261, -13559],
+		[-178847202626, 0, 0, -25013595, -2273963, -206724, -18793],
+		[1111960200, 0, 0, 365603, 48288, 6898],
+		[0, 0, 0, -112031224, -29417295, -4811260, -674827, -87731],
+		[0, 0, 0, 0, 0, 4443929, 2128486, 571736, 117372],
+		[0, 0, -34375141077, -4754463451, -432223950, -39293087, -3572098, -324737], 
+		[0, 0, 0, 864770601, 222403153, 33916787, 4279939, 475548],
+		[0, 0, 0, -3973255445, -998404736, -161564034, -22554302, -2924465, -362979],
+		[0, 0, 0, 6247855, 1847930, 310209, 44003],
+		[0,0,0,0,0,0,0,0,1137,1309],
+		[1294707168, 0, 0, 237202, 10317, 0], 
+		[39494208, 0, 0, 21372, 1645],
+		[11007285490, 0, 0, 2883349, 285481, 28548],
+		[0, 0, 0, 0, -16028637, -6112248, -1330674, -230596],
+		[72932423060, 0, 0, 11832901, 1179751, 117975, 11798],
+		[0, 0, 0, 0, -2848088, -1208753, -297136, -57413],
+		[0, 0, 0, -364965233, -96892815, -15887789, -2230938, -290213], 
+		[0, 0, 0, -55660, -20011, -3553],
+		[-1400886, 0, 0, -911, 0],
+		[-2655400442, 0, 0, -824349, -91594, -10178],
+		[163604694365, 0, 0, 26168863, 2536575, 246500, 23855],
+		[0, 0, 0, -316467666, -81782200, -12927692, -1754267, -221407],
+		[0, 0, 0, -411875739, -126767583, -24943894, -4253740, -676710], 
+		[0, 0, 0, 0, 0, 0, 2204, 2101],
+		[0, 0, 0, 0, -2336823, -882211, -189036, -32146],
+		[0, 0, 0, 0, -8943902, -3542882, -788607, -138366],
+		[0, 0, 0, -2568167, -756561, -121188, -16321],
+		[1294235800, 0, 0, 373032, 20725, -1],
+		[0, 0, 0, 0, -1467454, -617730, -151051, -29543], 
+		[949975748, 0, 0, 235960, 21451, 1950],
+		[0, 0, 0, 24726, 11067, 2893],
+		[0, 0, 0, 1421580, 478465, 97821, 16654],
+		[-364383063, 0, 0, -124960, -13884, -1543],
+		[519279994, 0, 0, 161166, 17908, 1989],
+		[0, 0, 0, -4803, -1591, -145], 
+		[-64725455, 0, 0, -25323, -2681, -298],
+		[-3135702600, 0, 0, -1171021, -104988, -8077],
+		[0, 0, 0, -84876, -27407, -2492]
+		];
+		bag:=[];
+		for i in [1..#cand49] do
+			ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
+			gcd:=GCD(ff,Derivative(ff));
+			ms:=P!(ff/gcd);
+			g:=P!(Derivative(ff)/gcd);
+			deg:=Degree(ms);
+			f:=ms+48*x^(deg-2);
+			coeffs:=Reverse(Coefficients(f));
+			gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
+			ggf:=Evaluate(gf,x-1);
+			clist:=Reverse(Coefficients(ggf));
+			print "------- Infeasibility of", Factorisation(ff), "-------";
+			print "";
+			print "Computing interlacing char polys...";
+			tic := Cputime();
+			ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
+			llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
+			ll2:=[Reverse(Coefficients(l)) : l in llpol];
+			bag cat:= [listInterlaceReduce(ll2,ms)];
+			tt:=Cputime(tic);
+			print "Time taken to compute interlacing char polys:", tt,"seconds";
+			print "";
+			numrows:=#bag[i];
+			m:=Matrix(Rationals(),numrows,deg,[bag[i][j] : j in [1..numrows]]);
+			gg:=Vector(Reverse(Coefficients(g)));
+			print "Coefficient matrix A for interlacing char polys";
+			print m;
+			print "";
+			mm:=Vector(Rationals(),CertificatesOfInfeasibility[i]);
+			print "Certificate of infeasibility c:";
+			print "c =", mm;
+			ac:=mm*Transpose(m);
+			print "Ac >= 0:", isAtLeastZero(ac);
+			print "Ac =", ac;
+			print "g =", gg;
+			innerprod:=&+[gg[j]*mm[j] : j in [1..deg]];
+			print "<g,c> < 0:", innerprod lt 0;
+			print "<g,c> =", innerprod;
+			print "";
+		end for;
+end procedure;
+
+/* 
+checkLemma54MakeTable(all194polys):
+
+input: 	all194polys 	- the list of 194 candidate characteristic polynomials for a Seidel matrix corresponding to 
+						49 equiangular lines in dimension 17 
+						Generate all194polys by running
+						all194polys:=Lemma36Polys(ssc497);
+						after ssc497 has been loaded into the magma terminal.
+						alternatively, all194polys has been precomputed and is available in the file 194polys.magma
+
+Generates data for Figure 5.
+Prints out (i,tt) where i is the index of candidate characteristic polynomial in Table 2 and tt is the time taken
+to compute the interlacing characteristic polynomials for the corresponding candidate characteristic polynomial
+
+Warning: this procedure takes over 6 hours to run on a standard desktop computer.
+*/
+checkLemma54MakeTable:=procedure(all194polys)
+	P<x>:=PolynomialRing(Rationals());
+	cand49red:=all194polys;
+	inds:=[i : i in [2..3]] cat [i : i in [5..5]] cat [i : i in [7..8]] cat [i : i in [11..12]] 
+	cat [i : i in [14..14]] cat [i : i in [16..21]] cat [i : i in [23..23]] cat [i : i in [26..29]] 
+	cat [i : i in [31..34]] cat [i : i in [36..41]] cat [i : i in [43..51]] cat [i : i in [53..57]] 
+	cat [i : i in [59..60]] cat [i : i in [62..70]] cat [i : i in [72..72]] cat [i : i in [74..84]] 
+	cat [i : i in [87..88]] cat [i : i in [90..101]] cat [i : i in [103..121]] cat [i : i in [123..126]] 
+	cat [i : i in [128..129]] cat [i : i in [131..141]] cat [i : i in [143..156]] cat [i : i in [158..166]] 
+	cat [i : i in [168..185]] cat [i : i in [187..193]];
+	cand49:=[cand49red[inds[i]] : i in [1..164]];
+	bag:=[];
+	for i in [1..#cand49] do
+		ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
+		gcd:=GCD(ff,Derivative(ff));
+		ms:=P!(ff/gcd);
+		g:=P!(Derivative(ff)/gcd);
+		deg:=Degree(ms);
+		f:=ms+48*x^(deg-2);
+		coeffs:=Reverse(Coefficients(f));
+		gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
+		ggf:=Evaluate(gf,x-1);
+		clist:=Reverse(Coefficients(ggf));
+		tic := Cputime();
+		ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
+		llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
+		ll2:=[Reverse(Coefficients(l)) : l in llpol];
+		bag cat:= [listInterlaceReduce(ll2,ms)];
+		tt:=Cputime(tic);
+		print "(", i, ",", tt, ")";
+	end for;
+end procedure;
+
+/* 
+checkLemma56poly(pl,pls,crts):
+
+input:	pl		- a candidate characteristic polynomial from Lemma 5.6 after dividing by (x+5)^32*(x-9)^10, given as
+	 			a list of coefficients of a degree-7 polynomial
+		pls 	- the two warranted interlacing characteristic polynomials of pl*(x+5)^32*(x-9)^10
+		crts	- the certificates of warranty for the two warranted interlacing characteristic polynomials
+
+The interlacing characteristic polynomials of pl*(x+5)^32*(x-9)^10 are computed.  Then the certificates of 
+warranty for the two warranted interlacing characteristic polynomials is checked.
+Finally, it is checked that the two warranted polynomials are not Seidel-compatible with eachother.
+All the details are printed to the terminal.
+*/
+checkLemma56poly:=procedure(pl,pls,crts)
+	print pl;
+	print pls;
+	print crts;
+	P<x>:=PolynomialRing(Rationals());
+	fff:=P!(Polynomial(Reverse(pl)))*(x+5)^32*(x-9)^10;
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	// print Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	for i in [1..2] do
+		// #submatrix of m without f1
+		fWarranted:=pls[i];
+		fWarrantedInd:=Index(llSeidelred,fWarranted);
+		// f1range:=[i for i in range(numrows)]
+		// f1range.remove(f1ind)
+		fWarrantedRange:=Remove([1..numrows],fWarrantedInd);
+		mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+		print ""; 
+		print "Show that f", i-1, " = ", fWarranted, " is warranted"; 
+		// print "Matrix A' corresponding to interlacing polynomials without f", i, ":";
+		// print mfWarranted;
+		print ""; 
+		// #Certificate of infeasibility
+		fc:=Vector(Rationals(),crts[i]);
+		print "Certificate of warranty c:";
+		print "c = ", fc;
+		ac:= fc*Transpose(mfWarranted);
+		print "Ac >= 0: ", isAtLeastZero(ac);
+		print "Ac = ", ac;
+		innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+		// ipMp:=MinimalPolynomial(innerprod);
+		// // spF:=SplittingField(innerprod);
+		// rr:=Roots(ipMp,RealField());
+		print "<g,c> < 0: ", Norm(innerprod) lt 0;
+		// print #rr;
+		// print bb;
+		// print fc;
+		print "<g,c> = ", innerprod;
+	end for;
+	// print fbasm;
+	f1p:=P!(Polynomial(Reverse(pls[1])));
+	f2p:=P!(Polynomial(Reverse(pls[2])));
+	mpd:=Derivative(mp);
+
+	print "--- checking for compatibility of f0 and f1 ---";
+	fac:=Factorisation(fff);
+	minpoly:=1;
+	simpFacs:=[];
+	for fc in fac do
+		minpoly *:=fc[1];
+		if fc[2] eq 1 then
+			simpFacs cat:=[fc[1]];
+		end if;
+	end for;
+	if not isSeidelCompatible(fff,f1p,f2p,mpd,minpoly,simpFacs) then
+		print "polys are not Seidel-compatible"; 
+	end if;
+	print "";
+end procedure;
+
+/* 
+checkLemma56():
+
+Checks each polynomial from Lemma 5.6, using checkLemma56poly(pl,pls,crts)
+All the details are printed to the terminal.
+*/
+checkLemma56:=procedure()
+ 	// inds:=[4,6,15,35,42,58,71,73,89,122,157];
+ 	// inds:=[4,6,15,42,58,71,73,89,122,157];
+	inds:=[
+	[ 1, -70, 2079, -34000, 330975, -1919214, 6141825, -8371836 ],
+	[ 1, -70, 2079, -33988, 330543, -1913382, 6106833, -8293104 ],
+	[ 1, -70, 2079, -33976, 330111, -1907598, 6072705, -8218260 ],
+	[ 1, -70, 2079, -33964, 329663, -1901366, 6034401, -8130456 ],
+	[ 1, -70, 2079, -33960, 329503, -1899022, 6019425, -8095140 ],
+	[ 1, -70, 2079, -33952, 329119, -1892366, 5969601, -7958412 ],
+	[ 1, -70, 2079, -33948, 328959, -1889974, 5953761, -7919208 ],
+	[ 1, -70, 2079, -33948, 328991, -1890966, 5963969, -7954056 ],
+	[ 1, -70, 2079, -33944, 328847, -1889118, 5954289, -7938084 ],
+	[ 1, -70, 2079, -33936, 328543, -1884782, 5926657, -7871292 ],
+	[ 1, -70, 2079, -33920, 327839, -1873230, 5842881, -7644780 ]
+	 ];
+	pols:=[[[1,-38,508,-2810,5363],[1,-38,508,-2802,5291]],
+          [[1,-38,508,-2802,5339],[1,-38,508,-2794,5267]],
+          [[1,-56,1273,-15008,96523,-319816,423835], [1,-56,1273,-15008,96555,-320360,426075]],
+          [[1,-56,1273,-15000,96371,-319088,423571], [1,-56,1273,-15000,96371,-319056,423347]],
+		  [[1,-56,1273,-14992,96139,-316952,417243], [1,-56,1273,-14992,96155,-317240,418475]],
+		  [[1,-45,778,-6434,25317,-37761],[1,-45,778,-6426,25205,-37433]],
+		  [[1,-45,778,-6426,25189,-37289],[1,-45,778,-6418,25061,-36817]],
+		  [[1,-43,710,-5618,21257,-30675],[1,-43,710,-5610,21145,-30283]],
+		  [[1,-52,1097,-12008,71851,-222500,277963], [1,-52,1097,-12000,71603,-220076,270467]],
+		  [[1,-54,1183,-13420,82903,-263678,336297], [1,-54,1183,-13412,82687,-261830,331265]],
+		  [[1,-45,778,-6402,24837,-36257],[1,-45,778,-6386,24501,-34529]]];
+	certs:=[[[-28491688,0,0,-13311,-1663],[-71206868,0,0,-31318,-3131]],
+           [[-31466028, 0, 0, -15413, -2201],[-32393128, 0, 0, -14283, -1428]],
+           [[3081463054228, 0, 0, 329213615, 23608945, 1311608, 0], [0, 0, 0, 0, -239073, -107333, -26537]],
+           [[0, 0, 0, 576862162, 159550736, 25867427, 3614120],[-900198292671, 0, 0, -70576836, 0, 678324, 136910]],
+           [[15798865000678, 0, 0, 1810892027, 159441460, 14258992, 1296273],[0, 0, 0, 8229987, 1467053, 0, -42311]],
+           [[7723650238, 0, 0, 1795746, 177797, 17779], [1681764478, 0, 0, 411472, 45720, 5079]],
+           [[8311896038, 0, 0, 1932968, 192633, 19927],[2513477598, 0, 0, 614905, 68323, 7591]],
+		   [[-615702770, 0, 0, -180140, -22209, -2468],[-3736443160, 0, 0, -1027960, -114217, -12691]],
+           [[1614272396498, 0, 0, 236406108, 23278501, 2290900, 221701],[693739600051, 0, 0, 103053553, 10456851, 1071550, 110851]],
+           [[0, 0, 0, 0, 28753, 11854, 2194], [0, 0, 0, 4052423, 1116206, 173878, 22882]],
+           [[-5637966054, 0, 0, -1233304, -103494, -8625],[-27025283304, 0, 0, -5833300, -470427, -37635]]];
+	for i in [1..#inds] do
+		print "Checking polynomial ", inds[i]; 
+		checkLemma56poly(inds[i],pols[i],certs[i]);
+	end for;
+end procedure;
+
+/* 
+checkLemma57poly(pl,war,crts):
+
+input:	pl		- a candidate characteristic polynomial from Lemma 5.7 after dividing by (x+5)^32*(x-9)^10, given as
+	 			a list of coefficients of a degree-7 polynomial
+		war		- a warranted interlacing characteristic polynomials of pl*(x+5)^32*(x-9)^10
+		crts	- the certificate of warranty for war and a certificate of infeasibility for the interlacing 
+				characteristic polynomials that are Seidel-compatible with war
+
+The interlacing characteristic polynomials of pl*(x+5)^32*(x-9)^10 are computed.  Then the certificates of 
+warranty for war is checked.  The list of interlacing characteristic polynomials is reduced to those that
+are Seidel-compatible with war.  Finally, it is checked that the interlacing characteristic polynomials
+that are Seidel-compatible with war do not have a solution in (5) using the certificate of infeasibility.
+All the details are printed to the terminal.
+*/
+checkLemma57poly:=procedure(pl,war,crts)
+	// print pl;
+	// print war;
+	// print crts;
+	P<x>:=PolynomialRing(Rationals());
+	fff:=P!(Polynomial(Reverse(pl)))*(x+5)^32*(x-9)^10;
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	print Factorisation(qp);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	// #submatrix of m without f1
+	fWarranted:=war;
+	fWarrantedInd:=Index(llSeidelred,fWarranted);
+
+	fWarrantedRange:=Remove([1..numrows],fWarrantedInd);
+	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+	print ""; 
+	print "Show that f = ", fWarranted, " is warranted"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f:";
+	// print mfWarranted;
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),crts[1]);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+
+	print "--- get polys Seidel-compatible with f ---";
+	compatPolys:=getSeidelCompatiblePolynomials(llSeidelred,war,fff);
+	for pp in compatPolys do
+		ppp:=P!(Polynomial(Reverse(pp)))*qp;
+		print Factorisation(ppp);
+	end for;
+	// print compatPolys;
+	numrows:=#compatPolys;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
+	fc:=Vector(Rationals(),crts[2]);
+	print "Certificate of infeasibility c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(m);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+	print "";
+end procedure;
+
+
+/* 
+checkLemma57():
+
+Checks each polynomial from Lemma 5.7, using checkLemma57poly(pl,pls,crts)
+All the details are printed to the terminal.
+*/
+checkLemma57:=procedure()
+	inds:=[
+	[ 1, -70, 2079, -33968, 329791, -1902862, 6041889, -8143740 ],
+	[ 1, -70, 2079, -33968, 329791, -1902830, 6041313, -8141148 ],
+	[ 1, -70, 2079, -33964, 329631, -1900534, 6027329, -8110872 ],
+	[ 1, -70, 2079, -33956, 329327, -1896134, 5998545, -8039088 ],
+	[ 1, -70, 2079, -33952, 329151, -1893294, 5978529, -7986924 ],
+	[ 1, -70, 2079, -33932, 328351, -1881398, 5900609, -7797240 ],
+	[ 1, -70, 2079, -33916, 327679, -1870902, 5828449, -7613320 ],
+	[ 1, -70, 2079, -33900, 326975, -1859286, 5743265, -7379064 ]
+	 ];
+	pols:=[[ 1, -56, 1273, -15000, 96339, -318576, 421619 ],
+          [ 1, -56, 1273, -15000, 96339, -318544, 421459 ],
+          [ 1, -47, 854, -7466, 31161, -49015 ],
+          [ 1, -56, 1273, -14992, 96155, -317304, 419371 ],
+		  [ 1, -47, 850, -7342, 30061, -46531 ],
+		  [ 1, -54, 1183, -13412, 82687, -261926, 332321 ],
+		  [ 1, -41, 646, -4870, 17497, -23889 ],
+		  [ 1, -32, 358, -1632, 2553 ]];
+	certs:=[[[0, 0, 0, 1746419, 491392, 81630, 11528],[-733717562599, 0, 0, -88445449, -8599751, -854743, -87218]],
+           [[0, 0, 0, 2578890, 690376, 105095, 13403],[1986879326641, 0, 0, 183663110, 8328599, 0, -81386]],
+           [[49638392174, 0, 0, 10008058, 946709, 90162], [0, 0, 0, 58308, 28387, 9164]],
+           [[0, 0, 0, 3772987, 1029536, 162478, 21753],[877829032285, 0, 0, 0, -19643059, -4005362, -619899]],
+           [[-30845693350, 0, 0, -6031794, -513344, -42779],[0, 0, 0, 17473, 5644, 889]],
+           [[0, 0, 0, 15489527, 4414523, 731381, 103163], [0, 0, 0, 0, 39830, 17496, 3881]],
+           [[-4146865216, 0, 0, -1459666, -205965, -26866],[0, 0, 0, -312193, -119497, -23881]],
+		   [[13345166, 0, 0, 9135, 610],[-11430609, 0, 0, -7006, 0]]];
+	for i in [1..#inds] do
+		print "Checking polynomial ", inds[i]; 
+		checkLemma57poly(inds[i],pols[i],certs[i]);
+	end for;
+end procedure;
+
+/*
+checkLemma58():
+
+Prints the details of the computations used in Lemma 5.8
+*/
+checkLemma58:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	fff:=(x+5)^32*(x-9)^13*(x-11)^2*(x^2-21*x+92);
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	// print Factorisation(qp);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+
+	print "Number of interlacing polynomials:", numrows;
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	// #submatrix of m without f1
+	fWarranted1:=[ 1, -36, 454, -2356, 4241 ];
+	fWarrantedInd1:=Index(llSeidelred,fWarranted1);
+	llSeidelred1:=Remove(llSeidelred,fWarrantedInd1);
+	fWarrantedRange1:=Remove([1..numrows],fWarrantedInd1);
+	
+	fWarranted2:=[ 1, -36, 454, -2348, 4169 ];
+	fWarrantedInd2:=Index(llSeidelred1,fWarranted2);
+	// print #llSeidelred, Index(llSeidelred,fWarranted2);
+	
+	fWarrantedRange:=Remove(fWarrantedRange1,fWarrantedInd2);
+	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+	print ""; 
+	print "Show that f1= ", fWarranted1, " and f2 = ", fWarranted2, " are a warranted pair"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f1 and f2:";
+	// print mfWarranted;
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[-17507602, 0, 0, -9281, -1031]);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+
+	print "--- get polys Seidel-compatible with f1 ---";
+	compatPolys1:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted1,fff);
+	// print compatPolys1;
+	print "--- get polys Seidel-compatible with f2 ---";
+	compatPolys2:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted2,fff);
+	compatPolys:=compatPolys1;
+	for p in compatPolys2 do
+		if not p in compatPolys then
+			compatPolys cat:= [p];
+		end if;
+	end for;
+	print "Polynomials Seidel-compatible with f1 or f2:";
+	for i in [1..#compatPolys] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys[i]))*qp);
+	end for;
+	// if checkPairwiseCompatibility(compatPolys,fff,mp) then
+	// 	print "Pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
+	// print "";
+	numrows:=#compatPolys;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
+	// print bb;
+	pr,sp:=Solution(m,Vector(Rationals(),bb));
+	// print pr;
+	// print sp;
+	print "--- list interlacing configurations ---";
+	print findSols(pr,sp,Degree(fff));
+	
+	// calculate angles
+	N<sqrt73>:=NumberField(x^2-73);
+	PN<zz>:=PolynomialRing(N);
+	ggroots:=Roots(fff,N);
+
+	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
+	froots:=[ggroots[i][1] : i in [1..#ggroots]];
+
+	// // print froots;
+	// fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
+	// // print fbas;
+	// fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
+	//
+	// fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
+	mpd:=Derivative(mp);
+	comptPolys:=[P!Polynomial(Reverse(f)) : f in compatPolys];
+	afs:=[Vector(N,[Evaluate(f,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]) : f in comptPolys];
+	print "Squared angles:";
+	print afs;
+	
+	a1:=Roots(Polynomial([-afs[2][4]*afs[3][4],0,1]),N)[1][1];
+	a2:=Roots(Polynomial([-afs[2][5]*afs[3][5],0,1]),N)[1][1];
+	q:=(zz+5)*(zz-9);
+	print "++:", Evaluate(q,froots[4])*a1+Evaluate(q,froots[5])*a2;
+	print "+-:", Evaluate(q,froots[4])*a1-Evaluate(q,froots[5])*a2;
+end procedure;
+
+/*
+checkLemma63():
+
+Prints the details of the computations used in Lemma 6.3
+*/
+checkLemma63:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	qp1, compat1, sls:=printInterlacingConfigsForWarranted((x+5)^32*(x-7)*(x-9)^14*(x-12)*(x-15),[1,-38,508,-2794,5299],[-60980320, 0, 0, -26357, -2396]);
+end procedure;
+
+/*
+checkLemma64():
+
+Prints the details of the computations used in Lemma 6.4
+*/
+checkLemma64:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	fff:=(x+5)^32*(x-7)*(x-8)*(x-9)^12*(x-11)^2*(x-15);
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+
+	print "Number of interlacing polynomials:", numrows;
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	// #submatrix of m without f1
+	fWarranted1:=[ 1, -45, 778, -6458, 25701, -39081 ];
+	fWarrantedInd1:=Index(llSeidelred,fWarranted1);
+	llSeidelred1:=Remove(llSeidelred,fWarrantedInd1);
+	fWarrantedRange1:=Remove([1..numrows],fWarrantedInd1);
+	
+	fWarranted2:=[ 1, -45, 778, -6442, 25397, -37673 ];
+	fWarrantedInd2:=Index(llSeidelred1,fWarranted2);
+	// print #llSeidelred, Index(llSeidelred,fWarranted2);
+	
+	fWarrantedRange:=Remove(fWarrantedRange1,fWarrantedInd2);
+	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+	print ""; 
+	print "Show that f1= ", fWarranted1, " and f2 = ", fWarranted2, " are a warranted pair"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f1 and f2:";
+	// print mfWarranted;
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[-114666126726, 0, 0, -29336361, -3575825, -437857]);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+
+	print "--- get polys Seidel-compatible with f1 ---";
+	compatPolys1:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted1,fff);
+
+	print "--- get polys Seidel-compatible with f2 ---";
+	compatPolys2:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted2,fff);
+	compatPolys:=compatPolys1;
+	for p in compatPolys2 do
+		if not p in compatPolys then
+			compatPolys cat:= [p];
+		end if;
+	end for;
+	compatPolys:=Sort(compatPolys);
+	print "Polynomials Seidel-compatible with f1 or f2:";
+	for i in [1..#compatPolys] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys[i]))*qp);
+	end for;
+	numrows:=#compatPolys;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
+	// print bb;
+	pr,sp:=Solution(m,Vector(Rationals(),bb));
+	// print pr;
+	// print sp;
+	print "--- list interlacing configurations ---";
+	print findSols(pr,sp,Degree(fff));
+end procedure;
+
+/*
+checkLemma65():
+
+Prints the details of the computations used in Lemma 6.5
+*/
+checkLemma65:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	qp1, compat1, sls:=printInterlacingConfigsForWarranted((x+5)^32*(x-7)^2*(x-8)*(x-9)^10*(x-11)^2*(x-13)^2,[ 1, -43, 718, -5802, 22609, -33803 ],[-1368582672, 0, 0, -369129, -41014, -4558]);
+	print "There are", #sls, "interlacing configurations";
+	check:=true;
+	for c in sls do
+		if c[2]+c[4]+c[6]+c[7]+c[8] ne 33 then
+			check:=false;
+			print "exception!", c;
+		end if;
+	end for;
+	if check then
+		print "Each interlacing configuration (m1,...,m8) has m2+m4+m6+m7+m8 = 33";
+	end if;
+end procedure;
+
+/*
+checkLemma71():
+
+Prints the details of the computations used in Lemma 7.1
+*/
+checkLemma71:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	qp1, compat1, sls1:=printInterlacingConfigsForWarranted((x+5)^32*(x-4)*(x-9)^10*(x-11)^6,[ 1, -19, 107, -185 ],[11984, 0, 0, 67]);
+	qp2, compat2, sls2:=printInterlacingConfigsForWarranted((x+5)^31*(x-5)*(x-9)^9*(x-11)^5*(x^2-14*x+37),[ 1, -34, 438, -2652, 7513, -7906 ],[-632673042, 0, 0, -330026, -37186, -4649]);
+	comptPolys1:=[P!Polynomial(Reverse(f)) : f in compat1];
+	comptPolys2:=[P!Polynomial(Reverse(f)) : f in compat2];
+	print "Polynomial f1:";
+	print Factorisation(qp1*comptPolys1[1]);
+	print "Polynomial f2:";
+	print Factorisation(qp1*comptPolys1[2]);
+	for i in [1..#comptPolys2] do
+		if interlace(qp1*comptPolys1[1],qp2*comptPolys2[i]) and interlace(qp1*comptPolys1[2],qp2*comptPolys2[i]) then
+			print "index",i, "interlaces both f1 and f2:";
+			print Factorisation(qp2*comptPolys2[i]);
+		end if;
+	end for;
+end procedure;
+
+/*
+checkLemma74():
+
+Prints the details of the computations used in Lemma 7.4
+*/
+checkLemma74:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	fff:=(x+5)^32*(x-7)*(x-9)^10*(x-11)^4*(x^2-19*x+76);
+	qp1, compat1, sls:=printInterlacingConfigsForWarranted((x+5)^32*(x-7)*(x-9)^10*(x-11)^4*(x^2-19*x+76),[ 1, -41, 646, -4886, 17753, -24801 ],[0, 0, 0, -31002, -10684, -1527]);
+	N<sqrt57>:=NumberField(x^2-57);
+	PN<zz>:=PolynomialRing(N);
+	ggroots:=Roots(fff,N);
+
+	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
+	froots:=[ggroots[i][1] : i in [1..#ggroots]];
+	// print(1)
+	// print froots;
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	// fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
+	// // print fbas;
+	// fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
+	// // print(3)
+	// fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
+	mpd:=Derivative(mp);
+	comptPolys:=[P!Polynomial(Reverse(f)) : f in compat1];
+	afs:=[Vector(N,[Evaluate(f,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]) : f in comptPolys];
+	print "Squared angles";
+	print afs;
+	K<bb1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][6]*afs[1][5]]]:Abs);
+	sqroots:=[SquareRoot(K!(afs[i][6]*afs[i][5])) : i in [1..5]];
+	bs:=[RealSigns(sqroots[i])[1]*sqroots[i] : i in [1..5]];
+	// es:=[1,-1,-1,1,1];
+	//print integer matrix
+	q:=(zz+5)*(zz-7)*(zz-9)*(zz-11);
+	sqroots55:=[[SquareRoot((afs[i][5]*afs[j][5])) : j in [1..5]] : i in [1..5]];
+	// print froots;
+	print "Checking for half-integers in q(lambda1)alpha_lambda1*alpha_lambda1^t...";
+	// print froots;
+	print Evaluate(q,froots[5])*Matrix(N,sqroots55);
+	print "";
+	//print "checking orthogonality"
+	print "Checking possibilities for delta...";
+	for sl in sls do
+		check:=true;
+		print "Checking interlacing configuration:", sl;
+		for e4 in CartesianPower({-1,1},4) do
+			delta:=[1] cat [e4[i] : i in [1..4]];
+			// print delta;
+			// print &+[K!sl[i]*delta[i]*bs[i] : i in [1..5]];
+			if &+[K!sl[i]*delta[i]*bs[i] : i in [1..5]] eq 0 then
+				check:=false;
+				print sl;		
+			end if;
+		end for;
+		if check then
+			print "No such delta exists";
+			print "";
+		end if;
+	end for;
+end procedure;
+
+/*
+checkLemma82():
+
+Prints the details of the computations used in Lemma 8.2
+*/
+checkLemma82:=procedure()
+	P<x>:=PolynomialRing(Rationals());
+	fff:=(x+5)^32*(x-9)^12*(x-11)^3*(x^2-19*x+72);
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+
+	print "Number of interlacing polynomials:", numrows;
+	print "";
+	// AC:=AlgebraicClosure();
+	// PK<z>:=PolynomialRing(AC);
+	// ggroots:=Roots(fff,AC);
+	//
+	// mults:=Vector(AC,[ggroots[i][2] : i in [1..#ggroots]]);
+	// froots:=[ggroots[i][1] : i in [1..#ggroots]];
+
+	// print froots;
+	// fbas:=[PK!(PK!(mp)/(z-r)) : r in froots];
+	// // print fbas;
+	// fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
+	//
+	// fbasm:=Matrix(AC,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	// #submatrix of m without f1
+	fWarranted1:=[ 1, -34, 404, -1966, 3323 ];
+	fWarrantedInd1:=Index(llSeidelred,fWarranted1);
+	llSeidelred1:=Remove(llSeidelred,fWarrantedInd1);
+	fWarrantedRange1:=Remove([1..numrows],fWarrantedInd1);
+	
+	fWarranted2:=[ 1, -34, 404, -1966, 3339 ];
+	fWarrantedInd2:=Index(llSeidelred1,fWarranted2);
+	// print #llSeidelred, Index(llSeidelred,fWarranted2);
+	
+	fWarrantedRange:=Remove(fWarrantedRange1,fWarrantedInd2);
+	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+	print ""; 
+	print "Show that ", fWarranted1, " and ", fWarranted2, " are a warranted pair"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f:";
+	// print mfWarranted;
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[-37937620, 0, 0, -29081, -5816]);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+
+	print "--- get polys Seidel-compatible with f3 ---";
+	compatPolys1:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted1,fff);
+	
+	print "Polynomials Seidel-compatible with f4:";
+	for i in [1..#compatPolys1] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys1[i]))*qp);
+	end for;
+	// if checkPairwiseCompatibility(compatPolys1,fff,mp) then
+	// 	print "Pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
+	numrows:=#compatPolys1;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys1[j] : j in [1..numrows]]);
+	// print bb;
+	pr,sp:=Solution(m,Vector(Rationals(),bb));
+	// print pr;
+	// print sp;
+	print "--- list interlacing configurations ---";
+	sls:=findSols(pr,sp,Degree(fff));
+	print "There are", #sls, "interlacing configurations:";
+	print sls;
+	
+	print "--- get polys Seidel-compatible with f4 ---";
+	compatPolys2:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted2,fff);
+	
+	print "Polynomials Seidel-compatible with f4:";
+	for i in [1..#compatPolys2] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys2[i]))*qp);
+	end for;
+	// if checkPairwiseCompatibility(compatPolys2,fff,mp) then
+	// 	print "pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
+	numrows:=#compatPolys2;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys2[j] : j in [1..numrows]]);
+	// print bb;
+	pr,sp:=Solution(m,Vector(Rationals(),bb));
+	// print pr;
+	// print sp;
+	print "--- list interlacing configurations ---";
+	sls:=findSols(pr,sp,Degree(fff));
+	print "There are", #sls, "interlacing configurations:";
+	print sls;
+	// calculate angles
+	N<sqrt73>:=NumberField(x^2-73);
+	PN<zz>:=PolynomialRing(N);
+	ggroots:=Roots(fff,N);
+	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
+	froots:=[ggroots[i][1] : i in [1..#ggroots]];
+	// print(1)
+	// print froots;
+	// fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
+	// // print fbas;
+	// fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
+	// // print(3)
+	// fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
+	mpd:=Derivative(mp);
+	comptPolys:=[P!Polynomial(Reverse(f)) : f in compatPolys2];
+	afs:=[Vector(N,[N!(Evaluate(f,froots[i])/Evaluate(mpd,froots[i])) : i in [1..#ggroots]]) : f in comptPolys];
+	print "Squared angles:";
+	print afs;
+	
+	sqroots44:=[[SquareRoot((afs[i][4]*afs[j][4])) : j in [1..4]] : i in [1..4]];
+	sqroots55:=[[SquareRoot((afs[i][5]*afs[j][5])) : j in [1..4]] : i in [1..4]];
+	aija:=[[RealSigns(sqroots44[i][j])[1]*sqroots44[i][j] : j in [1..4]] : i in [1..4]];
+	aijb:=[[RealSigns(sqroots55[i][j])[1]*sqroots55[i][j] : j in [1..4]] : i in [1..4]];
+
+	
+	K<bb1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][4]*afs[1][5]]]:Abs);
+	// b1:=SquareRoot(afs[1][4]*afs[1][5]);
+	sqroots:=[SquareRoot(K!(afs[i][4]*afs[i][5])) : i in [1..4]];
+	bs:=[RealSigns(sqroots[i])[1]*sqroots[i] : i in [1..4]];
+	
+	q:=(zz+5)*(zz-9)*(zz-11);
+	sqroots44:=[[SquareRoot((afs[i][4]*afs[j][4])) : j in [1..4]] : i in [1..4]];
+	// print froots;
+	print "Checking for half-integers in q(lambda1)alpha_lambda1*alpha_lambda1^t...";
+	// print froots;
+	print Evaluate(q,froots[4])*Matrix(N,sqroots44);
+	print "";
+	// es:=[1,1,1,1];
+	print "Checking possibilities for delta...";
+	for sl in sls do
+		check:=true;
+		print "Checking interlacing configuration:", sl;
+		for e3 in CartesianPower({-1,1},3) do
+			// print &+[K!sl[i]*es[i]*bs[i] : i in [1..6]];
+			delta:=[1] cat [e3[i] : i in [1..3]];
+			if &+[K!sl[i]*delta[i]*bs[i] : i in [1..4]] eq 0 then
+				// print sl;
+				check:=false;
+				print "delta = ", delta;
+				uu:=DiagonalMatrix([-1,1,1,1])*Matrix(N,aija)*DiagonalMatrix([-1,1,1,1]);
+				vv:=DiagonalMatrix([-1,1,1,1])*DiagonalMatrix(delta)*Matrix(N,aijb)*DiagonalMatrix(delta)*DiagonalMatrix([-1,1,1,1]);
+				print "Euler matrix (congruent to 3J mod 4):";
+				print 3*(157-sqrt73)*uu/2+3*(157+sqrt73)*vv/2;
+			end if;
+		end for;
+		if check then
+			print "No such delta exists";
+			print "";
+		end if;
+	end for;
+end procedure;
+
+/*
+checkLemma83(ssc477):
+
+input: ssc477 	- the set of 2048 congruence classes for characteristic polynomials of Seidel matrices of order 47 modulo 128
+				Generate ssc477 by running
+				ssc477:=SeidelCharPolysMod(47,7);
+				alternatively, ssc477 has been precomputed and is available in the file SeidelCharPolys477.magma
+
+Prints the details of the computations used in Lemma 8.3.  We use precomputed congruence classes for characteristic polynomials of Seidel matrices of order 47 modulo 128 merely for convenience
+*/
+checkLemma83:=procedure(ssc477)
+	P<x>:=PolynomialRing(Rationals());
+	fff:=(x+5)^32*(x-9)^13*(x-13)^2*(x^2-17*x+64);
+	print Factorisation(fff);
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	print "Computing interlacing char polys...";
+	tic := Cputime();
+	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows:=#llSeidelred;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
+	
+	print "Number of interlacing polynomials:", numrows;
+	print "";
+
+	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
+	print "Matrix A corresponding to interlacing polynomials:";
+	print m;
+	// #submatrix of m without f1
+	fWarranted:=[ 1, -34, 408, -2022, 3503 ];
+	fWarrantedInd:=Index(llSeidelred,fWarranted);
+	fWarrantedRange:=Remove([1..numrows],fWarrantedInd);
+	
+	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
+	print ""; 
+	print "Show that f = ", fWarranted, " is warranted"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f:";
+	// print mfWarranted;
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[-12716952, 0, 0, -7781, -864]);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod:= &+[fc[j]*bb[j] : j in [1..Degree(mp)]];
+
+	print "<g,c> < 0: ", Norm(innerprod) lt 0;
+
+	print "<g,c> = ", innerprod;
+
+	print "--- get polys Seidel-compatible with f ---";
+	compatPolys:=getSeidelCompatiblePolynomials(llSeidelred,fWarranted,fff);
+	
+	print "Polynomials Seidel-compatible with f:";
+	for i in [1..#compatPolys] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys[i]))*qp);
+	end for;
+	// if checkPairwiseCompatibility(compatPolys,fff,mp) then
+	// 	print "Pairwise compatibility: check";
+	// else
+	// 	print "failed pairwise compatibility";
+	// end if;
+	numrows:=#compatPolys;
+	m:=Matrix(Rationals(),numrows,Degree(mp),[compatPolys[j] : j in [1..numrows]]);
+	// print bb;
+	pr,sp:=Solution(m,Vector(Rationals(),bb));
+	// print pr;
+	// print sp;
+	print "--- list interlacing configurations ---";
+	sls:=findSols(pr,sp,Degree(fff));
+	print "There are", #sls, "interlacing configurations:";
+	print sls;
+	// calculate angles
+	N<sqrt33>:=NumberField(x^2-33);
+	PN<zz>:=PolynomialRing(N);
+	ggroots:=Roots(fff,N);
+
+	mults:=Vector(N,[ggroots[i][2] : i in [1..#ggroots]]);
+	froots:=[ggroots[i][1] : i in [1..#ggroots]];
+
+	// print froots;
+	// fbas:=[PN!(PN!(mp)/(zz-r)) : r in froots];
+	// // print fbas;
+	// fbaslist:=[Reverse(Coefficients(l)) : l in fbas];
+	//
+	// fbasm:=Matrix(N,Degree(mp),Degree(mp),[fbaslist[j] : j in [1..Degree(mp)]]);
+	mpd:=Derivative(mp);
+	comptPolys:=[P!Polynomial(Reverse(f)) : f in compatPolys];
+	afs:=[Vector(N,[Evaluate(f,froots[i])/Evaluate(mpd,froots[i]) : i in [1..#froots]]) : f in comptPolys];
+	print "Squared angles:";
+	print afs;
+	
+	sqroots44:=[[SquareRoot((afs[i][4]*afs[j][4])) : j in [1..6]] : i in [1..6]];
+	sqroots55:=[[SquareRoot((afs[i][5]*afs[j][5])) : j in [1..6]] : i in [1..6]];
+	aija:=[[RealSigns(sqroots44[i][j])[1]*sqroots44[i][j] : j in [1..6]] : i in [1..6]];
+	aijb:=[[RealSigns(sqroots55[i][j])[1]*sqroots55[i][j] : j in [1..6]] : i in [1..6]];
+	
+	q:=(zz+5)*(zz-9)*(zz-13);
+	sqroots44:=[[SquareRoot((afs[i][4]*afs[j][4])) : j in [1..6]] : i in [1..6]];
+	// print froots;
+	print "Checking for half-integers in q(lambda1)alpha_lambda1*alpha_lambda1^t...";
+	// print froots;
+	print Evaluate(q,froots[4])*Matrix(N,sqroots44);
+	print "";
+	
+	K<bb1>:=NumberField([Polynomial([-x,0,1]):x in [afs[1][4]*afs[1][5]]]:Abs);
+
+	sqroots:=[SquareRoot(K!(afs[i][4]*afs[i][5])) : i in [1..6]];
+	bs:=[RealSigns(sqroots[i])[1]*sqroots[i] : i in [1..6]];
+	// es:=[1,1,-1,-1,1,-1];
+	Eps:=DiagonalMatrix([1,-1,1,1,-1,1]);
+	print "Checking possibilities for delta...";
+	for sl in sls do
+		check:=true;
+		print "Checking interlacing configuration:", sl;
+		for e5 in CartesianPower({-1,1},5) do
+			delta:=[1] cat [e5[i] : i in [1..5]];
+			if &+[K!sl[i]*delta[i]*bs[i] : i in [1..6]] eq 0 then
+				uu:=Matrix(N,aija);
+				vv:=DiagonalMatrix(delta)*Matrix(N,aijb)*DiagonalMatrix(delta);
+				// print "survived orthogonality";
+				 mmm:=Eps*(3*(67+19*sqrt33)*uu/2+3*(67-19*sqrt33)*vv/2)*Eps;
+				 if mmm in MatrixAlgebra(Rationals(),6) then
+	 				// print sl;
+					check:=false;
+	 				// print e5;
+					print "delta = ", delta;
+	 				// print [K!sl[i]*delta[i]*bs[i] : i in [1..6]];
+					print "Euler matrix (congruent to J mod 4):";
+					print mmm;
+				 end if;
+			end if;
+		end for;
+		if check then
+			print "No such delta exists";
+			print "";
+		end if;
+	end for;
+	
+	print "Factorisation of f6:";
+	fff6:=comptPolys[6]*qp;
+	print Factorisation(fff6);
+	mp6:=P!(fff6/GCD(fff6,Derivative(fff6)));
+	qp6:=P!(fff6/mp6);
+
+	bb6:=Reverse(Coefficients(P!(Derivative(fff6)/qp6)));
+	print "Computing interlacing char polys of f6...";
+	tic := Cputime();
+	llSeidelred6:=getInterlacingCharacteristicPolynomialsOddnPreComp(fff6,7,ssc477);
+	toc := Cputime(tic);
+	print "Time taken to compute interlacing char polys:", toc,  "seconds";
+	print "";
+	numrows6:=#llSeidelred6;
+	m6:=Matrix(Rationals(),numrows6,Degree(mp6),[llSeidelred6[j] : j in [1..numrows6]]);
+	print "Number of interlacing polynomials:", numrows6;
+	
+	comptPolys2:=[P!(comptPolys[i]*qp/GCD(comptPolys[i]*qp,Derivative(comptPolys[i]*qp))) : i in [1..6]];
+	llSeidelred6int:=[];
+	for p in llSeidelred6 do
+		if interlace(comptPolys2[1],(x-9)*P!Polynomial(Reverse(p))) or interlace(comptPolys2[3],(x-9)*P!Polynomial(Reverse(p))) or interlace(comptPolys2[4],(x-9)*P!Polynomial(Reverse(p))) then
+			llSeidelred6int cat:=[p];
+		end if;
+	end for;
+	numrows6int:=#llSeidelred6int;
+	m6int:=Matrix(Rationals(),numrows6int,Degree(mp6),[llSeidelred6int[j] : j in [1..numrows6int]]);
+	
+	print "Number of interlacing polynomials that interlace f1, f3, or f4:", numrows6int;
+	print m6int;
+
+	
+	fWarranted1:=[ 1, -42, 662, -4776, 15201, -16566 ];
+	fWarrantedInd1:=Index(llSeidelred6int,fWarranted1);
+	llSeidelred1:=Remove(llSeidelred6int,fWarrantedInd1);
+	fWarrantedRange1:=Remove([1..numrows6int],fWarrantedInd1);
+	
+	fWarranted2:=[ 1, -42, 662, -4772, 15113, -16082 ];
+	fWarrantedInd2:=Index(llSeidelred1,fWarranted2);
+	// print #llSeidelred6int, Index(llSeidelred6int,fWarranted2);
+	
+	fWarrantedRange:=Remove(fWarrantedRange1,fWarrantedInd2);
+	// print fWarrantedRange;
+	mfWarranted:=Submatrix(m6int,fWarrantedRange,[1..Degree(mp6)]);
+	print ""; 
+	print "Show that f_{6,2}= ", fWarranted1, " and f_{6,3} = ", fWarranted2, " are a warranted pair"; 
+	// print "Matrix A' corresponding to interlacing polynomials without f1 and f2:";
+	// print mfWarranted;
+	print ""; 
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[5716582502, 0, 0, 1614215, 145454, 13175]);
+	print "Certificate of warranty c:";
+	print "c = ", fc;
+	ac:= fc*Transpose(mfWarranted);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod6:= &+[fc[j]*bb6[j] : j in [1..Degree(mp6)]];
+
+	print "<g,c> < 0: ", Norm(innerprod6) lt 0;
+
+	print "<g,c> = ", innerprod6;
+	
+	print "--- get polys Seidel-compatible with f_{6,2} ---";
+	compatPolys62:=getSeidelCompatiblePolynomials(llSeidelred6int,fWarranted1,fff6);
+	
+	print "Polynomials Seidel-compatible with f_{6,2}:";
+	for i in [1..#compatPolys62] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys62[i]))*qp6);
+	end for;
+	
+	numrows62:=#compatPolys62;
+	m:=Matrix(Rationals(),numrows62,Degree(mp6),[compatPolys62[j] : j in [1..numrows62]]);
+	print "Certificate of infeasibility c:";
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[38051376, 0, 0, 10571, 823, 3]);
+	print "c = ", fc;
+	ac:= fc*Transpose(m);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod62:= &+[fc[j]*bb6[j] : j in [1..Degree(mp6)]];
+
+	print "<g,c> < 0: ", Norm(innerprod62) lt 0;
+
+	print "<g,c> = ", innerprod62;
+	print "";
+	
+	print "--- get polys Seidel-compatible with f_{6,3} ---";
+	compatPolys63:=getSeidelCompatiblePolynomials(llSeidelred6int,fWarranted2,fff6);
+	
+	print "Polynomials Seidel-compatible with f_{6,3}:";
+	for i in [1..#compatPolys63] do
+		print i, Factorisation(P!Polynomial(Reverse(compatPolys63[i]))*qp6);
+	end for;
+	
+	numrows63:=#compatPolys63;
+	m:=Matrix(Rationals(),numrows63,Degree(mp6),[compatPolys63[j] : j in [1..numrows63]]);
+	print "Certificate of infeasibility c:";
+	// #Certificate of infeasibility
+	fc:=Vector(Rationals(),[-7998906611, 0, 0, -2236872, -195255, -17128]);
+	print "c = ", fc;
+	ac:= fc*Transpose(m);
+	print "Ac >= 0: ", isAtLeastZero(ac);
+	print "Ac = ", ac;
+	innerprod63:= &+[fc[j]*bb6[j] : j in [1..Degree(mp6)]];
+
+	print "<g,c> < 0: ", Norm(innerprod63) lt 0;
+
+	print "<g,c> = ", innerprod63;
+	print "";
+end procedure;
+
+/*
+checkNonexistence49():
+
+Runs through all computations for the paper
+
+Warning: this takes at least 8 hours to run!
+*/
+checkNonexistence49:=procedure()
+	print "-------- Generating 2048 congruence classes for characteristic polynomials of Seidel matrices of order 49 modulo 128 --------";
+	ssc497:=SeidelCharPolysMod(49,7);
+	print "-------- Generating polynomials of Lemma 3.6 --------";
+	all194polys:=generateLemma36Polys(ssc497);
+	print "-------- Checking Lemma 5.3 --------";
+	checkLemma53(all194polys);
+	print "-------- Checking Lemma 5.4 --------";
+	checkLemma54(all194polys);
+	print "-------- Checking Lemma 5.6 --------";
+	checkLemma56();
+	print "-------- Checking Lemma 5.7 --------";
+	checkLemma57();
+	print "-------- Checking Lemma 5.8 --------";
+	checkLemma58();
+	print "-------- Checking Lemma 6.3 --------";
+	checkLemma63();
+	print "-------- Checking Lemma 6.4 --------";
+	checkLemma64();
+	print "-------- Checking Lemma 6.5 --------";
+	checkLemma65();
+	print "-------- Checking Lemma 7.1 --------";
+	checkLemma71();
+	print "-------- Checking Lemma 7.4 --------";
+	checkLemma74();
+	print "-------- Checking Lemma 8.2 --------";
+	checkLemma82();
+	print "-------- Generating 2048 congruence classes for characteristic polynomials of Seidel matrices of order 47 modulo 128 --------";
+	ssc477:=SeidelCharPolysMod(47,7);
+	print "-------- Checking Lemma 8.3 --------";
+	checkLemma83(ssc477);
+end procedure;

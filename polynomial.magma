@@ -1,0 +1,455 @@
+/* 
+numRealRootsSquareFree(p):
+
+input:	p	- a squarefree polynomial
+
+output: number of real roots of p
+*/
+numRealRootsSquareFree:=function(p)
+	P<x>:=PolynomialRing(Rationals());
+	SS:=[p,Derivative(p)];
+	while Degree(SS[#SS]) gt 0 do
+		i:=#SS;
+		SS cat:=[-(SS[i-1] mod SS[i])];
+	end while;
+	TT:=[Reverse(Coefficients(SS[i]))[1]*x^(#SS-i) : i in [1..#SS-1]] cat [SS[#SS]];
+	infBefore:=Evaluate(TT[1],1);
+	minfBefore:=Evaluate(TT[1],-1);
+	b1:=infBefore gt 0;
+	b2:=minfBefore gt 0;
+	count1:=0;
+	count2:=0;
+	for i in [2..#TT] do
+		infAfter:=Evaluate(TT[i],1);
+		minfAfter:=Evaluate(TT[i],-1);
+		c1:=infAfter gt 0;
+		c2:=minfAfter gt 0;
+		if b1 ne c1 then
+			count1+:=1;
+		end if;
+		if b2 ne c2 then
+			count2+:=1;
+		end if;
+		infBefore:=infAfter;
+		minfBefore:=minfAfter;
+		b1:=c1;
+		b2:=c2;
+	end for;
+	return count2-count1;
+end function;
+
+/* 
+numRealRoots(p):
+
+input:	p	- a polynomial
+
+output: number of real roots of p
+*/
+numRealRoots:=function(p)
+	P<x>:=PolynomialRing(Rationals());
+	pp:=P!p;
+	if Degree(pp) lt 1 then
+		return 0;
+	end if;
+	g := GCD(pp,Derivative(pp));
+	if g eq 1 then
+		return numRealRootsSquareFree(pp);
+	end if;
+	return $$(P!(pp/g)) + $$(g);
+end function;
+
+/* 
+getCoeffs(clist,dv,nn,d):
+
+input:	clist	- a list of coefficients
+		dv		- divisor
+		d		- degree of target polynomial
+
+output: List of lists of the form clist + [k] such that k is divisible by dv
+		and the corresponding polynomial is totally real.
+*/
+getCoeffs:=function(clist,dv,d)
+	P<x>:=PolynomialRing(Rationals());
+	Q<xx,y>:=PolynomialRing(Rationals(),2);
+	f:=P!Polynomial(Reverse(clist));
+	nn:=#clist-1;
+	f*:=x^(d-nn);
+	for j in [1..d-nn-1] do
+		f:=Derivative(f);
+		f/:=j;
+	end for;
+	g:=Q!Evaluate(f,xx)+y;
+	g:=P!UnivariatePolynomial(Discriminant(g,xx));
+	roots:=Roots(g,RealField(1000));
+	groots:=[];
+	for i in [1..#roots] do
+		groots cat:=[roots[i][1] : j in [1..roots[i][2]]];
+	end for;
+	if #groots ne Degree(g) then
+		print clist;
+		print dv;
+		print nn;
+		print "possible error";
+	end if;
+	// print roots;
+	pos:=Floor(nn/2);
+	low:=Ceiling(groots[pos]);
+	high:=Floor(groots[pos+1]);
+	// print low, high;
+	ss:=[];
+	for j in [Ceiling(low/dv)..Floor(high/dv)+1] do
+		if numRealRoots(f+dv*j) eq nn+1 then
+			ss cat:=[clist cat [dv*j]];
+		end if;
+	end for;
+	return ss;
+end function;
+
+/* 
+getCoeffsType2(d,clist):
+
+input:	clist	- a list of coefficients
+		d		- degree of target polynomial
+
+output: List of lists of coefficients of all type-2 totally-real polynomials of degree d whose first #clist coefficients are clist.
+*/
+getCoeffsType2:=function(d,clist)
+	P<x>:=PolynomialRing(Rationals());
+	n:=#clist-1;
+	coeffLists:=[[] : i in [1..d-n+1]];
+	coeffLists[1]:=[clist];
+	for i in [2..d-n+1] do
+		nn:=#coeffLists[i-1][1]-1;
+		for j in [1..#coeffLists[i-1]] do
+			coeffLists[i] cat:=getCoeffs(coeffLists[i-1][j],2^(nn+1),d);
+		end for;
+	end for;
+	return coeffLists[d-n+1];
+end function;
+
+/* 
+getCoeffsWeaklyType2(d,clist):
+
+input:	clist	- a list of coefficients
+		d		- degree of target polynomial
+
+output: List of lists of coefficients of all weakly type-2 totally-real polynomials of degree d whose first #clist coefficients are clist.
+*/
+getCoeffsWeaklyType2:=function(d,clist)
+	P<x>:=PolynomialRing(Rationals());
+	n:=#clist-1;
+	coeffLists:=[[] : i in [1..d-n+1]];
+	coeffLists[1]:=[clist];
+	for i in [2..d-n+1] do
+		nn:=#coeffLists[i-1][1]-1;
+		for j in [1..#coeffLists[i-1]] do
+			coeffLists[i] cat:=getCoeffs(coeffLists[i-1][j],2^nn,d);
+		end for;
+	end for;
+	return coeffLists[d-n+1];
+end function;
+
+
+/* 
+interlace(ff,gg):
+
+input:	ff	- totally-real polynomial
+		gg	- totally-real polynomial of degree one less than the degree of ff
+
+output: true if the roots of gg interlace with those of ff, false otherwise
+*/
+interlace:=function(ff,gg)
+	P<x>:=PolynomialRing(Rationals());
+	f:=P!ff;
+	g:=P!gg;
+	d:=GCD(f,g); //divide by GCD so that there are no common zeros
+	f:=P!(f/d);
+	g:=P!(g/d);
+	roots:=Roots(g,RealField(1000));
+	r:=[];
+	for i in [1..#roots] do
+		r cat:=[roots[i][1] : j in [1..roots[i][2]]];
+	end for;
+	rB2S:=Reverse(r);
+	for i in [1..#rB2S] do
+		if i mod 2 eq 1 then
+			if Evaluate(f,rB2S[i]) gt 0 then
+				return false;
+			end if;
+		end if;
+		if i mod 2 eq 0 then
+			if Evaluate(f,rB2S[i]) lt 0 then
+				return false;
+			end if;
+		end if;
+	end for;
+	return true;
+end function;
+
+/* 
+listInterlaceReduce(l,f):
+
+input:	l	- list of totally-real polynomials of degree d
+		f	- totally-real polynomial of degree d+1
+
+output: sublist of l consisting of those polynomials of l that interlace with f
+*/
+listInterlaceReduce:=function(l,f)
+	P<x>:=PolynomialRing(Rationals());
+	ll:=[];
+	for i in [1..#l] do
+		p:=P!Polynomial(Reverse(l[i]));
+		if interlace(f,p) then
+			ll cat:=[l[i]];
+		end if;
+	end for;
+	return ll;
+end function;
+
+/* 
+isType2(f):
+
+input:	f	- integer polynomial
+
+output: true if f is type 2, false otherwise
+*/
+isType2:=function(f)
+	P<x>:=PolynomialRing(Integers());
+	v:=Reverse(Coefficients(P!f));
+	for i in [1..#v] do
+		if v[i] mod 2^(i-1) ne 0 then
+			return false;
+		end if;
+	end for;
+	return true;
+end function;
+
+/* 
+listPowerReduce(l,f):
+
+input:	l	- list of integer polynomials 
+		f	- integer polynomial
+
+output: sublist of l consisting of those polynomials g of l such that f*g is type 2
+*/
+listPowerReduce:=function(l,f)
+	P<x>:=PolynomialRing(Rationals());
+	ll:=[];
+	for i in [1..#l] do
+		p:=P!Polynomial(Reverse(l[i]));
+		pp:=(P!f)*p;
+		if isType2(Evaluate(pp,x-1)) then
+			ll cat:=[l[i]];
+		end if;
+	end for;
+	return ll;
+end function;
+
+/* 
+randomSeidel(n):
+
+input:	n	- integer
+
+output: a Seidel matrix of order n (generated at random)
+*/
+randomSeidel:=function(n)
+	m:=Matrix(Integers(),n,n,[0 : i in [1..n^2]]);
+	for i in [1..n] do
+		for j in [i+1..n] do
+			r:=Random({0,1});
+			r:=1-2*r;
+			m[i,j]:=r;
+			m[j,i]:=r;
+		end for;
+	end for;
+	return m;
+end function;
+
+/* 
+SeidelCharPolysMod(n):
+
+input:	n	- integer
+		k	- integer
+
+output: A list of of congruence classes for characteristic polynomials of Seidel matrices of order n modulo 2^k
+
+Warning: this function may never terminate.  See Remark 3.5
+*/
+SeidelCharPolysMod:=function(n,k)
+	ll:={};
+	P<x>:=PolynomialRing(Integers(2^k));
+	if n mod 2 eq 1 then
+		ub:=2^(Binomial(k-2,2)+1);
+	else
+		ub:=2^Binomial(k-2,2);
+	end if;
+	while #ll lt ub do
+		m:=randomSeidel(n);
+		Include(~ll,Coefficients(P!CharacteristicPolynomial(m)));
+	end while;
+	return ll;
+end function;
+
+/* 
+listPowerReduceOdd(l,f,n,k):
+
+input:	l	- list of integer polynomials 
+		f	- integer polynomial
+		n	- integer
+		k	- integer
+
+output: sublist of l consisting of those polynomials g of l such that f*g belongs to the 
+		list of of congruence classes for characteristic polynomials of Seidel matrices of order n modulo 2^k
+*/
+listPowerReduceOdd:=function(l,f,n,k)
+	P<x>:=PolynomialRing(Integers(2^k));
+	ll:=[];
+	ssc:=SeidelCharPolysMod(n,k);
+	for i in [1..#l] do
+		p:=P!Polynomial(Reverse(l[i]));
+		pp:=(P!f)*p;
+		if Coefficients(pp) in ssc then
+			ll cat:=[l[i]];
+		end if;
+	end for;
+	return ll;
+end function;
+
+/* 
+listPowerReduceOddPreComp(l,f,k,ssc):
+
+input:	l	- list of integer polynomials 
+		f	- integer polynomial
+		k	- integer
+		ssc - list of polynomials
+
+output: sublist of l consisting of those polynomials g of l such that f*g belongs to the list ssc
+*/
+listPowerReduceOddPreComp:=function(l,f,k,ssc)
+	P<x>:=PolynomialRing(Integers(2^k));
+	ll:=[];
+	for i in [1..#l] do
+		p:=P!Polynomial(Reverse(l[i]));
+		pp:=(P!f)*p;
+		if Coefficients(pp) in ssc then
+			ll cat:=[l[i]];
+		end if;
+	end for;
+	return ll;
+end function;
+
+/* 
+isAtLeastZero(l):
+
+input:	l	- list of real numbers
+
+output: true if every entry of l is nonnegative, false otherwise
+*/
+isAtLeastZero:=function(l)
+	d:=Dimension(Parent(l));
+	for i in [1..d] do
+		if l[i] lt 0 then
+			return false;
+		end if;
+	end for;
+	return true;
+end function;
+
+/* 
+isAtLeastZero(l):
+
+input:	l	- list of real numbers
+
+output: true if every entry of l is a nonnegative integer, false otherwise
+*/
+isAtLeastZeroInt:=function(l)
+	d:=Dimension(Parent(l));
+	for i in [1..d] do
+		if l[i] lt 0 then
+			return false;
+		end if;
+	end for;
+	for i in [1..d] do
+		if Denominator(l[i]) gt 1 then
+			return false;
+		end if;
+	end for;
+	return true;
+end function;
+
+/* 
+getInterlacingCharacteristicPolynomialsEvenn(fff):
+
+input:	fff	-	polynomial
+
+output: list of interlacing characteristic polynomials for fff 
+*/
+getInterlacingCharacteristicPolynomialsEvenn:=function(fff)
+	P<x>:=PolynomialRing(Rationals());
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	n:=Degree(fff)-1;
+	d:=Degree(mp)-1;
+	aa:=Reverse(Coefficients(mp));
+	q:=x^d+aa[2]*x^(d-1)+(aa[3]+n)*x^(d-2);
+	qq:=Evaluate(q,x-1);
+	bb:=Reverse(Coefficients(qq));
+	ll2:=getCoeffsType2(d,[1,bb[2],bb[3]]);
+	llshift2:=[P!(Evaluate(Polynomial(Reverse(l)),x+1)) : l in ll2];
+	lllist2:=[Reverse(Coefficients(l)) : l in llshift2];
+	llred2:=listInterlaceReduce(lllist2,mp);
+	return listPowerReduce(llred2,qp);
+end function;
+
+/* 
+getInterlacingCharacteristicPolynomialsOddn(fff,k):
+
+input:	fff	- polynomial
+		k	- integer
+
+output: list of interlacing characteristic polynomials for fff (working modulo 2^k)
+*/
+getInterlacingCharacteristicPolynomialsOddn:=function(fff,k)
+	P<x>:=PolynomialRing(Rationals());
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	n:=Degree(fff)-1;
+	d:=Degree(mp)-1;
+	aa:=Reverse(Coefficients(mp));
+	q:=x^d+aa[2]*x^(d-1)+(aa[3]+n)*x^(d-2);
+	qq:=Evaluate(q,x-1);
+	bb:=Reverse(Coefficients(qq));
+	ll2:=getCoeffsWeaklyType2(d,[1,bb[2],bb[3]]);
+	llshift2:=[P!(Evaluate(Polynomial(Reverse(l)),x+1)) : l in ll2];
+	lllist2:=[Reverse(Coefficients(l)) : l in llshift2];
+	llred2:=listInterlaceReduce(lllist2,mp);
+	return listPowerReduceOdd(llred2,qp,n,k);
+end function;
+
+/* 
+getInterlacingCharacteristicPolynomialsOddnPreComp(fff,k,ssc):
+
+input:	fff	- polynomial
+		k	- integer
+		ssc - list of polynomials
+
+output: list of interlacing characteristic polynomials for fff (working modulo 2^k) 
+		using precomuted list of congruence classes for characteristic polynomials of 
+		Seidel matrices of the appropriate order modulo 2^k
+*/
+getInterlacingCharacteristicPolynomialsOddnPreComp:=function(fff,k,ssc)
+	P<x>:=PolynomialRing(Rationals());
+	mp:=P!(fff/GCD(fff,Derivative(fff)));
+	qp:=P!(fff/mp);
+	n:=Degree(fff)-1;
+	d:=Degree(mp)-1;
+	aa:=Reverse(Coefficients(mp));
+	q:=x^d+aa[2]*x^(d-1)+(aa[3]+n)*x^(d-2);
+	qq:=Evaluate(q,x-1);
+	bb:=Reverse(Coefficients(qq));
+	ll2:=getCoeffsWeaklyType2(d,[1,bb[2],bb[3]]);
+	llshift2:=[P!(Evaluate(Polynomial(Reverse(l)),x+1)) : l in ll2];
+	lllist2:=[Reverse(Coefficients(l)) : l in llshift2];
+	llred2:=listInterlaceReduce(lllist2,mp);
+	return listPowerReduceOddPreComp(llred2,qp,k,ssc);
+end function;
