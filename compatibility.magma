@@ -31,7 +31,7 @@ isXiSeidelCompatible:=function(fff,f1p,f2p,mpd,xi)
 	sqrts:=[SquareRoot(af2[simpInds[i]]*af1[simpInds[i]]) : i in [1..#simpInds]];
 	// Computing some minimal polynomials with the hope of simplifying computation of other minimal polynomials
 	// A quirk of working in the algebraic closure.
-	for i in [1..#simpInds] do 
+	for i in [1..#simpInds] do
 		tmp:=MinimalPolynomial(Evaluate(q,froots[simpInds[i]])*sqrts[i]);
 	end for;
 	n:=Degree(fff);
@@ -126,7 +126,7 @@ input:	fff			- polynomial
 output: true if f1p and f2p are Seidel-compatible with respect to fff, false otherwise
 */
 isSeidelCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
-	//For convenience, code we consider polynomials to be compatible with themselves.
+	//For convenience, we consider polynomials to be compatible with themselves.
 	if f1p eq f2p then
 		print "Seidel-compatible, (self-compatibility)";
 		return true;
@@ -142,7 +142,7 @@ isSeidelCompatible:=function(fff,f1p,f2p,mpd,minpoly,Facs)
 	for xi in Facs do
 		proots:=Roots(xi,AC);
 		m:=MinimalPolynomial(Evaluate(fg,proots[1][1]));
-		
+
 		if IsIrreducible(Evaluate(m,x^2)) then
 			if #GaloisGroup(Evaluate(m,x^2)) gt #GaloisGroup(m) and Degree(fff) mod 2 eq 1 and Degree(m) eq #proots then
 			// if d mod SquareFree(Integers()!Resultant(fg,p)) ne 0 then

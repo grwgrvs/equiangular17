@@ -37,32 +37,32 @@ checkLemma53:=procedure(all194polys)
 	cand49red:=all194polys;
 	inds:=[13,86];
 	cand49:=[cand49red[inds[i]] : i in [1..2]];
-		bag:=[];
-		for i in [1..#cand49] do
-			ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
-			gcd:=GCD(ff,Derivative(ff));
-			ms:=P!(ff/gcd);
-			g:=P!(Derivative(ff)/gcd);
-			deg:=Degree(ms);
-			f:=ms+48*x^(deg-2);
-			coeffs:=Reverse(Coefficients(f));
-			gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
-			ggf:=Evaluate(gf,x-1);
-			clist:=Reverse(Coefficients(ggf));
-			print "------- Infeasibility of", Factorisation(ff), "-------";
-			print "";
-			print "Computing interlacing char polys...";
-			tic := Cputime();
-			ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
-			llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
-			ll2:=[Reverse(Coefficients(l)) : l in llpol];
-			bag cat:= [listInterlaceReduce(ll2,ms)];
-			tt:=Cputime(tic);
-			print "Time taken to compute interlacing char polys:", tt,"seconds";
-			print "";
-			print "Number of interlacing char polys:", #bag[i];
-			print "";
-		end for;
+	bag:=[];
+	for i in [1..#cand49] do
+		ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
+		gcd:=GCD(ff,Derivative(ff));
+		ms:=P!(ff/gcd);
+		g:=P!(Derivative(ff)/gcd);
+		deg:=Degree(ms);
+		f:=ms+48*x^(deg-2);
+		coeffs:=Reverse(Coefficients(f));
+		gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
+		ggf:=Evaluate(gf,x-1);
+		clist:=Reverse(Coefficients(ggf));
+		print "------- Infeasibility of", Factorisation(ff), "-------";
+		print "";
+		print "Computing its interlacing characteristic polynomials...";
+		tic := Cputime();
+		ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
+		llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
+		ll2:=[Reverse(Coefficients(l)) : l in llpol];
+		bag cat:= [listInterlaceReduce(ll2,ms)];
+		tt:=Cputime(tic);
+		print "Time taken to compute interlacing char polys:", tt,"seconds";
+		print "";
+		print "Number of interlacing char polys:", #bag[i];
+		print "";
+	end for;
 end procedure;
 
 
@@ -264,48 +264,48 @@ checkLemma54:=procedure(all194polys)
 		[-64725455, 0, 0, -25323, -2681, -298],
 		[-3135702600, 0, 0, -1171021, -104988, -8077],
 		[0, 0, 0, -84876, -27407, -2492]
-		];
-		bag:=[];
-		for i in [1..#cand49] do
-			ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
-			gcd:=GCD(ff,Derivative(ff));
-			ms:=P!(ff/gcd);
-			g:=P!(Derivative(ff)/gcd);
-			deg:=Degree(ms);
-			f:=ms+48*x^(deg-2);
-			coeffs:=Reverse(Coefficients(f));
-			gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
-			ggf:=Evaluate(gf,x-1);
-			clist:=Reverse(Coefficients(ggf));
-			print "------- Infeasibility of", Factorisation(ff), "-------";
-			print "";
-			print "Computing interlacing char polys...";
-			tic := Cputime();
-			ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
-			llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
-			ll2:=[Reverse(Coefficients(l)) : l in llpol];
-			bag cat:= [listInterlaceReduce(ll2,ms)];
-			tt:=Cputime(tic);
-			print "Time taken to compute interlacing char polys:", tt,"seconds";
-			print "";
-			numrows:=#bag[i];
-			m:=Matrix(Rationals(),numrows,deg,[bag[i][j] : j in [1..numrows]]);
-			gg:=Vector(Reverse(Coefficients(g)));
-			print "Coefficient matrix A for interlacing char polys";
-			print m;
-			print "";
-			mm:=Vector(Rationals(),CertificatesOfInfeasibility[i]);
-			print "Certificate of infeasibility c:";
-			print "c =", mm;
-			ac:=mm*Transpose(m);
-			print "Ac >= 0:", isAtLeastZero(ac);
-			print "Ac =", ac;
-			print "g =", gg;
-			innerprod:=&+[gg[j]*mm[j] : j in [1..deg]];
-			print "<g,c> < 0:", innerprod lt 0;
-			print "<g,c> =", innerprod;
-			print "";
-		end for;
+	];
+	bag:=[];
+	for i in [1..#cand49] do
+		ff:=P!Polynomial(Reverse(cand49[i]))*(x+5)^32*(x-9)^4;
+		gcd:=GCD(ff,Derivative(ff));
+		ms:=P!(ff/gcd);
+		g:=P!(Derivative(ff)/gcd);
+		deg:=Degree(ms);
+		f:=ms+48*x^(deg-2);
+		coeffs:=Reverse(Coefficients(f));
+		gf:=x^(deg-3)*P!(Polynomial([coeffs[3],coeffs[2],coeffs[1]]));
+		ggf:=Evaluate(gf,x-1);
+		clist:=Reverse(Coefficients(ggf));
+		print "------- Infeasibility of", Factorisation(ff), "-------";
+		print "";
+		print "Computing its interlacing characteristic polynomials...";
+		tic := Cputime();
+		ll:=getCoeffsType2(deg-1,[clist[1],clist[2],clist[3]]);
+		llpol:=[Evaluate(P!Polynomial(Reverse(l)),x+1) : l in ll];
+		ll2:=[Reverse(Coefficients(l)) : l in llpol];
+		bag cat:= [listInterlaceReduce(ll2,ms)];
+		tt:=Cputime(tic);
+		print "Time taken to compute interlacing char polys:", tt,"seconds";
+		print "";
+		numrows:=#bag[i];
+		m:=Matrix(Rationals(),numrows,deg,[bag[i][j] : j in [1..numrows]]);
+		gg:=Vector(Reverse(Coefficients(g)));
+		print "Coefficient matrix A for interlacing char polys";
+		print m;
+		print "";
+		mm:=Vector(Rationals(),CertificatesOfInfeasibility[i]);
+		print "Certificate of infeasibility c:";
+		print "c =", mm;
+		ac:=mm*Transpose(m);
+		print "Ac >= 0:", isAtLeastZero(ac);
+		print "Ac =", ac;
+		print "g =", gg;
+		innerprod:=&+[gg[j]*mm[j] : j in [1..deg]];
+		print "<g,c> < 0:", innerprod lt 0;
+		print "<g,c> =", innerprod;
+		print "";
+	end for;
 end procedure;
 
 /* 
@@ -371,15 +371,16 @@ Finally, it is checked that the two warranted polynomials are not Seidel-compati
 All the details are printed to the terminal.
 */
 checkLemma56poly:=procedure(pl,pls,crts)
-	print pl;
-	print pls;
-	print crts;
+	// print pl;
+	// print pls;
+	// print crts;
 	P<x>:=PolynomialRing(Rationals());
 	fff:=P!(Polynomial(Reverse(pl)))*(x+5)^32*(x-9)^10;
+	print "Checking polynomial:"; 
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
-	print "Computing interlacing char polys...";
+	print "Computing its interlacing char polys...";
 	tic := Cputime();
 	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
 	toc := Cputime(tic);
@@ -488,7 +489,6 @@ checkLemma56:=procedure()
            [[0, 0, 0, 0, 28753, 11854, 2194], [0, 0, 0, 4052423, 1116206, 173878, 22882]],
            [[-5637966054, 0, 0, -1233304, -103494, -8625],[-27025283304, 0, 0, -5833300, -470427, -37635]]];
 	for i in [1..#inds] do
-		print "Checking polynomial ", inds[i]; 
 		checkLemma56poly(inds[i],pols[i],certs[i]);
 	end for;
 end procedure;
@@ -514,27 +514,25 @@ checkLemma57poly:=procedure(pl,war,crts)
 	// print crts;
 	P<x>:=PolynomialRing(Rationals());
 	fff:=P!(Polynomial(Reverse(pl)))*(x+5)^32*(x-9)^10;
+	print "Checking polynomial: ";
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
-	print Factorisation(qp);
-	print "Computing interlacing char polys...";
+	// print Factorisation(qp);
+	print "Computing its interlacing characteristic polynomials...";
 	tic := Cputime();
 	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
 	toc := Cputime(tic);
 	print "Time taken to compute interlacing char polys:", toc,  "seconds";
 	print "";
-
 	numrows:=#llSeidelred;
 	m:=Matrix(Rationals(),numrows,Degree(mp),[llSeidelred[j] : j in [1..numrows]]);
-
 	bb:=Reverse(Coefficients(P!(Derivative(fff)/qp)));
 	print "Matrix A corresponding to interlacing polynomials:";
 	print m;
 	// #submatrix of m without f1
 	fWarranted:=war;
 	fWarrantedInd:=Index(llSeidelred,fWarranted);
-
 	fWarrantedRange:=Remove([1..numrows],fWarrantedInd);
 	mfWarranted:=Submatrix(m,fWarrantedRange,[1..Degree(mp)]);
 	print ""; 
@@ -612,8 +610,7 @@ checkLemma57:=procedure()
            [[0, 0, 0, 15489527, 4414523, 731381, 103163], [0, 0, 0, 0, 39830, 17496, 3881]],
            [[-4146865216, 0, 0, -1459666, -205965, -26866],[0, 0, 0, -312193, -119497, -23881]],
 		   [[13345166, 0, 0, 9135, 610],[-11430609, 0, 0, -7006, 0]]];
-	for i in [1..#inds] do
-		print "Checking polynomial ", inds[i]; 
+	for i in [1..#inds] do 
 		checkLemma57poly(inds[i],pols[i],certs[i]);
 	end for;
 end procedure;
@@ -630,7 +627,7 @@ checkLemma58:=procedure()
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
 	// print Factorisation(qp);
-	print "Computing interlacing char polys...";
+	print "Computing its interlacing characteristic polynomials...";
 	tic := Cputime();
 	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
 	toc := Cputime(tic);
@@ -752,7 +749,7 @@ checkLemma64:=procedure()
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
-	print "Computing interlacing char polys...";
+	print "Computing its interlacing characteristic polynomials...";
 	tic := Cputime();
 	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
 	toc := Cputime(tic);
@@ -938,7 +935,7 @@ checkLemma82:=procedure()
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
-	print "Computing interlacing char polys...";
+	print "Computing its interlacing characteristic polynomials...";
 	tic := Cputime();
 	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
 	toc := Cputime(tic);
@@ -1119,7 +1116,7 @@ checkLemma83:=procedure(ssc477)
 	print Factorisation(fff);
 	mp:=P!(fff/GCD(fff,Derivative(fff)));
 	qp:=P!(fff/mp);
-	print "Computing interlacing char polys...";
+	print "Computing its interlacing characteristic polynomials...";
 	tic := Cputime();
 	llSeidelred:=getInterlacingCharacteristicPolynomialsEvenn(fff);
 	toc := Cputime(tic);
