@@ -857,18 +857,18 @@ checkLemma71:=procedure()
 	print Factorisation(qp1*comptPolys1[2]);
 	for i in [1..#comptPolys2] do
 		if interlace(qp1*comptPolys1[1],qp2*comptPolys2[i]) and interlace(qp1*comptPolys1[2],qp2*comptPolys2[i]) then
-			print "index",i, "interlaces both f1 and f2:";
+			print "polynomial with index",i, "interlaces both f1 and f2:";
 			print Factorisation(qp2*comptPolys2[i]);
 		end if;
 	end for;
 end procedure;
 
 /*
-checkLemma74():
+checkLemma73():
 
-Prints the details of the computations used in Lemma 7.4
+Prints the details of the computations used in Lemma 7.3
 */
-checkLemma74:=procedure()
+checkLemma73:=procedure()
 	P<x>:=PolynomialRing(Rationals());
 	fff:=(x+5)^32*(x-7)*(x-9)^10*(x-11)^4*(x^2-19*x+76);
 	qp1, compat1, sls:=printInterlacingConfigsForWarranted((x+5)^32*(x-7)*(x-9)^10*(x-11)^4*(x^2-19*x+76),[ 1, -41, 646, -4886, 17753, -24801 ],[0, 0, 0, -31002, -10684, -1527]);
@@ -1384,8 +1384,8 @@ checkNonexistence49:=procedure()
 	checkLemma65();
 	print "-------- Checking Lemma 7.1 --------";
 	checkLemma71();
-	print "-------- Checking Lemma 7.4 --------";
-	checkLemma74();
+	print "-------- Checking Lemma 7.3 --------";
+	checkLemma73();
 	print "-------- Checking Lemma 8.2 --------";
 	checkLemma82();
 	print "-------- Generating 2048 congruence classes for characteristic polynomials of Seidel matrices of order 47 modulo 128 --------";

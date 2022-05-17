@@ -1,0 +1,25 @@
+------- Infeasibility of [
+    <x - 9, 12>,
+    <x - 8, 1>,
+    <x + 5, 32>,
+    <x^2 - 22*x + 113, 2>
+]
+-------
+
+Computing its interlacing characteristic polynomials...
+Time taken to compute interlacing char polys: 0.030 seconds
+
+Number of interlacing char polys: 0
+
+------- Infeasibility of [
+    <x - 9, 8>,
+    <x - 8, 1>,
+    <x + 5, 32>,
+    <x^2 - 20*x + 95, 4>
+]
+-------
+
+Computing its interlacing characteristic polynomials...
+Time taken to compute interlacing char polys: 0.010 seconds
+
+Number of interlacing char polys: 0

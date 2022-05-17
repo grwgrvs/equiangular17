@@ -1,0 +1,534 @@
+[
+    <x - 11, 4>,
+    <x - 9, 10>,
+    <x - 7, 1>,
+    <x + 5, 32>,
+    <x^2 - 19*x + 76, 1>
+]
+Computing interlacing char polys...
+Time taken to compute interlacing char polys: 0.680 seconds
+
+Number of interlacing polynomials: 99
+
+Matrix A corresponding to interlacing polynomials:
+[     1    -41    646  -4886  17753 -24801]
+[     1    -41    646  -4878  17593 -24137]
+[     1    -41    646  -4878  17593 -24105]
+[     1    -41    646  -4878  17593 -24073]
+[     1    -41    646  -4878  17609 -24249]
+[     1    -41    646  -4878  17609 -24217]
+[     1    -41    646  -4878  17609 -24185]
+[     1    -41    646  -4878  17625 -24329]
+[     1    -41    646  -4878  17625 -24297]
+[     1    -41    646  -4878  17641 -24409]
+[     1    -41    646  -4870  17433 -23409]
+[     1    -41    646  -4870  17433 -23377]
+[     1    -41    646  -4870  17433 -23345]
+[     1    -41    646  -4870  17449 -23553]
+[     1    -41    646  -4870  17449 -23521]
+[     1    -41    646  -4870  17449 -23489]
+[     1    -41    646  -4870  17449 -23457]
+[     1    -41    646  -4870  17465 -23665]
+[     1    -41    646  -4870  17465 -23633]
+[     1    -41    646  -4870  17465 -23601]
+[     1    -41    646  -4870  17465 -23569]
+[     1    -41    646  -4870  17481 -23777]
+[     1    -41    646  -4870  17481 -23745]
+[     1    -41    646  -4870  17481 -23713]
+[     1    -41    646  -4870  17481 -23681]
+[     1    -41    646  -4870  17497 -23857]
+[     1    -41    646  -4870  17497 -23825]
+[     1    -41    646  -4870  17497 -23793]
+[     1    -41    646  -4862  17273 -22617]
+[     1    -41    646  -4862  17289 -22761]
+[     1    -41    646  -4862  17289 -22729]
+[     1    -41    646  -4862  17305 -22905]
+[     1    -41    646  -4862  17305 -22873]
+[     1    -41    646  -4862  17305 -22841]
+[     1    -41    646  -4862  17321 -23049]
+[     1    -41    646  -4862  17321 -23017]
+[     1    -41    646  -4862  17321 -22985]
+[     1    -41    646  -4862  17321 -22953]
+[     1    -41    646  -4862  17337 -23193]
+[     1    -41    646  -4862  17337 -23161]
+[     1    -41    646  -4862  17337 -23129]
+[     1    -41    646  -4862  17337 -23097]
+[     1    -41    646  -4862  17337 -23065]
+[     1    -41    646  -4862  17353 -23305]
+[     1    -41    646  -4862  17353 -23273]
+[     1    -41    646  -4862  17353 -23241]
+[     1    -41    646  -4862  17353 -23209]
+[     1    -41    646  -4862  17353 -23177]
+[     1    -41    646  -4862  17369 -23385]
+[     1    -41    646  -4862  17369 -23353]
+[     1    -41    646  -4854  17145 -22113]
+[     1    -41    646  -4854  17161 -22257]
+[     1    -41    646  -4854  17161 -22225]
+[     1    -41    646  -4854  17177 -22401]
+[     1    -41    646  -4854  17177 -22369]
+[     1    -41    646  -4854  17177 -22337]
+[     1    -41    646  -4854  17193 -22545]
+[     1    -41    646  -4854  17193 -22513]
+[     1    -41    646  -4854  17193 -22481]
+[     1    -41    646  -4854  17193 -22449]
+[     1    -41    646  -4854  17209 -22689]
+[     1    -41    646  -4854  17209 -22657]
+[     1    -41    646  -4854  17209 -22625]
+[     1    -41    646  -4854  17209 -22593]
+[     1    -41    646  -4854  17209 -22561]
+[     1    -41    646  -4854  17225 -22833]
+[     1    -41    646  -4854  17225 -22801]
+[     1    -41    646  -4854  17225 -22769]
+[     1    -41    646  -4854  17225 -22737]
+[     1    -41    646  -4854  17241 -22913]
+[     1    -41    646  -4846  17017 -21609]
+[     1    -41    646  -4846  17033 -21753]
+[     1    -41    646  -4846  17033 -21721]
+[     1    -41    646  -4846  17049 -21897]
+[     1    -41    646  -4846  17049 -21865]
+[     1    -41    646  -4846  17049 -21833]
+[     1    -41    646  -4846  17065 -22041]
+[     1    -41    646  -4846  17065 -22009]
+[     1    -41    646  -4846  17065 -21977]
+[     1    -41    646  -4846  17065 -21945]
+[     1    -41    646  -4846  17081 -22185]
+[     1    -41    646  -4846  17081 -22153]
+[     1    -41    646  -4846  17081 -22121]
+[     1    -41    646  -4846  17097 -22329]
+[     1    -41    646  -4846  17097 -22297]
+[     1    -41    646  -4838  16889 -21105]
+[     1    -41    646  -4838  16905 -21249]
+[     1    -41    646  -4838  16905 -21217]
+[     1    -41    646  -4838  16921 -21393]
+[     1    -41    646  -4838  16921 -21361]
+[     1    -41    646  -4838  16921 -21329]
+[     1    -41    646  -4838  16937 -21537]
+[     1    -41    646  -4838  16937 -21505]
+[     1    -41    646  -4838  16953 -21681]
+[     1    -41    646  -4830  16761 -20601]
+[     1    -41    646  -4830  16777 -20745]
+[     1    -41    646  -4830  16777 -20713]
+[     1    -41    646  -4830  16793 -20889]
+[     1    -41    646  -4822  16633 -20097]
+
+Show that f =  [ 1, -41, 646, -4886, 17753, -24801 ]
+ is warranted
+
+Certificate of warranty c:
+c =  (     0      0      0 -31002 -10684  -1527)
+Ac >= 0:  true
+Ac =  (121343 72479 23615 121423 72559 23695 72639 23775 23855 471111 422247 373383 520055 471191 422327 373463 
+    520135 471271 422407 373543 520215 471351 422487 373623 471431 422567 373703 723151 772095 723231 821039 772175 
+    723311 869983 821119 772255 723391 918927 870063 821199 772335 723471 919007 870143 821279 772415 723551 870223 
+    821359 1073079 1122023 1073159 1170967 1122103 1073239 1219911 1171047 1122183 1073319 1268855 1219991 1171127 
+    1122263 1073399 1317799 1268935 1220071 1171207 1269015 1423007 1471951 1423087 1520895 1472031 1423167 1569839 
+    1520975 1472111 1423247 1618783 1569919 1521055 1667727 1618863 1772935 1821879 1773015 1870823 1821959 1773095 
+    1919767 1870903 1968711 2122863 2171807 2122943 2220751 2472791)
+<g,c> < 0:  true
+<g,c> =  -1163569
+--- get polys Seidel-compatible with f ---
+1 / 99
+Seidel-compatible, (self-compatibility)
+is Seidel-compatible!
+
+2 / 99
+not Seidel-compatible
+
+3 / 99
+not Seidel-compatible
+
+4 / 99
+not Seidel-compatible
+
+5 / 99
+Fast check is inconclusive....
+Checking compatibility with respect to x^2 - 19*x + 76
+...
+Seidel-compatible!
+Checking compatibility with respect to x - 7
+...
+Seidel-compatible!
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 532
+...
+Seidel-compatible!
+is Seidel-compatible!
+
+6 / 99
+not Seidel-compatible
+
+7 / 99
+Fast check is inconclusive....
+Checking compatibility with respect to x^2 - 19*x + 76
+...
+Seidel-compatible!
+Checking compatibility with respect to x - 7
+...
+Seidel-compatible!
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 532
+...
+Seidel-compatible!
+is Seidel-compatible!
+
+8 / 99
+not Seidel-compatible
+
+9 / 99
+not Seidel-compatible
+
+10 / 99
+not Seidel-compatible
+
+11 / 99
+Fast check is inconclusive....
+Checking compatibility with respect to x^2 - 19*x + 76
+...
+Seidel-compatible!
+Checking compatibility with respect to x - 7
+...
+Seidel-compatible!
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 532
+...
+Seidel-compatible!
+is Seidel-compatible!
+
+12 / 99
+not Seidel-compatible
+
+13 / 99
+not Seidel-compatible
+
+14 / 99
+not Seidel-compatible
+
+15 / 99
+not Seidel-compatible
+
+16 / 99
+not Seidel-compatible
+
+17 / 99
+not Seidel-compatible
+
+18 / 99
+not Seidel-compatible
+
+19 / 99
+not Seidel-compatible
+
+20 / 99
+not Seidel-compatible
+
+21 / 99
+not Seidel-compatible
+
+22 / 99
+not Seidel-compatible
+
+23 / 99
+not Seidel-compatible
+
+24 / 99
+not Seidel-compatible
+
+25 / 99
+not Seidel-compatible
+
+26 / 99
+not Seidel-compatible
+
+27 / 99
+not Seidel-compatible
+
+28 / 99
+not Seidel-compatible
+
+29 / 99
+not Seidel-compatible
+
+30 / 99
+not Seidel-compatible
+
+31 / 99
+not Seidel-compatible
+
+32 / 99
+not Seidel-compatible
+
+33 / 99
+not Seidel-compatible
+
+34 / 99
+not Seidel-compatible
+
+35 / 99
+not Seidel-compatible
+
+36 / 99
+not Seidel-compatible
+
+37 / 99
+not Seidel-compatible
+
+38 / 99
+not Seidel-compatible
+
+39 / 99
+not Seidel-compatible
+
+40 / 99
+not Seidel-compatible
+
+41 / 99
+not Seidel-compatible
+
+42 / 99
+not Seidel-compatible
+
+43 / 99
+not Seidel-compatible
+
+44 / 99
+not Seidel-compatible
+
+45 / 99
+not Seidel-compatible
+
+46 / 99
+not Seidel-compatible
+
+47 / 99
+not Seidel-compatible
+
+48 / 99
+Fast check is inconclusive....
+Checking compatibility with respect to x^2 - 19*x + 76
+...
+Seidel-compatible!
+Checking compatibility with respect to x - 7
+...
+Seidel-compatible!
+Checking compatibility with respect to x^3 - 26*x^2 + 209*x - 532
+...
+Seidel-compatible!
+is Seidel-compatible!
+
+49 / 99
+not Seidel-compatible
+
+50 / 99
+not Seidel-compatible
+
+51 / 99
+not Seidel-compatible
+
+52 / 99
+not Seidel-compatible
+
+53 / 99
+not Seidel-compatible
+
+54 / 99
+not Seidel-compatible
+
+55 / 99
+not Seidel-compatible
+
+56 / 99
+not Seidel-compatible
+
+57 / 99
+not Seidel-compatible
+
+58 / 99
+not Seidel-compatible
+
+59 / 99
+not Seidel-compatible
+
+60 / 99
+not Seidel-compatible
+
+61 / 99
+not Seidel-compatible
+
+62 / 99
+not Seidel-compatible
+
+63 / 99
+not Seidel-compatible
+
+64 / 99
+not Seidel-compatible
+
+65 / 99
+not Seidel-compatible
+
+66 / 99
+not Seidel-compatible
+
+67 / 99
+not Seidel-compatible
+
+68 / 99
+not Seidel-compatible
+
+69 / 99
+not Seidel-compatible
+
+70 / 99
+not Seidel-compatible
+
+71 / 99
+not Seidel-compatible
+
+72 / 99
+not Seidel-compatible
+
+73 / 99
+not Seidel-compatible
+
+74 / 99
+not Seidel-compatible
+
+75 / 99
+not Seidel-compatible
+
+76 / 99
+not Seidel-compatible
+
+77 / 99
+not Seidel-compatible
+
+78 / 99
+not Seidel-compatible
+
+79 / 99
+not Seidel-compatible
+
+80 / 99
+not Seidel-compatible
+
+81 / 99
+not Seidel-compatible
+
+82 / 99
+not Seidel-compatible
+
+83 / 99
+not Seidel-compatible
+
+84 / 99
+not Seidel-compatible
+
+85 / 99
+not Seidel-compatible
+
+86 / 99
+not Seidel-compatible
+
+87 / 99
+not Seidel-compatible
+
+88 / 99
+not Seidel-compatible
+
+89 / 99
+not Seidel-compatible
+
+90 / 99
+not Seidel-compatible
+
+91 / 99
+not Seidel-compatible
+
+92 / 99
+not Seidel-compatible
+
+93 / 99
+not Seidel-compatible
+
+94 / 99
+not Seidel-compatible
+
+95 / 99
+not Seidel-compatible
+
+96 / 99
+not Seidel-compatible
+
+97 / 99
+not Seidel-compatible
+
+98 / 99
+not Seidel-compatible
+
+99 / 99
+not Seidel-compatible
+
+Polynomials Seidel-compatible with the warranted poly:
+1 [
+    <x - 11, 3>,
+    <x - 9, 9>,
+    <x - 7, 1>,
+    <x + 5, 31>,
+    <x^4 - 34*x^3 + 408*x^2 - 2030*x + 3543, 1>
+]
+2 [
+    <x - 11, 3>,
+    <x - 9, 9>,
+    <x + 5, 31>,
+    <x^2 - 16*x + 59, 1>,
+    <x^3 - 25*x^2 + 187*x - 411, 1>
+]
+3 [
+    <x - 11, 3>,
+    <x - 9, 9>,
+    <x - 7, 1>,
+    <x + 5, 31>,
+    <x^4 - 34*x^3 + 408*x^2 - 2022*x + 3455, 1>
+]
+4 [
+    <x - 11, 3>,
+    <x - 9, 11>,
+    <x + 5, 31>,
+    <x^3 - 23*x^2 + 151*x - 289, 1>
+]
+5 [
+    <x - 11, 4>,
+    <x - 9, 9>,
+    <x - 7, 2>,
+    <x + 5, 31>,
+    <x^2 - 16*x + 43, 1>
+]
+--- list interlacing configurations ---
+ there are 2 interlacing configurations
+[
+    (27 11  2  1  8),
+    (24 12  6  0  7)
+]
+Squared angles
+[
+    (899/1372 0 12/49 1/12 1/39102*(sqrt57 + 323) 1/39102*(-sqrt57 + 323)),
+    (5371/8232 1/12 6/49 1/8 1/52136*(-39*sqrt57 + 437) 1/52136*(39*sqrt57 + 437)),
+    (895/1372 0 10/49 1/12 1/19551*(22*sqrt57 + 589) 1/19551*(-22*sqrt57 + 589)),
+    (109/168 1/12 0 5/24 1/3192*(11*sqrt57 + 95) 1/3192*(-11*sqrt57 + 95)),
+    (222/343 0 10/49 0 1/13034*(3*sqrt57 + 969) 1/13034*(-3*sqrt57 + 969))
+]
+Checking for half-integers in q(lambda1)alpha_lambda1*alpha_lambda1^t...
+[1/114*(-83*sqrt57 + 399) 1/38*(27*sqrt57 - 247) 1/114*(79*sqrt57 - 1083) 
+    1/114*(85*sqrt57 - 57) 1/38*(-83*sqrt57 + 399)]
+[1/38*(27*sqrt57 - 247) 1/38*(-41*sqrt57 + 285) 1/38*(55*sqrt57 - 323) 
+    1/38*(-13*sqrt57 + 209) 1/38*(-81*sqrt57 + 741)]
+[1/114*(79*sqrt57 - 1083) 1/38*(55*sqrt57 - 323) 1/114*(-251*sqrt57 + 855) 
+    1/114*(-7*sqrt57 - 1197) 1/38*(-79*sqrt57 + 1083)]
+[1/114*(85*sqrt57 - 57) 1/38*(-13*sqrt57 + 209) 1/114*(-7*sqrt57 - 1197) 
+    1/114*(-131*sqrt57 - 513) 1/38*(-85*sqrt57 + 57)]
+[1/38*(-83*sqrt57 + 399) 1/38*(-81*sqrt57 + 741) 1/38*(-79*sqrt57 + 1083) 
+    1/38*(-85*sqrt57 + 57) 1/38*(-249*sqrt57 + 1197)]
+
+Checking possibilities for delta...
+Checking interlacing configuration: (27 11  2  1  8)
+No such delta exists
+
+Checking interlacing configuration: (24 12  6  0  7)
+No such delta exists
